@@ -49,6 +49,7 @@
     <Compile Include="Controlador\C_Alumnos.cs" />
     <Compile Include="Modelo\M_Alumnos.cs" />
     <Compile Include="Modelo\M_Bibliotecarios.cs" />
+    <Compile Include="Modelo\Prestamos.cs" />
     <Compile Include="Modelo\M_Conexion.cs" />
     <Compile Include="Vista\Form1.cs">
       <SubType>Form</SubType>
