@@ -7,17 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tp_integrador_01.Controlador;
 
-//Prueba para guardar en git
 
 namespace Tp_integrador_01
 {
     public partial class Form1 : Form
     {
+        C_Alumnos controladorAlumnos;
         public Form1()
         {
+
+            /*Para trabajar con el controlador, necesitamos instanciar
+            AsyncCallback su clase, lo hacermos primero declarando un;
+            objeto de tipo c_alumnos y luego instanciando: */
+
             InitializeComponent();
+            C_Alumnos controladorAlumnos = new C_Alumnos();
         }
+
+
+        /* Creamos un metodo que recolecte los datos del formulario
+        Y los envie a una funcion del controlador:*/
+
+        public void GuardarAlumnos()
+        {
+            string apellido = apellido_txt.Text;
+            string nombre = apellido_txt.Text;
+            string dni = apellido_txt.Text;
+            string telefono = apellido_txt.Text;
+            string direccion = apellido_txt.Text;
+
+            controladorAlumnos.insertarAlumnos( apellido, nombre, dni, telefono, direccion);
+        }
+
+
 
         private void label12_Click(object sender, EventArgs e)
         {
@@ -75,6 +99,11 @@ namespace Tp_integrador_01
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

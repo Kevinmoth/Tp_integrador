@@ -8,6 +8,6 @@ namespace Tp_integrador_01.Modelo
 {
     internal class M_Bibliotecarios
     {
-        asd
+        
     }
 }
