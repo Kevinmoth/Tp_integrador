@@ -8,5 +8,6 @@ namespace Tp_integrador_01.Modelo
 {
     internal class Prestamos
     {
+
     }
 }

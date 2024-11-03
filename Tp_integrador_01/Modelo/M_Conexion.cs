@@ -20,6 +20,7 @@ namespace Tp_integrador_01.Modelo
         private string clave;
         private static M_Conexion conn = null;
 
+        
         //constructores
         private M_Conexion()
         {

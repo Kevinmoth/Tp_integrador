@@ -37,8 +37,10 @@ namespace Tp_integrador_01
             string dni = apellido_txt.Text;
             string telefono = apellido_txt.Text;
             string direccion = apellido_txt.Text;
+            string email = mail_txt.Text;
+            int localidad = localidad_txt.SelectedIndex;
 
-            controladorAlumnos.insertarAlumnos( apellido, nombre, dni, telefono, direccion);
+            controladorAlumnos.insertarAlumnos( apellido, nombre, dni, telefono, direccion, email, localidad);
         }
 
 
@@ -116,6 +118,11 @@ namespace Tp_integrador_01
         private void Alumnos_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void registrar_boton_Click(object sender, EventArgs e)
+        {
+            GuardarAlumnos();
         }
     }
 }
