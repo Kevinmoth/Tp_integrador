@@ -12,12 +12,12 @@ using Tp_integrador_01.Controlador;
 
 namespace Tp_integrador_01
 {
-    public partial class Form1 : Form
+    public partial class BiblioMax : Form
     {
         C_Alumnos controladorAlumnos;
-        public Form1()
+        public BiblioMax()
         {
-
+            
             /*Para trabajar con el controlador, necesitamos instanciar
             AsyncCallback su clase, lo hacermos primero declarando un;
             objeto de tipo c_alumnos y luego instanciando: */
@@ -104,6 +104,16 @@ namespace Tp_integrador_01
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Alumnos_Click(object sender, EventArgs e)
         {
 
         }
