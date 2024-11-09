@@ -12,8 +12,10 @@ namespace Tp_integrador_01.Modelo
 {
 
 
-    internal class M_Alumnos
-    {
+    internal class M_Alumnos{
+
+        //Atrubutos del alumno:
+
 
 
         
