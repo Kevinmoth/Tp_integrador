@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,7 +19,7 @@ namespace Tp_integrador_01.Modelo
 
 
 
-        
+        //test
 
 
         public string insertarAlumnosBD(string apellido, string nombre, string dni, string telefono, string direccion, string email, int localidad)

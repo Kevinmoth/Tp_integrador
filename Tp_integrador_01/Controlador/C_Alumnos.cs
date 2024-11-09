@@ -18,13 +18,5 @@ namespace Tp_integrador_01.Controlador
             modeloAlumnos.insertarAlumnosBD(apellido, nombre, dni, telefono, direccion, email, localidad);
         }
 
-
-
-
-
-
-
-
-
     }
 }
