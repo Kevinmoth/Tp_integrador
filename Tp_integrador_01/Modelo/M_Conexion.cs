@@ -20,7 +20,7 @@ namespace Tp_integrador_01.Modelo
         private string clave;
         private static M_Conexion conn = null;
 
-        
+
         //constructores
         private M_Conexion()
         {
@@ -43,5 +43,20 @@ namespace Tp_integrador_01.Modelo
         }
 
 
+        public static M_Conexion getInstancia(string a, string b)
+        {
+            if (conn == null)
+            {
+                conn = new M_Conexion();
+            }
+            return conn;
+        }
+
+
     }
+
+
+
 }
+
+

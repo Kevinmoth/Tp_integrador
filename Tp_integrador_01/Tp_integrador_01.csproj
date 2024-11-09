@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controlador\C_Alumnos.cs" />
+    <Compile Include="Modelo\almacenarBD.cs" />
     <Compile Include="Modelo\M_Alumnos.cs" />
     <Compile Include="Modelo\M_Bibliotecarios.cs" />
     <Compile Include="Modelo\Prestamos.cs" />
