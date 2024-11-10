@@ -59,12 +59,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridAlumno = new System.Windows.Forms.DataGridView();
-            this.apellido_alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dni_alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_registro_alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tablaLibros = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
@@ -148,6 +142,7 @@
             // 
             this.localidad_txt.FormattingEnabled = true;
             this.localidad_txt.Items.AddRange(new object[] {
+            "Seleccione su localidad..",
             "Obera",
             "Alem",
             "Eldorado",
@@ -158,6 +153,8 @@
             this.localidad_txt.Name = "localidad_txt";
             this.localidad_txt.Size = new System.Drawing.Size(100, 21);
             this.localidad_txt.TabIndex = 19;
+            this.localidad_txt.Tag = "";
+            this.localidad_txt.SelectedIndexChanged += new System.EventHandler(this.localidad_txt_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -316,13 +313,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridAlumno.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridAlumno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridAlumno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.apellido_alumno,
-            this.nombre_alumno,
-            this.dni_alumno,
-            this.fecha_registro_alumno,
-            this.id_alumno,
-            this.Estado});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -343,48 +333,6 @@
             this.dataGridAlumno.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridAlumno.Size = new System.Drawing.Size(441, 256);
             this.dataGridAlumno.TabIndex = 0;
-            // 
-            // apellido_alumno
-            // 
-            this.apellido_alumno.HeaderText = "Apellido";
-            this.apellido_alumno.Name = "apellido_alumno";
-            this.apellido_alumno.Width = 60;
-            // 
-            // nombre_alumno
-            // 
-            this.nombre_alumno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.nombre_alumno.HeaderText = "Nombre";
-            this.nombre_alumno.Name = "nombre_alumno";
-            this.nombre_alumno.Width = 69;
-            // 
-            // dni_alumno
-            // 
-            this.dni_alumno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dni_alumno.HeaderText = "DNI";
-            this.dni_alumno.Name = "dni_alumno";
-            this.dni_alumno.Width = 51;
-            // 
-            // fecha_registro_alumno
-            // 
-            this.fecha_registro_alumno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.fecha_registro_alumno.HeaderText = "Telefono";
-            this.fecha_registro_alumno.Name = "fecha_registro_alumno";
-            this.fecha_registro_alumno.Width = 74;
-            // 
-            // id_alumno
-            // 
-            this.id_alumno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.id_alumno.FillWeight = 60F;
-            this.id_alumno.HeaderText = "Direccion";
-            this.id_alumno.Name = "id_alumno";
-            this.id_alumno.Width = 77;
-            // 
-            // Estado
-            // 
-            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.Width = 65;
             // 
             // tabPage2
             // 
@@ -648,6 +596,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BiblioMax";
             this.Text = "BiblioMax";
+            this.Load += new System.EventHandler(this.BiblioMax_Load);
             tabControl01.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -682,12 +631,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridAlumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellido_alumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_alumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dni_alumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_registro_alumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_alumno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage Alumnos;
         private System.Windows.Forms.Label label8;

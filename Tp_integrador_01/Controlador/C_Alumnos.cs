@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Tp_integrador_01.Modelo;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -16,7 +17,17 @@ namespace Tp_integrador_01.Controlador
         public void insertarAlumnos(string apellido, string nombre, string dni, string telefono, string direccion, string email, int localidad)
         {
             M_Alumnos alumno = new M_Alumnos(apellido, nombre, dni, telefono, direccion, email, localidad);
-            almacenarBD.AlmacenarAlumno(alumno);
+            if (localidad == 0)
+            {
+                MessageBox.Show("Ingrese una localidad válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                almacenarBD.AlmacenarAlumno(alumno);
+            }
+
+
+            
         }
         public List<M_Alumnos> ObtenerAlumnos()
         {

@@ -23,25 +23,24 @@ namespace Tp_integrador_01.Modelo
             M_Conexion conexion = M_Conexion.getInstancia();
             MySqlConnection conn = conexion.CrearConexion();
 
-            
-                // Abrirmos la conexion 
+            // Abrimos la conexión 
             conn.Open();
 
-                // Creamos el comando SQL para insertar datos
+            // Creamos el comando SQL para insertar datos
             string query = "INSERT INTO socios (apellido, nombre, dni, telefono, direccion, email, id_localidad) " +
-            "VALUES ('" + alumno.Apellido + "', '" + alumno.Nombre + "', '" + alumno.Dni + "', '" +
-            alumno.Telefono + "', '" + alumno.Direccion + "', '" + alumno.Email + "', " + alumno.Localidad + ")";
+                "VALUES ('" + alumno.Apellido + "', '" + alumno.Nombre + "', '" + alumno.Dni + "', '" +
+                alumno.Telefono + "', '" + alumno.Direccion + "', '" + alumno.Email + "', " + alumno.Localidad + ")";
 
             MySqlCommand comando = new MySqlCommand(query, conn);
+
+            // Ejecutamos el comando (solo una vez)
             comando.ExecuteNonQuery();
 
-
-                // Ejecutamos el comando
-            int result = comando.ExecuteNonQuery();
-                // Cerramos la conexión
+            // Cerramos la conexión
             conn.Close();
-            }
-
         }
+
+
     }
+}
 

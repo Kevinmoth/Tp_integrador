@@ -42,10 +42,10 @@ namespace Tp_integrador_01
         public void GuardarAlumnos()
         {
             string apellido = apellido_txt.Text;
-            string nombre = apellido_txt.Text;
-            string dni = apellido_txt.Text;
-            string telefono = apellido_txt.Text;
-            string direccion = apellido_txt.Text;
+            string nombre = nombre_txt.Text;
+            string dni = dni_txt.Text;
+            string telefono = telefono_txt.Text;
+            string direccion = direccion_txt.Text;
             string email = mail_txt.Text;
             int localidad = localidad_txt.SelectedIndex;
 
@@ -132,6 +132,7 @@ namespace Tp_integrador_01
         private void registrar_boton_Click(object sender, EventArgs e)
         {
             GuardarAlumnos();
+            CargarDatosEnTabla();
         }
 
         private void libro_txt_TextChanged(object sender, EventArgs e)
@@ -142,6 +143,16 @@ namespace Tp_integrador_01
         private void mail_txt_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void localidad_txt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BiblioMax_Load(object sender, EventArgs e)
+        {
+            localidad_txt.SelectedIndex = 0;
         }
     }
 }

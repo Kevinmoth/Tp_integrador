@@ -46,7 +46,7 @@ namespace Tp_integrador_01.Modelo
             catch (Exception ex)
             {
                 Console.WriteLine("Error al crear la conexión: " + ex.Message);
-                throw;  // Rethrow the exception to handle it in a higher level
+                throw;  
             }
         }
 
