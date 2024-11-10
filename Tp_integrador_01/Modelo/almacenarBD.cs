@@ -10,7 +10,7 @@ namespace Tp_integrador_01.Modelo
     internal class almacenarBD
     {
 
-        public void AlmacenarAlumno(M_Alumnos alumno)
+        public static void AlmacenarAlumno(M_Alumnos alumno)
         {
             string apellido = alumno.Apellido;
             string nombre = alumno.Nombre;
@@ -20,7 +20,7 @@ namespace Tp_integrador_01.Modelo
             string email = alumno.Email;
             int localidad = alumno.Localidad;
 
-            M_Conexion conexion = M_Conexion.getInstancia("localhost", "3306");
+            M_Conexion conexion = M_Conexion.getInstancia();
             MySqlConnection conn = conexion.CrearConexion();
 
             

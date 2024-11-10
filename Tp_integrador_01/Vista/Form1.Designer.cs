@@ -40,6 +40,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BiblioMax));
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.localidad_txt = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.registrar_boton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,7 +58,7 @@
             this.apellido_txt = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridAlumno = new System.Windows.Forms.DataGridView();
             this.apellido_alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre_alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dni_alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +80,7 @@
             this.isnb_txt = new System.Windows.Forms.TextBox();
             this.libro_txt = new System.Windows.Forms.TextBox();
             this.Alumnos = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -85,13 +88,10 @@
             this.label18 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.localidad_txt = new System.Windows.Forms.ComboBox();
             tabControl01 = new System.Windows.Forms.TabControl();
             tabControl01.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAlumno)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).BeginInit();
             this.Alumnos.SuspendLayout();
@@ -134,7 +134,7 @@
             this.tabPage1.Controls.Add(this.apellido_txt);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.dataGridAlumno);
             this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
@@ -143,6 +143,30 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Alumnos";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // localidad_txt
+            // 
+            this.localidad_txt.FormattingEnabled = true;
+            this.localidad_txt.Items.AddRange(new object[] {
+            "Obera",
+            "Alem",
+            "Eldorado",
+            "Posadas",
+            "Cerro Azul",
+            "albapose"});
+            this.localidad_txt.Location = new System.Drawing.Point(66, 241);
+            this.localidad_txt.Name = "localidad_txt";
+            this.localidad_txt.Size = new System.Drawing.Size(100, 21);
+            this.localidad_txt.TabIndex = 19;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(9, 245);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 13);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Localidad";
             // 
             // button4
             // 
@@ -225,6 +249,7 @@
             this.mail_txt.Name = "mail_txt";
             this.mail_txt.Size = new System.Drawing.Size(100, 20);
             this.mail_txt.TabIndex = 8;
+            this.mail_txt.TextChanged += new System.EventHandler(this.mail_txt_TextChanged);
             // 
             // direccion_txt
             // 
@@ -280,7 +305,7 @@
             this.button1.Text = "Registrar";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataGridAlumno
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -289,9 +314,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridAlumno.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridAlumno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridAlumno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.apellido_alumno,
             this.nombre_alumno,
             this.dni_alumno,
@@ -305,9 +330,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(175, 6);
-            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridAlumno.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridAlumno.Location = new System.Drawing.Point(175, 6);
+            this.dataGridAlumno.Name = "dataGridAlumno";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,9 +340,9 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Size = new System.Drawing.Size(441, 256);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridAlumno.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridAlumno.Size = new System.Drawing.Size(441, 256);
+            this.dataGridAlumno.TabIndex = 0;
             // 
             // apellido_alumno
             // 
@@ -512,6 +537,7 @@
             this.libro_txt.Name = "libro_txt";
             this.libro_txt.Size = new System.Drawing.Size(100, 20);
             this.libro_txt.TabIndex = 26;
+            this.libro_txt.TextChanged += new System.EventHandler(this.libro_txt_TextChanged);
             // 
             // Alumnos
             // 
@@ -530,6 +556,38 @@
             this.Alumnos.Text = "Prestamos";
             this.Alumnos.UseVisualStyleBackColor = true;
             this.Alumnos.Click += new System.EventHandler(this.Alumnos_Click);
+            // 
+            // dataGridView2
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridView2.Location = new System.Drawing.Point(264, 20);
+            this.dataGridView2.Name = "dataGridView2";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridView2.Size = new System.Drawing.Size(353, 242);
+            this.dataGridView2.TabIndex = 48;
             // 
             // comboBox2
             // 
@@ -581,62 +639,6 @@
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 40;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 245);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 13);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "Localidad";
-            // 
-            // dataGridView2
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView2.Location = new System.Drawing.Point(264, 20);
-            this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridView2.Size = new System.Drawing.Size(353, 242);
-            this.dataGridView2.TabIndex = 48;
-            // 
-            // localidad_txt
-            // 
-            this.localidad_txt.FormattingEnabled = true;
-            this.localidad_txt.Items.AddRange(new object[] {
-            "Obera",
-            "Alem",
-            "Eldorado",
-            "Posadas",
-            "Cerro Azul",
-            "albapose"});
-            this.localidad_txt.Location = new System.Drawing.Point(66, 241);
-            this.localidad_txt.Name = "localidad_txt";
-            this.localidad_txt.Size = new System.Drawing.Size(100, 21);
-            this.localidad_txt.TabIndex = 19;
-            // 
             // BiblioMax
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -649,7 +651,7 @@
             tabControl01.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAlumno)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).EndInit();
@@ -679,7 +681,7 @@
         private System.Windows.Forms.TextBox apellido_txt;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridAlumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido_alumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_alumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni_alumno;

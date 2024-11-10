@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,8 +11,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 namespace Tp_integrador_01.Modelo
 {
 
+    /*Esta clase se encarga de definir los datos básicos de un alumno y
+    proporciona una forma de acceder a ellos y modificarlos cuando se necesite.*/
 
-    internal class M_Alumnos
+    public class M_Alumnos
     {
 
         //Atrubutos del alumno:
@@ -40,7 +41,7 @@ namespace Tp_integrador_01.Modelo
 
 
         /*Getters y setters - En C#, en vez de crear un getter y un setter para cada atributo
-        podemos crear estos metodos que sirven para ambas cosas:
+        podemos crear estos metodos llamados "propiedades" que sirven para ambas cosas:
 
             public string Matricula{
 
@@ -48,8 +49,7 @@ namespace Tp_integrador_01.Modelo
                  set { matricula = value; }  // Setter: asigna un valor a "matricula"
             }
         
-        en c# a este metodo se le llama "propiedad" de la clase, y no getter o setter
-        asi podemos acceder a los atributos:
+        En c# a este tipo de metodo se le llama "propiedad" y es asi como podemos acceder a el:
 
         alumno.Nombre = "Carlos"; // Usa el setter internamente
         Console.WriteLine(alumno.Nombre); // Usa el getter internamente */
@@ -100,7 +100,7 @@ namespace Tp_integrador_01.Modelo
 
 
 
-        public string insertarAlumnosBD(string apellido, string nombre, string dni, string telefono, string direccion, string email, int localidad)
+        /*public string insertarAlumnosBD(string apellido, string nombre, string dni, string telefono, string direccion, string email, int localidad)
         {
             string respuesta = "";
             var SqlConexion = new MySqlConnection();
@@ -125,7 +125,7 @@ namespace Tp_integrador_01.Modelo
             }
             return respuesta;
 
-        }
+        }*/
 
 
     }

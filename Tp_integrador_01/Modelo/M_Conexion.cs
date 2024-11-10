@@ -26,24 +26,33 @@ namespace Tp_integrador_01.Modelo
         {
             this.base_datos = "biblioteca_parcial";
             this.puerto = "3306";
-            this.servidor = "localhost";
-            this.clave = "root";
-            this.usuario = "seadesert1550";
+            this.servidor = "127.0.0.1";
+            this.clave = "seadesert1550";
+            this.usuario = "root";
         }
 
         public MySqlConnection CrearConexion()
         {
-            var cadena = new MySqlConnection();
-            cadena.ConnectionString = "datasource=" + this.servidor +
-                                      ";user=" + this.usuario +
-                                      ";password=" + this.clave +
-                                      ";database=" + this.base_datos;
-
-            return cadena;
+            try
+            {
+                var cadena = new MySqlConnection();
+                cadena.ConnectionString = "datasource=" + this.servidor +
+                          ";user=" + this.usuario +
+                          ";password=" + this.clave +
+                          ";database=" + this.base_datos +
+                          ";SslMode=None";
+                return cadena;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al crear la conexión: " + ex.Message);
+                throw;  // Rethrow the exception to handle it in a higher level
+            }
         }
 
 
-        public static M_Conexion getInstancia(string a, string b)
+
+        public static M_Conexion getInstancia()
         {
             if (conn == null)
             {
@@ -54,9 +63,6 @@ namespace Tp_integrador_01.Modelo
 
 
     }
-
-
-
 }
 
 

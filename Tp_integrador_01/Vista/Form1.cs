@@ -8,24 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Tp_integrador_01.Controlador;
+using Tp_integrador_01.Modelo;
 
 
 namespace Tp_integrador_01
 {
     public partial class BiblioMax : Form
     {
-        C_Alumnos controladorAlumnos;
+        private C_Alumnos controladorAlumnos;
         public BiblioMax()
         {
-            
+
             /*Para trabajar con el controlador, necesitamos instanciar
             AsyncCallback su clase, lo hacermos primero declarando un;
             objeto de tipo c_alumnos y luego instanciando: */
-
-            InitializeComponent();
-            C_Alumnos controladorAlumnos = new C_Alumnos();
+            
+        InitializeComponent();
+            controladorAlumnos = new C_Alumnos();
+            CargarDatosEnTabla();
         }
 
+        private void CargarDatosEnTabla()
+        {
+            List<M_Alumnos> listaAlumnos = controladorAlumnos.ObtenerAlumnos();
+
+            // Vincular la lista al DataGridView
+            dataGridAlumno.DataSource = listaAlumnos;
+        }
 
         /* Creamos un metodo que recolecte los datos del formulario
         Y los envie a una funcion del controlador:*/
@@ -123,6 +132,16 @@ namespace Tp_integrador_01
         private void registrar_boton_Click(object sender, EventArgs e)
         {
             GuardarAlumnos();
+        }
+
+        private void libro_txt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mail_txt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
