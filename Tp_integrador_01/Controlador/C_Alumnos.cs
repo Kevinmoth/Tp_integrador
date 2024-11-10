@@ -26,7 +26,7 @@ namespace Tp_integrador_01.Controlador
             MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
             
             //solicitamos los datos de la BD
-            string query = "SELECT apellido, nombre, dni, telefono, direccion, email, localidad FROM socios";
+            string query = "SELECT apellido, nombre, dni, telefono, direccion, email, id_localidad FROM socios";
 
             try
             {
@@ -44,7 +44,7 @@ namespace Tp_integrador_01.Controlador
                         reader["telefono"].ToString(),
                         reader["direccion"].ToString(),
                         reader["email"].ToString(),
-                        int.Parse(reader["localidad"].ToString())
+                        int.Parse(reader["id_localidad"].ToString())
                     );
                     listaAlumnos.Add(alumno);
                 }

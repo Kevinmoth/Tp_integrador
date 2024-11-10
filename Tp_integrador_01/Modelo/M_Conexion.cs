@@ -40,7 +40,7 @@ namespace Tp_integrador_01.Modelo
                           ";user=" + this.usuario +
                           ";password=" + this.clave +
                           ";database=" + this.base_datos +
-                          ";SslMode=None";
+                          ";SslMode=Required";
                 return cadena;
             }
             catch (Exception ex)

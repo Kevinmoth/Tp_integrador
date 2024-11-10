@@ -28,7 +28,7 @@ namespace Tp_integrador_01.Modelo
             conn.Open();
 
                 // Creamos el comando SQL para insertar datos
-            string query = "INSERT INTO alumnos (apellido, nombre, dni, telefono, direccion, email, localidad) " +
+            string query = "INSERT INTO socios (apellido, nombre, dni, telefono, direccion, email, id_localidad) " +
             "VALUES ('" + alumno.Apellido + "', '" + alumno.Nombre + "', '" + alumno.Dni + "', '" +
             alumno.Telefono + "', '" + alumno.Direccion + "', '" + alumno.Email + "', " + alumno.Localidad + ")";
 
