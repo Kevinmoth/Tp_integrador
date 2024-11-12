@@ -76,7 +76,7 @@
             this.Alumnos = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxAlumno = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -491,7 +491,7 @@
             // 
             this.Alumnos.Controls.Add(this.dataGridView2);
             this.Alumnos.Controls.Add(this.comboBox2);
-            this.Alumnos.Controls.Add(this.comboBox1);
+            this.Alumnos.Controls.Add(this.comboBoxAlumno);
             this.Alumnos.Controls.Add(this.label16);
             this.Alumnos.Controls.Add(this.label17);
             this.Alumnos.Controls.Add(this.label18);
@@ -545,13 +545,13 @@
             this.comboBox2.Size = new System.Drawing.Size(100, 21);
             this.comboBox2.TabIndex = 47;
             // 
-            // comboBox1
+            // comboBoxAlumno
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(124, 33);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 46;
+            this.comboBoxAlumno.FormattingEnabled = true;
+            this.comboBoxAlumno.Location = new System.Drawing.Point(124, 33);
+            this.comboBoxAlumno.Name = "comboBoxAlumno";
+            this.comboBoxAlumno.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxAlumno.TabIndex = 46;
             // 
             // label16
             // 
@@ -652,7 +652,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxAlumno;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ComboBox localidad_txt;

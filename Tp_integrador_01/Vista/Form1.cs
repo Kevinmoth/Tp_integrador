@@ -20,7 +20,7 @@ namespace Tp_integrador_01
         {
 
             /*Para trabajar con el controlador, necesitamos instanciar
-            AsyncCallback su clase, lo hacermos primero declarando un;
+            su clase, lo hacermos primero declarando un
             objeto de tipo c_alumnos y luego instanciando: */
             
         InitializeComponent();
@@ -52,8 +52,11 @@ namespace Tp_integrador_01
             controladorAlumnos.insertarAlumnos( apellido, nombre, dni, telefono, direccion, email, localidad);
         }
 
-
-
+        //Codigo para rellenar el comboBox
+        public void comboBoxAlumnos()
+        {
+            controladorAlumnos.CargarNombresComboBox(comboBoxAlumno);
+        }
         private void label12_Click(object sender, EventArgs e)
         {
 
@@ -153,6 +156,7 @@ namespace Tp_integrador_01
         private void BiblioMax_Load(object sender, EventArgs e)
         {
             localidad_txt.SelectedIndex = 0;
+            comboBoxAlumnos();
         }
     }
 }

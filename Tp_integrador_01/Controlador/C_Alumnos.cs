@@ -82,7 +82,7 @@ namespace Tp_integrador_01.Controlador
 
             foreach (M_Alumnos alumno in listaAlumnos)
             {
-                comboBoxAlumnos.Items.Add(alumno.Nombre);
+                comboBoxAlumnos.Items.Add(alumno.Apellido);
             }
         }
 
