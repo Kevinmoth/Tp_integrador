@@ -10,7 +10,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Tp_integrador_01.Controlador
 {
-    
+
     public class C_Alumnos
     {
 
@@ -27,7 +27,7 @@ namespace Tp_integrador_01.Controlador
             }
 
 
-            
+
         }
         public List<M_Alumnos> ObtenerAlumnos()
         {
@@ -35,7 +35,7 @@ namespace Tp_integrador_01.Controlador
 
             // Obtiene una nueva conexion usando nuestro singleton
             MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
-            
+
             //solicitamos los datos de la BD
             string query = "SELECT apellido, nombre, dni, telefono, direccion, email, id_localidad FROM socios";
 
@@ -73,6 +73,24 @@ namespace Tp_integrador_01.Controlador
 
             return listaAlumnos;
         }
+
+        //Metodo que vamos a usar para cargar los allumnos en el comboBox
+
+        public void CargarNombresComboBox(ComboBox comboBoxAlumnos)
+        {
+            List<M_Alumnos> listaAlumnos = ObtenerAlumnos();
+
+            foreach (M_Alumnos alumno in listaAlumnos)
+            {
+                comboBoxAlumnos.Items.Add(alumno.Nombre);
+            }
+        }
+
+
+
+
+
+
 
     }
 }
