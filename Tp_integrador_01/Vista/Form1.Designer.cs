@@ -41,23 +41,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BiblioMax));
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.localidad_txt = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.registrar_boton = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.mail_txt = new System.Windows.Forms.TextBox();
-            this.direccion_txt = new System.Windows.Forms.TextBox();
-            this.telefono_txt = new System.Windows.Forms.TextBox();
-            this.dni_txt = new System.Windows.Forms.TextBox();
-            this.nombre_txt = new System.Windows.Forms.TextBox();
-            this.apellido_txt = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.dataGridAlumno = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tablaLibros = new System.Windows.Forms.DataGridView();
@@ -74,14 +57,30 @@
             this.isnb_txt = new System.Windows.Forms.TextBox();
             this.libro_txt = new System.Windows.Forms.TextBox();
             this.Alumnos = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.TablaPrestamos = new System.Windows.Forms.DataGridView();
+            this.comboBoxLibro = new System.Windows.Forms.ComboBox();
             this.comboBoxAlumno = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.comboBoxBibliotecarios = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Ejemplar = new System.Windows.Forms.Label();
+            this.registrar_boton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.apellido_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.nombre_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.dni_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.telefono_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.direccion_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.mail_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             tabControl01 = new System.Windows.Forms.TabControl();
             tabControl01.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -89,7 +88,7 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).BeginInit();
             this.Alumnos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaPrestamos)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl01
@@ -105,38 +104,36 @@
             tabControl01.Name = "tabControl01";
             tabControl01.Padding = new System.Drawing.Point(29, 3);
             tabControl01.SelectedIndex = 0;
-            tabControl01.Size = new System.Drawing.Size(636, 351);
+            tabControl01.Size = new System.Drawing.Size(817, 351);
             tabControl01.TabIndex = 2;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.localidad_txt);
-            this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Controls.Add(this.registrar_boton);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.mail_txt);
             this.tabPage1.Controls.Add(this.direccion_txt);
             this.tabPage1.Controls.Add(this.telefono_txt);
             this.tabPage1.Controls.Add(this.dni_txt);
             this.tabPage1.Controls.Add(this.nombre_txt);
             this.tabPage1.Controls.Add(this.apellido_txt);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.materialLabel7);
+            this.tabPage1.Controls.Add(this.materialLabel6);
+            this.tabPage1.Controls.Add(this.materialLabel5);
+            this.tabPage1.Controls.Add(this.materialLabel4);
+            this.tabPage1.Controls.Add(this.materialLabel3);
+            this.tabPage1.Controls.Add(this.materialLabel2);
+            this.tabPage1.Controls.Add(this.materialLabel1);
+            this.tabPage1.Controls.Add(this.registrar_boton1);
+            this.tabPage1.Controls.Add(this.localidad_txt);
             this.tabPage1.Controls.Add(this.dataGridAlumno);
             this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(628, 316);
+            this.tabPage1.Size = new System.Drawing.Size(809, 316);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Alumnos";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // localidad_txt
             // 
@@ -149,158 +146,12 @@
             "Posadas",
             "Cerro Azul",
             "albapose"});
-            this.localidad_txt.Location = new System.Drawing.Point(66, 241);
+            this.localidad_txt.Location = new System.Drawing.Point(81, 241);
             this.localidad_txt.Name = "localidad_txt";
-            this.localidad_txt.Size = new System.Drawing.Size(100, 21);
-            this.localidad_txt.TabIndex = 19;
+            this.localidad_txt.Size = new System.Drawing.Size(110, 21);
+            this.localidad_txt.TabIndex = 6;
             this.localidad_txt.Tag = "";
             this.localidad_txt.SelectedIndexChanged += new System.EventHandler(this.localidad_txt_SelectedIndexChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 245);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 13);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "Localidad";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(541, 282);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Sancionar";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // registrar_boton
-            // 
-            this.registrar_boton.Location = new System.Drawing.Point(66, 281);
-            this.registrar_boton.Name = "registrar_boton";
-            this.registrar_boton.Size = new System.Drawing.Size(75, 23);
-            this.registrar_boton.TabIndex = 15;
-            this.registrar_boton.Text = "Registrar";
-            this.registrar_boton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.registrar_boton.UseMnemonic = false;
-            this.registrar_boton.UseVisualStyleBackColor = true;
-            this.registrar_boton.Click += new System.EventHandler(this.registrar_boton_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 204);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "E-Mail";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 165);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Direccion";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 123);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Telefono";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "DNI";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Nombre";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Apellido";
-            // 
-            // mail_txt
-            // 
-            this.mail_txt.Location = new System.Drawing.Point(66, 201);
-            this.mail_txt.Name = "mail_txt";
-            this.mail_txt.Size = new System.Drawing.Size(100, 20);
-            this.mail_txt.TabIndex = 8;
-            this.mail_txt.TextChanged += new System.EventHandler(this.mail_txt_TextChanged);
-            // 
-            // direccion_txt
-            // 
-            this.direccion_txt.Location = new System.Drawing.Point(66, 162);
-            this.direccion_txt.Name = "direccion_txt";
-            this.direccion_txt.Size = new System.Drawing.Size(100, 20);
-            this.direccion_txt.TabIndex = 7;
-            // 
-            // telefono_txt
-            // 
-            this.telefono_txt.Location = new System.Drawing.Point(66, 120);
-            this.telefono_txt.Name = "telefono_txt";
-            this.telefono_txt.Size = new System.Drawing.Size(100, 20);
-            this.telefono_txt.TabIndex = 6;
-            // 
-            // dni_txt
-            // 
-            this.dni_txt.Location = new System.Drawing.Point(66, 82);
-            this.dni_txt.Name = "dni_txt";
-            this.dni_txt.Size = new System.Drawing.Size(100, 20);
-            this.dni_txt.TabIndex = 5;
-            // 
-            // nombre_txt
-            // 
-            this.nombre_txt.Location = new System.Drawing.Point(66, 43);
-            this.nombre_txt.Name = "nombre_txt";
-            this.nombre_txt.Size = new System.Drawing.Size(100, 20);
-            this.nombre_txt.TabIndex = 4;
-            // 
-            // apellido_txt
-            // 
-            this.apellido_txt.Location = new System.Drawing.Point(66, 6);
-            this.apellido_txt.Name = "apellido_txt";
-            this.apellido_txt.Size = new System.Drawing.Size(100, 20);
-            this.apellido_txt.TabIndex = 3;
-            this.apellido_txt.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(157, 281);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(249, 281);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Registrar";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // dataGridAlumno
             // 
@@ -321,8 +172,9 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridAlumno.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridAlumno.Location = new System.Drawing.Point(175, 6);
+            this.dataGridAlumno.Location = new System.Drawing.Point(216, 3);
             this.dataGridAlumno.Name = "dataGridAlumno";
+            this.dataGridAlumno.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -331,8 +183,8 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridAlumno.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridAlumno.Size = new System.Drawing.Size(441, 256);
-            this.dataGridAlumno.TabIndex = 0;
+            this.dataGridAlumno.Size = new System.Drawing.Size(585, 256);
+            this.dataGridAlumno.TabIndex = 99;
             // 
             // tabPage2
             // 
@@ -489,23 +341,25 @@
             // 
             // Alumnos
             // 
-            this.Alumnos.Controls.Add(this.dataGridView2);
-            this.Alumnos.Controls.Add(this.comboBox2);
+            this.Alumnos.Controls.Add(this.comboBox1);
+            this.Alumnos.Controls.Add(this.Ejemplar);
+            this.Alumnos.Controls.Add(this.comboBoxBibliotecarios);
+            this.Alumnos.Controls.Add(this.TablaPrestamos);
+            this.Alumnos.Controls.Add(this.comboBoxLibro);
             this.Alumnos.Controls.Add(this.comboBoxAlumno);
             this.Alumnos.Controls.Add(this.label16);
             this.Alumnos.Controls.Add(this.label17);
             this.Alumnos.Controls.Add(this.label18);
-            this.Alumnos.Controls.Add(this.textBox5);
             this.Alumnos.Location = new System.Drawing.Point(4, 31);
             this.Alumnos.Name = "Alumnos";
             this.Alumnos.Padding = new System.Windows.Forms.Padding(3);
-            this.Alumnos.Size = new System.Drawing.Size(628, 316);
+            this.Alumnos.Size = new System.Drawing.Size(809, 316);
             this.Alumnos.TabIndex = 0;
             this.Alumnos.Text = "Prestamos";
             this.Alumnos.UseVisualStyleBackColor = true;
             this.Alumnos.Click += new System.EventHandler(this.Alumnos_Click);
             // 
-            // dataGridView2
+            // TablaPrestamos
             // 
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -514,8 +368,8 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TablaPrestamos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.TablaPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -523,9 +377,9 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView2.Location = new System.Drawing.Point(264, 20);
-            this.dataGridView2.Name = "dataGridView2";
+            this.TablaPrestamos.DefaultCellStyle = dataGridViewCellStyle8;
+            this.TablaPrestamos.Location = new System.Drawing.Point(200, 6);
+            this.TablaPrestamos.Name = "TablaPrestamos";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -533,34 +387,35 @@
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridView2.Size = new System.Drawing.Size(353, 242);
-            this.dataGridView2.TabIndex = 48;
+            this.TablaPrestamos.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.TablaPrestamos.Size = new System.Drawing.Size(603, 244);
+            this.TablaPrestamos.TabIndex = 48;
             // 
-            // comboBox2
+            // comboBoxLibro
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(124, 70);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(100, 21);
-            this.comboBox2.TabIndex = 47;
+            this.comboBoxLibro.FormattingEnabled = true;
+            this.comboBoxLibro.Location = new System.Drawing.Point(94, 70);
+            this.comboBoxLibro.Name = "comboBoxLibro";
+            this.comboBoxLibro.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxLibro.TabIndex = 47;
             // 
             // comboBoxAlumno
             // 
             this.comboBoxAlumno.FormattingEnabled = true;
-            this.comboBoxAlumno.Location = new System.Drawing.Point(124, 33);
+            this.comboBoxAlumno.Location = new System.Drawing.Point(94, 33);
             this.comboBoxAlumno.Name = "comboBoxAlumno";
             this.comboBoxAlumno.Size = new System.Drawing.Size(100, 21);
             this.comboBoxAlumno.TabIndex = 46;
+            this.comboBoxAlumno.SelectedIndexChanged += new System.EventHandler(this.comboBoxAlumno_SelectedIndexChanged);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 109);
+            this.label16.Location = new System.Drawing.Point(14, 156);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(92, 13);
+            this.label16.Size = new System.Drawing.Size(64, 13);
             this.label16.TabIndex = 45;
-            this.label16.Text = "Feche devolucion";
+            this.label16.Text = "Bibliotecario";
             // 
             // label17
             // 
@@ -580,18 +435,236 @@
             this.label18.TabIndex = 43;
             this.label18.Text = "Alumno";
             // 
-            // textBox5
+            // comboBoxBibliotecarios
             // 
-            this.textBox5.Location = new System.Drawing.Point(124, 106);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 40;
+            this.comboBoxBibliotecarios.FormattingEnabled = true;
+            this.comboBoxBibliotecarios.Location = new System.Drawing.Point(94, 153);
+            this.comboBoxBibliotecarios.Name = "comboBoxBibliotecarios";
+            this.comboBoxBibliotecarios.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxBibliotecarios.TabIndex = 51;
+            this.comboBoxBibliotecarios.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(94, 111);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.TabIndex = 53;
+            // 
+            // Ejemplar
+            // 
+            this.Ejemplar.AutoSize = true;
+            this.Ejemplar.Location = new System.Drawing.Point(14, 114);
+            this.Ejemplar.Name = "Ejemplar";
+            this.Ejemplar.Size = new System.Drawing.Size(47, 13);
+            this.Ejemplar.TabIndex = 52;
+            this.Ejemplar.Text = "Ejemplar";
+            // 
+            // registrar_boton1
+            // 
+            this.registrar_boton1.AutoSize = true;
+            this.registrar_boton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.registrar_boton1.Depth = 0;
+            this.registrar_boton1.Location = new System.Drawing.Point(58, 274);
+            this.registrar_boton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.registrar_boton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.registrar_boton1.Name = "registrar_boton1";
+            this.registrar_boton1.Primary = false;
+            this.registrar_boton1.Size = new System.Drawing.Size(84, 36);
+            this.registrar_boton1.TabIndex = 7;
+            this.registrar_boton1.Text = "Registrar";
+            this.registrar_boton1.UseVisualStyleBackColor = true;
+            this.registrar_boton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(8, 7);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(64, 19);
+            this.materialLabel1.TabIndex = 21;
+            this.materialLabel1.Text = "Apellido";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(8, 44);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(63, 19);
+            this.materialLabel2.TabIndex = 22;
+            this.materialLabel2.Text = "Nombre";
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(8, 83);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(34, 19);
+            this.materialLabel3.TabIndex = 23;
+            this.materialLabel3.Text = "DNI";
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(8, 121);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(69, 19);
+            this.materialLabel4.TabIndex = 24;
+            this.materialLabel4.Text = "Telefono";
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(8, 163);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(73, 19);
+            this.materialLabel5.TabIndex = 25;
+            this.materialLabel5.Text = "Direccion";
+            // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(8, 202);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(38, 19);
+            this.materialLabel6.TabIndex = 26;
+            this.materialLabel6.Text = "Mail";
+            // 
+            // materialLabel7
+            // 
+            this.materialLabel7.AutoSize = true;
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel7.Location = new System.Drawing.Point(3, 243);
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            this.materialLabel7.Size = new System.Drawing.Size(74, 19);
+            this.materialLabel7.TabIndex = 27;
+            this.materialLabel7.Text = "Localidad";
+            // 
+            // apellido_txt
+            // 
+            this.apellido_txt.Depth = 0;
+            this.apellido_txt.Hint = "";
+            this.apellido_txt.Location = new System.Drawing.Point(81, 7);
+            this.apellido_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.apellido_txt.Name = "apellido_txt";
+            this.apellido_txt.PasswordChar = '\0';
+            this.apellido_txt.SelectedText = "";
+            this.apellido_txt.SelectionLength = 0;
+            this.apellido_txt.SelectionStart = 0;
+            this.apellido_txt.Size = new System.Drawing.Size(110, 23);
+            this.apellido_txt.TabIndex = 0;
+            this.apellido_txt.UseSystemPasswordChar = false;
+            this.apellido_txt.Click += new System.EventHandler(this.apellido_txt_Click);
+            // 
+            // nombre_txt
+            // 
+            this.nombre_txt.Depth = 0;
+            this.nombre_txt.Hint = "";
+            this.nombre_txt.Location = new System.Drawing.Point(81, 40);
+            this.nombre_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.nombre_txt.Name = "nombre_txt";
+            this.nombre_txt.PasswordChar = '\0';
+            this.nombre_txt.SelectedText = "";
+            this.nombre_txt.SelectionLength = 0;
+            this.nombre_txt.SelectionStart = 0;
+            this.nombre_txt.Size = new System.Drawing.Size(110, 23);
+            this.nombre_txt.TabIndex = 1;
+            this.nombre_txt.UseSystemPasswordChar = false;
+            // 
+            // dni_txt
+            // 
+            this.dni_txt.Depth = 0;
+            this.dni_txt.Hint = "";
+            this.dni_txt.Location = new System.Drawing.Point(81, 79);
+            this.dni_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.dni_txt.Name = "dni_txt";
+            this.dni_txt.PasswordChar = '\0';
+            this.dni_txt.SelectedText = "";
+            this.dni_txt.SelectionLength = 0;
+            this.dni_txt.SelectionStart = 0;
+            this.dni_txt.Size = new System.Drawing.Size(110, 23);
+            this.dni_txt.TabIndex = 2;
+            this.dni_txt.UseSystemPasswordChar = false;
+            // 
+            // telefono_txt
+            // 
+            this.telefono_txt.Depth = 0;
+            this.telefono_txt.Hint = "";
+            this.telefono_txt.Location = new System.Drawing.Point(81, 117);
+            this.telefono_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.telefono_txt.Name = "telefono_txt";
+            this.telefono_txt.PasswordChar = '\0';
+            this.telefono_txt.SelectedText = "";
+            this.telefono_txt.SelectionLength = 0;
+            this.telefono_txt.SelectionStart = 0;
+            this.telefono_txt.Size = new System.Drawing.Size(110, 23);
+            this.telefono_txt.TabIndex = 3;
+            this.telefono_txt.UseSystemPasswordChar = false;
+            // 
+            // direccion_txt
+            // 
+            this.direccion_txt.Depth = 0;
+            this.direccion_txt.Hint = "";
+            this.direccion_txt.Location = new System.Drawing.Point(83, 159);
+            this.direccion_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.direccion_txt.Name = "direccion_txt";
+            this.direccion_txt.PasswordChar = '\0';
+            this.direccion_txt.SelectedText = "";
+            this.direccion_txt.SelectionLength = 0;
+            this.direccion_txt.SelectionStart = 0;
+            this.direccion_txt.Size = new System.Drawing.Size(110, 23);
+            this.direccion_txt.TabIndex = 4;
+            this.direccion_txt.UseSystemPasswordChar = false;
+            this.direccion_txt.Click += new System.EventHandler(this.direccion_txt_Click);
+            // 
+            // mail_txt
+            // 
+            this.mail_txt.Depth = 0;
+            this.mail_txt.Hint = "";
+            this.mail_txt.Location = new System.Drawing.Point(81, 202);
+            this.mail_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mail_txt.Name = "mail_txt";
+            this.mail_txt.PasswordChar = '\0';
+            this.mail_txt.SelectedText = "";
+            this.mail_txt.SelectionLength = 0;
+            this.mail_txt.SelectionStart = 0;
+            this.mail_txt.Size = new System.Drawing.Size(110, 23);
+            this.mail_txt.TabIndex = 5;
+            this.mail_txt.UseSystemPasswordChar = false;
             // 
             // BiblioMax
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 350);
+            this.ClientSize = new System.Drawing.Size(818, 350);
             this.Controls.Add(tabControl01);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BiblioMax";
@@ -606,7 +679,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).EndInit();
             this.Alumnos.ResumeLayout(false);
             this.Alumnos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaPrestamos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -614,22 +687,6 @@
         #endregion
 
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button registrar_boton;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox mail_txt;
-        private System.Windows.Forms.TextBox direccion_txt;
-        private System.Windows.Forms.TextBox telefono_txt;
-        private System.Windows.Forms.TextBox dni_txt;
-        private System.Windows.Forms.TextBox nombre_txt;
-        private System.Windows.Forms.TextBox apellido_txt;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridAlumno;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage Alumnos;
@@ -650,12 +707,27 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxLibro;
         private System.Windows.Forms.ComboBox comboBoxAlumno;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView TablaPrestamos;
         private System.Windows.Forms.ComboBox localidad_txt;
+        private System.Windows.Forms.ComboBox comboBoxBibliotecarios;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label Ejemplar;
+        private MaterialSkin.Controls.MaterialFlatButton registrar_boton1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField apellido_txt;
+        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialSingleLineTextField nombre_txt;
+        private MaterialSkin.Controls.MaterialSingleLineTextField direccion_txt;
+        private MaterialSkin.Controls.MaterialSingleLineTextField telefono_txt;
+        private MaterialSkin.Controls.MaterialSingleLineTextField dni_txt;
+        private MaterialSkin.Controls.MaterialSingleLineTextField mail_txt;
     }
 }
 

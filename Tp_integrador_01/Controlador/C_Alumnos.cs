@@ -14,17 +14,19 @@ namespace Tp_integrador_01.Controlador
     public class C_Alumnos
     {
 
-        public void insertarAlumnos(string apellido, string nombre, string dni, string telefono, string direccion, string email, int localidad)
+        public void insertarAlumnos(string apellido, string nombre, string dni, string telefono, string direccion, string email, string localidad)
         {
             M_Alumnos alumno = new M_Alumnos(apellido, nombre, dni, telefono, direccion, email, localidad);
-            if (localidad == 0)
+            if (localidad == "Seleccione su localidad..")
             {
                 MessageBox.Show("Ingrese una localidad válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 almacenarBD.AlmacenarAlumno(alumno);
+                MessageBox.Show("Se registro correctamente a " + nombre + " en el sistema.");
             }
+
 
 
 
@@ -36,8 +38,10 @@ namespace Tp_integrador_01.Controlador
             // Obtiene una nueva conexion usando nuestro singleton
             MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
 
-            //solicitamos los datos de la BD
-            string query = "SELECT apellido, nombre, dni, telefono, direccion, email, id_localidad FROM socios";
+            //solicitamos los datos de la BD (subconsulta para traer la localidad en base a la id_localidad)
+            string query = "SELECT socios.apellido, socios.nombre, socios.dni, socios.telefono, socios.direccion, socios.email, " +
+               "(SELECT nombre_localidad FROM localidad WHERE localidad.id_localidad = socios.id_localidad) AS nombre_localidad " +
+               "FROM socios";
 
             try
             {
@@ -47,7 +51,7 @@ namespace Tp_integrador_01.Controlador
 
                 while (reader.Read())
                 {
-                    // Creamos un objeto M_Alumnos por cada registro y añadirlo a la lista
+                    // Creamos un objeto M_Alumnos por cada registro y los añadimos a la lista
                     M_Alumnos alumno = new M_Alumnos(
                         reader["apellido"].ToString(),
                         reader["nombre"].ToString(),
@@ -55,7 +59,7 @@ namespace Tp_integrador_01.Controlador
                         reader["telefono"].ToString(),
                         reader["direccion"].ToString(),
                         reader["email"].ToString(),
-                        int.Parse(reader["id_localidad"].ToString())
+                        reader["nombre_localidad"].ToString()
                     );
                     listaAlumnos.Add(alumno);
                 }
@@ -63,7 +67,7 @@ namespace Tp_integrador_01.Controlador
             }
             catch (Exception ex)
             {
-                // Maneja excepciones para evitar cierres pro errores de conexion
+                // Maneja excepciones para evitar cierres por errores de conexion
                 Console.WriteLine("Error al obtener los datos: " + ex.Message);
             }
             finally
@@ -74,7 +78,7 @@ namespace Tp_integrador_01.Controlador
             return listaAlumnos;
         }
 
-        //Metodo que vamos a usar para cargar los allumnos en el comboBox
+        //Metodo que vamos a usar para cargar los alumnos en el comboBox
 
         public void CargarNombresComboBox(ComboBox comboBoxAlumnos)
         {
@@ -84,6 +88,13 @@ namespace Tp_integrador_01.Controlador
             {
                 comboBoxAlumnos.Items.Add(alumno.Apellido);
             }
+        }
+
+
+        public static void EliminarAlumno(int index)
+        {
+
+
         }
 
 

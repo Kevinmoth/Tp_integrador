@@ -18,7 +18,7 @@ namespace Tp_integrador_01.Modelo
             string telefono = alumno.Telefono;
             string direccion = alumno.Direccion;
             string email = alumno.Email;
-            int localidad = alumno.Localidad;
+            string localidad = alumno.Localidad;
 
             M_Conexion conexion = M_Conexion.getInstancia();
             MySqlConnection conn = conexion.CrearConexion();
@@ -29,7 +29,8 @@ namespace Tp_integrador_01.Modelo
             // Creamos el comando SQL para insertar datos
             string query = "INSERT INTO socios (apellido, nombre, dni, telefono, direccion, email, id_localidad) " +
                 "VALUES ('" + alumno.Apellido + "', '" + alumno.Nombre + "', '" + alumno.Dni + "', '" +
-                alumno.Telefono + "', '" + alumno.Direccion + "', '" + alumno.Email + "', " + alumno.Localidad + ")";
+                alumno.Telefono + "', '" + alumno.Direccion + "', '" + alumno.Email + "', " +
+                "(SELECT id_localidad FROM localidad WHERE nombre_localidad = '" + alumno.Localidad + "'))";
 
             MySqlCommand comando = new MySqlCommand(query, conn);
 
@@ -40,6 +41,9 @@ namespace Tp_integrador_01.Modelo
             conn.Close();
         }
 
+       /* public static void almacenarBibliotecario(M_Bibliotecarios bibliotecario) { }
+        public static void almacenarLibro(M_Libros Libro) { }
+        public static void almacenarPrestamo(M_Prestamos prestamo) { }*/
 
     }
 }

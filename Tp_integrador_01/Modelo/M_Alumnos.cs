@@ -24,11 +24,11 @@ namespace Tp_integrador_01.Modelo
         private string telefono;
         private string direccion;
         private string email;
-        private int localidad;
+        private string localidad;
         // constructor de alumnos
         public M_Alumnos(string apellido, string nombre,
             string dni, string telefono, string direccion, 
-            string email, int localidad)
+            string email, string localidad)
         {
             this.apellido = apellido;
             this.nombre = nombre;
@@ -69,7 +69,6 @@ namespace Tp_integrador_01.Modelo
             get { return dni; }
             set { dni = value; }
         }
-
         public string Telefono
         {
             get { return telefono; }
@@ -87,7 +86,7 @@ namespace Tp_integrador_01.Modelo
             get { return email; }
             set { email = value; }
         }
-        public int Localidad
+        public string Localidad
         {
             get { return localidad; }
             set { localidad = value; }

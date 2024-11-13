@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PJ_conexionIntegrador.Controlador;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace Tp_integrador_01
     public partial class BiblioMax : Form
     {
         private C_Alumnos controladorAlumnos;
+        private C_Libro controladorLibros;
         public BiblioMax()
         {
 
@@ -25,6 +27,7 @@ namespace Tp_integrador_01
             
         InitializeComponent();
             controladorAlumnos = new C_Alumnos();
+            controladorLibros = new C_Libro();
             CargarDatosEnTabla();
         }
 
@@ -47,16 +50,38 @@ namespace Tp_integrador_01
             string telefono = telefono_txt.Text;
             string direccion = direccion_txt.Text;
             string email = mail_txt.Text;
-            int localidad = localidad_txt.SelectedIndex;
+            string localidad = (string)localidad_txt.SelectedItem;
 
-            controladorAlumnos.insertarAlumnos( apellido, nombre, dni, telefono, direccion, email, localidad);
+            controladorAlumnos.insertarAlumnos(apellido, nombre, dni, telefono, direccion, email, localidad);
         }
+
+
+
+        private void MostrarPrestamos()
+        {
+            // Llamar a la función ListadoPrestamos para obtener los datos
+            DataTable dt = C_Prestamos.ListadoPrestamos();
+
+            // Asignar el DataTable al DataGridView
+            TablaPrestamos.DataSource = dt;
+        }
+
+
 
         //Codigo para rellenar el comboBox
         public void comboBoxAlumnos()
         {
             controladorAlumnos.CargarNombresComboBox(comboBoxAlumno);
         }
+        public void comboBoxLibros()
+        {
+            controladorLibros.CargarLibros(comboBoxLibro);
+        }
+        public void comboBoxBibliotecario()
+        {
+            C_Prestamos.CargarBibliotecarios(comboBoxBibliotecarios);
+        }
+
         private void label12_Click(object sender, EventArgs e)
         {
 
@@ -138,6 +163,7 @@ namespace Tp_integrador_01
             CargarDatosEnTabla();
         }
 
+
         private void libro_txt_TextChanged(object sender, EventArgs e)
         {
 
@@ -157,6 +183,46 @@ namespace Tp_integrador_01
         {
             localidad_txt.SelectedIndex = 0;
             comboBoxAlumnos();
+            comboBoxLibros();
+            comboBoxBibliotecario();
+            MostrarPrestamos();
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxAlumno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            GuardarAlumnos();
+            CargarDatosEnTabla();
+        }
+
+        private void apellido_txt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void direccion_txt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
