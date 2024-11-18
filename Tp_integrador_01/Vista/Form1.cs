@@ -57,6 +57,15 @@ namespace Tp_integrador_01
 
 
 
+        public string   DatosPrestamo()
+        {
+            string libroAPrestar = (string)comboBoxLibro.SelectedItem;
+            return libroAPrestar;
+        }
+        
+
+
+
         private void MostrarPrestamos()
         {
             // Llamar a la función ListadoPrestamos para obtener los datos
@@ -221,6 +230,11 @@ namespace Tp_integrador_01
         }
 
         private void direccion_txt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxLibro_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

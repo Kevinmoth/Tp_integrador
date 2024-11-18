@@ -41,6 +41,14 @@ namespace Tp_integrador_01.Modelo
         public string CopiaLibro { get { return copiaLibro; } set { copiaLibro = value; } }
     }
 
+
+
+
+
+
+
+
+
 }
 
 

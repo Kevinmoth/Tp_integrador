@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using Tp_integrador_01.Controlador;
 using Tp_integrador_01.Modelo;
 
 namespace PJ_conexionIntegrador.Controlador
@@ -125,6 +126,51 @@ namespace PJ_conexionIntegrador.Controlador
 
         }
 
+
+
+        // Metodo que obtiene la id del libro seleccionado por el 
+        // usuario y carga los ejemplares que NO hayan sido prestados en el combobox
+        public DataTable comboBoxLibro(string NombreLibro)
+        {
+            MySqlDataReader Resultado;
+            var Tabla = new DataTable();
+            MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
+
+            try
+            {
+                conn.Open();
+
+                // obtenemos el ID del libro con el nombre del combobox de libro
+                string query1 = "SELECT id_libro FROM libros WHERE titulo = '" + NombreLibro + "'";
+                MySqlCommand cmd1 = new MySqlCommand(query1, conn);
+                object idLibro = cmd1.ExecuteScalar(); //agarramos el primer resultado de la consulta
+
+
+                // Usamos el ID del libro para buscar los ejemplares
+                string query2 = "SELECT id_copialibro FROM copia_libros WHERE id_libro = '" + idLibro + "' AND id_copialibro NOT IN (SELECT id_copialibro FROM prestamos)";
+
+                MySqlCommand cmd2 = new MySqlCommand(query2, conn);
+                Resultado = cmd2.ExecuteReader();
+
+                // Llenamos DataTable con los resultados
+                Tabla.Load(Resultado);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los ejemplares: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return Tabla; 
+        }
+
+
+
+
+        // metodo para cargar los ejemplares en el combobox
         public DataTable CargaComboLibrosEjemplares(string libro)
         {
             MySqlDataReader Resultado;

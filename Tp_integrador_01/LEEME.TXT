@@ -1,0 +1,16 @@
+
+
+	//Vista
+- Captura los datos ingresados por el usuario (nombre, apellido, etc.).
+- Llama al controlador para procesar los datos.
+- Muestra mensajes de éxito o error.
+
+	//Controlador
+- Realiza la validación de datos.
+- Coordina entre la vista y el modelo.
+- Evita que la vista interactúe directamente con la base de datos.
+
+	//Modelo
+- Gestiona la interacción con la base de datos.
+- Encapsula las operaciones relacionadas con los datos 
+  (insertar, consultar, modificar, eliminar).
