@@ -1,4 +1,4 @@
-![Bawse de datos usadas]([URL de la imagen](https://github.com/Kevinmoth/Tp_integrador/blob/aa9fc43a5813aa81ff5ba244294ea90d50d34573/BD_Biblioteca.png))
+![Bawse de datos usadas]([URL de la imagen](https://raw.githubusercontent.com/Kevinmoth/Tp_integrador/aa9fc43a5813aa81ff5ba244294ea90d50d34573/BD_Biblioteca.png?token=GHSAT0AAAAAACY6TU7TC4IIZYHOHGO7H6LQZZ36OJQ))
 
 
 # Tp_integrador_01-master
