@@ -1,3 +1,6 @@
+![Bawse de datos usadas]([URL de la imagen](https://github.com/Kevinmoth/Tp_integrador/blob/aa9fc43a5813aa81ff5ba244294ea90d50d34573/BD_Biblioteca.png))
+
+
 # Tp_integrador_01-master
 
 Sistema de Gestión de Préstamos de Libros - Biblioteca
