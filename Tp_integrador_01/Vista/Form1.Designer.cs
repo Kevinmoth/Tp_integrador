@@ -48,6 +48,7 @@
             this.localidad_txt = new System.Windows.Forms.ComboBox();
             this.dataGridAlumno = new System.Windows.Forms.DataGridView();
             this.Alumnos = new System.Windows.Forms.TabPage();
+            this.comboBoxEjemplar = new System.Windows.Forms.ComboBox();
             this.Ejemplar = new System.Windows.Forms.Label();
             this.comboBoxBibliotecarios = new System.Windows.Forms.ComboBox();
             this.TablaPrestamos = new System.Windows.Forms.DataGridView();
@@ -71,7 +72,7 @@
             this.isnb_txt = new System.Windows.Forms.TextBox();
             this.libro_txt = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.comboBoxEjemplar = new System.Windows.Forms.ComboBox();
+            this.Eliminar_Alumno = new MaterialSkin.Controls.MaterialFlatButton();
             tabControl01 = new System.Windows.Forms.TabControl();
             tabControl01.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -105,6 +106,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.Eliminar_Alumno);
             this.tabPage1.Controls.Add(this.mail_txt);
             this.tabPage1.Controls.Add(this.direccion_txt);
             this.tabPage1.Controls.Add(this.telefono_txt);
@@ -121,6 +124,7 @@
             this.tabPage1.Controls.Add(this.registrar_boton1);
             this.tabPage1.Controls.Add(this.localidad_txt);
             this.tabPage1.Controls.Add(this.dataGridAlumno);
+            this.tabPage1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
@@ -128,7 +132,6 @@
             this.tabPage1.Size = new System.Drawing.Size(854, 360);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Alumnos";
-            this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // mail_txt
@@ -318,6 +321,7 @@
             // 
             this.registrar_boton1.AutoSize = true;
             this.registrar_boton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.registrar_boton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.registrar_boton1.Depth = 0;
             this.registrar_boton1.Location = new System.Drawing.Point(70, 313);
             this.registrar_boton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
@@ -350,12 +354,17 @@
             // 
             // dataGridAlumno
             // 
+            this.dataGridAlumno.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dataGridAlumno.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dataGridAlumno.BackgroundColor = System.Drawing.Color.White;
             this.dataGridAlumno.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridAlumno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridAlumno.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dataGridAlumno.GridColor = System.Drawing.Color.White;
             this.dataGridAlumno.Location = new System.Drawing.Point(223, 20);
             this.dataGridAlumno.Name = "dataGridAlumno";
             this.dataGridAlumno.ReadOnly = true;
-            this.dataGridAlumno.Size = new System.Drawing.Size(612, 295);
+            this.dataGridAlumno.Size = new System.Drawing.Size(612, 289);
             this.dataGridAlumno.TabIndex = 99;
             // 
             // Alumnos
@@ -377,6 +386,13 @@
             this.Alumnos.Text = "Prestamos";
             this.Alumnos.UseVisualStyleBackColor = true;
             this.Alumnos.Click += new System.EventHandler(this.Alumnos_Click);
+            // 
+            // comboBoxEjemplar
+            // 
+            this.comboBoxEjemplar.Location = new System.Drawing.Point(114, 111);
+            this.comboBoxEjemplar.Name = "comboBoxEjemplar";
+            this.comboBoxEjemplar.Size = new System.Drawing.Size(100, 27);
+            this.comboBoxEjemplar.TabIndex = 53;
             // 
             // Ejemplar
             // 
@@ -579,12 +595,22 @@
             this.libro_txt.TabIndex = 26;
             this.libro_txt.TextChanged += new System.EventHandler(this.libro_txt_TextChanged);
             // 
-            // comboBoxEjemplar
+            // Eliminar_Alumno
             // 
-            this.comboBoxEjemplar.Location = new System.Drawing.Point(114, 111);
-            this.comboBoxEjemplar.Name = "comboBoxEjemplar";
-            this.comboBoxEjemplar.Size = new System.Drawing.Size(100, 27);
-            this.comboBoxEjemplar.TabIndex = 53;
+            this.Eliminar_Alumno.AutoSize = true;
+            this.Eliminar_Alumno.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Eliminar_Alumno.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Eliminar_Alumno.Depth = 0;
+            this.Eliminar_Alumno.Location = new System.Drawing.Point(485, 318);
+            this.Eliminar_Alumno.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.Eliminar_Alumno.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Eliminar_Alumno.Name = "Eliminar_Alumno";
+            this.Eliminar_Alumno.Primary = false;
+            this.Eliminar_Alumno.Size = new System.Drawing.Size(74, 36);
+            this.Eliminar_Alumno.TabIndex = 100;
+            this.Eliminar_Alumno.Text = "Eliminar ";
+            this.Eliminar_Alumno.UseVisualStyleBackColor = true;
+            this.Eliminar_Alumno.Click += new System.EventHandler(this.Eliminar_Alumno_Click);
             // 
             // BiblioMax
             // 
@@ -654,6 +680,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField mail_txt;
         public System.Windows.Forms.ComboBox comboBoxLibro;
         public System.Windows.Forms.ComboBox comboBoxEjemplar;
+        private MaterialSkin.Controls.MaterialFlatButton Eliminar_Alumno;
     }
 }
 

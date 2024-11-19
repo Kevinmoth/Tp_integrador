@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Tp_integrador_01.Controlador
     public class C_Alumnos
     {
 
+
+        //--------------------metodo para insertar alumno en la BD (socio)-----------------
         public void insertarAlumnos(string apellido, string nombre, string dni, string telefono, string direccion, string email, string localidad)
         {
             M_Alumnos alumno = new M_Alumnos(apellido, nombre, dni, telefono, direccion, email, localidad);
@@ -31,6 +34,8 @@ namespace Tp_integrador_01.Controlador
 
 
         }
+
+        //--------------------metodo para obtener alumnos de la BD (para mostrar en el datagrid)-----------------
         public List<M_Alumnos> ObtenerAlumnos()
         {
             List<M_Alumnos> listaAlumnos = new List<M_Alumnos>();
@@ -80,6 +85,8 @@ namespace Tp_integrador_01.Controlador
 
         //Metodo que vamos a usar para cargar los alumnos en el comboBox
 
+
+        //--------------------metodo para cargar los alumnos en el comboBox-----------------
         public void CargarNombresComboBox(ComboBox comboBoxAlumnos)
         {
             List<M_Alumnos> listaAlumnos = ObtenerAlumnos();
@@ -90,15 +97,57 @@ namespace Tp_integrador_01.Controlador
             }
         }
 
+        //funcion que obtiene el index del alumno usando el apellido del alumno ingresado
 
-        public static void EliminarAlumno(int index)
+
+
+        //------------------------metodo para eliminar alumno usando index-----------------
+        public void EliminarAlumno(int dni)
         {
+            var SqlCon = new MySqlConnection();
 
+            try
+            {
+
+                SqlCon = M_Conexion.getInstancia().CrearConexion();
+                string sql_tarea = "delete from estudiante where dni=" + dni;
+                var Comando = new MySqlCommand(sql_tarea, SqlCon);
+                Comando.CommandTimeout = 60;
+                SqlCon.Open();
+                Comando.ExecuteNonQuery();
+            }
+            catch (MySqlException error)
+            {
+                if (error.Number == 1451) // Código específico para errores de claves foráneas
+                {
+                    MessageBox.Show("No se puede eliminar el alumno porque está relacionado con otros registros");
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error: " + error.Message);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    SqlCon.Close();
+                }
+
+            }
 
         }
 
 
-
+        //---------------------metodo para eliminar un alumno de la BD usando el index-----------------
+        public void EliminarAlumno(int index)
+        {
+            //
+        }
 
 
 

@@ -30,7 +30,7 @@ namespace Tp_integrador_01
             controladorLibros = new C_Libro();
             CargarDatosEnTabla();
         }
-
+        //----------------------------- Metodo para cargar la tabla de Alumnos ---------------------------
         private void CargarDatosEnTabla()
         {
             List<M_Alumnos> listaAlumnos = controladorAlumnos.ObtenerAlumnos();
@@ -39,8 +39,8 @@ namespace Tp_integrador_01
             dataGridAlumno.DataSource = listaAlumnos;
         }
 
-        /* Creamos un metodo que recolecte los datos del formulario
-        Y los envie a una funcion del controlador:*/
+        /* Creamos un metodo GuardarAlumnos() que recolecte los datos del formulario
+        Y los envie como parametro a la funcion insertarAlumnos() del controlador. *///---------------------------
 
         public void GuardarAlumnos()
         {
@@ -58,7 +58,7 @@ namespace Tp_integrador_01
 
 
        
-        
+        //--------------------------- Metodo para cargar el comboBox de idLibros ---------------------------
         public void cargarComboBox()
         {
 
@@ -75,7 +75,7 @@ namespace Tp_integrador_01
 
 
 
-
+        //--------------------------- Metodo para Mostrar Prestamos en el DataGridView ---------------------------
         private void MostrarPrestamos()
         {
             // Llamar a la función ListadoPrestamos para obtener los datos
@@ -87,19 +87,38 @@ namespace Tp_integrador_01
 
 
 
-        //Codigo para rellenar el comboBox
+        //.-------------------------- Metodo para cargar el comboBox de Alumnos ---------------------------
         public void comboBoxAlumnos()
         {
             controladorAlumnos.CargarNombresComboBox(comboBoxAlumno);
         }
+
+
+
+        //---------------------------- Metodo para cargar el comboBox de Libros ---------------------------
         public void comboBoxLibros()
         {
             controladorLibros.CargarLibros(comboBoxLibro);
         }
+
+
+        //---------------------------- Metodo para cargar el comboBox de Bibliotecarios ---------------------
         public void comboBoxBibliotecario()
         {
             C_Prestamos.CargarBibliotecarios(comboBoxBibliotecarios);
         }
+
+
+
+        //------------------Metodo para obtener id de alumno de la tabla de Alumnos-------------------------
+        public int ObtenerIndexAlumnoDataGrid()
+        {
+            int index = dataGridAlumno.CurrentCell.RowIndex;
+            MessageBox.Show(index.ToString());
+            return index;
+        }
+        
+
 
         private void label12_Click(object sender, EventArgs e)
         {
@@ -255,6 +274,11 @@ namespace Tp_integrador_01
 
 
 
+        }
+
+        private void Eliminar_Alumno_Click(object sender, EventArgs e)
+        {
+            ObtenerIndexAlumnoDataGrid();
         }
     }
 }

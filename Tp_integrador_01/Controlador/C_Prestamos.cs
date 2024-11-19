@@ -235,44 +235,7 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
         }
 
 
-        public void EliminarAlumno(int dni)
-        {
-            var SqlCon = new MySqlConnection();
-
-            try
-            {
-                SqlCon = M_Conexion.getInstancia().CrearConexion();
-                string sql_tarea = "delete from estudiante where dni=" + dni;
-                var Comando = new MySqlCommand(sql_tarea, SqlCon);
-                Comando.CommandTimeout = 60;
-                SqlCon.Open();
-                Comando.ExecuteNonQuery();
-            }
-            catch (MySqlException error)
-            {
-                if (error.Number == 1451) // Código específico para errores de claves foráneas
-                {
-                    MessageBox.Show("No se puede eliminar el alumno porque está relacionado con otros registros");
-                }
-                else
-                {
-                    MessageBox.Show("Ocurrió un error: " + error.Message);
-                }
-            }
-            catch (Exception e)
-            {
-
-            }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open)
-                {
-                    SqlCon.Close();
-                }
-
-            }
-
-        }
+        
 
 
         public DataTable ConsultarPrestamoModificar(int idPrestamo)
