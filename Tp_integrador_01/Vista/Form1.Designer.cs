@@ -47,6 +47,15 @@
             this.registrar_boton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.localidad_txt = new System.Windows.Forms.ComboBox();
             this.dataGridAlumno = new System.Windows.Forms.DataGridView();
+            this.Alumnos = new System.Windows.Forms.TabPage();
+            this.Ejemplar = new System.Windows.Forms.Label();
+            this.comboBoxBibliotecarios = new System.Windows.Forms.ComboBox();
+            this.TablaPrestamos = new System.Windows.Forms.DataGridView();
+            this.comboBoxLibro = new System.Windows.Forms.ComboBox();
+            this.comboBoxAlumno = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tablaLibros = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
@@ -61,25 +70,16 @@
             this.autor_txt = new System.Windows.Forms.TextBox();
             this.isnb_txt = new System.Windows.Forms.TextBox();
             this.libro_txt = new System.Windows.Forms.TextBox();
-            this.Alumnos = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.Ejemplar = new System.Windows.Forms.Label();
-            this.comboBoxBibliotecarios = new System.Windows.Forms.ComboBox();
-            this.TablaPrestamos = new System.Windows.Forms.DataGridView();
-            this.comboBoxLibro = new System.Windows.Forms.ComboBox();
-            this.comboBoxAlumno = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.comboBoxEjemplar = new System.Windows.Forms.ComboBox();
             tabControl01 = new System.Windows.Forms.TabControl();
             tabControl01.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAlumno)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).BeginInit();
             this.Alumnos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaPrestamos)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl01
@@ -358,6 +358,98 @@
             this.dataGridAlumno.Size = new System.Drawing.Size(612, 295);
             this.dataGridAlumno.TabIndex = 99;
             // 
+            // Alumnos
+            // 
+            this.Alumnos.Controls.Add(this.comboBoxEjemplar);
+            this.Alumnos.Controls.Add(this.Ejemplar);
+            this.Alumnos.Controls.Add(this.comboBoxBibliotecarios);
+            this.Alumnos.Controls.Add(this.TablaPrestamos);
+            this.Alumnos.Controls.Add(this.comboBoxLibro);
+            this.Alumnos.Controls.Add(this.comboBoxAlumno);
+            this.Alumnos.Controls.Add(this.label16);
+            this.Alumnos.Controls.Add(this.label17);
+            this.Alumnos.Controls.Add(this.label18);
+            this.Alumnos.Location = new System.Drawing.Point(4, 31);
+            this.Alumnos.Name = "Alumnos";
+            this.Alumnos.Padding = new System.Windows.Forms.Padding(3);
+            this.Alumnos.Size = new System.Drawing.Size(854, 360);
+            this.Alumnos.TabIndex = 0;
+            this.Alumnos.Text = "Prestamos";
+            this.Alumnos.UseVisualStyleBackColor = true;
+            this.Alumnos.Click += new System.EventHandler(this.Alumnos_Click);
+            // 
+            // Ejemplar
+            // 
+            this.Ejemplar.AutoSize = true;
+            this.Ejemplar.Location = new System.Drawing.Point(14, 114);
+            this.Ejemplar.Name = "Ejemplar";
+            this.Ejemplar.Size = new System.Drawing.Size(68, 19);
+            this.Ejemplar.TabIndex = 52;
+            this.Ejemplar.Text = "Ejemplar";
+            // 
+            // comboBoxBibliotecarios
+            // 
+            this.comboBoxBibliotecarios.FormattingEnabled = true;
+            this.comboBoxBibliotecarios.Location = new System.Drawing.Point(114, 153);
+            this.comboBoxBibliotecarios.Name = "comboBoxBibliotecarios";
+            this.comboBoxBibliotecarios.Size = new System.Drawing.Size(100, 27);
+            this.comboBoxBibliotecarios.TabIndex = 51;
+            this.comboBoxBibliotecarios.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // TablaPrestamos
+            // 
+            this.TablaPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TablaPrestamos.Location = new System.Drawing.Point(244, 6);
+            this.TablaPrestamos.Name = "TablaPrestamos";
+            this.TablaPrestamos.Size = new System.Drawing.Size(559, 320);
+            this.TablaPrestamos.TabIndex = 48;
+            // 
+            // comboBoxLibro
+            // 
+            this.comboBoxLibro.FormattingEnabled = true;
+            this.comboBoxLibro.Location = new System.Drawing.Point(114, 70);
+            this.comboBoxLibro.Name = "comboBoxLibro";
+            this.comboBoxLibro.Size = new System.Drawing.Size(100, 27);
+            this.comboBoxLibro.TabIndex = 47;
+            this.comboBoxLibro.SelectedIndexChanged += new System.EventHandler(this.comboBoxLibro_SelectedIndexChanged);
+            this.comboBoxLibro.TextChanged += new System.EventHandler(this.comboBoxLibro_TextChanged);
+            // 
+            // comboBoxAlumno
+            // 
+            this.comboBoxAlumno.FormattingEnabled = true;
+            this.comboBoxAlumno.Location = new System.Drawing.Point(114, 33);
+            this.comboBoxAlumno.Name = "comboBoxAlumno";
+            this.comboBoxAlumno.Size = new System.Drawing.Size(100, 27);
+            this.comboBoxAlumno.TabIndex = 46;
+            this.comboBoxAlumno.SelectedIndexChanged += new System.EventHandler(this.comboBoxAlumno_SelectedIndexChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(14, 156);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 19);
+            this.label16.TabIndex = 45;
+            this.label16.Text = "Bibliotecario";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(14, 73);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(43, 19);
+            this.label17.TabIndex = 44;
+            this.label17.Text = "Libro";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(14, 36);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(61, 19);
+            this.label18.TabIndex = 43;
+            this.label18.Text = "Alumno";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tablaLibros);
@@ -487,104 +579,12 @@
             this.libro_txt.TabIndex = 26;
             this.libro_txt.TextChanged += new System.EventHandler(this.libro_txt_TextChanged);
             // 
-            // Alumnos
+            // comboBoxEjemplar
             // 
-            this.Alumnos.Controls.Add(this.comboBox1);
-            this.Alumnos.Controls.Add(this.Ejemplar);
-            this.Alumnos.Controls.Add(this.comboBoxBibliotecarios);
-            this.Alumnos.Controls.Add(this.TablaPrestamos);
-            this.Alumnos.Controls.Add(this.comboBoxLibro);
-            this.Alumnos.Controls.Add(this.comboBoxAlumno);
-            this.Alumnos.Controls.Add(this.label16);
-            this.Alumnos.Controls.Add(this.label17);
-            this.Alumnos.Controls.Add(this.label18);
-            this.Alumnos.Location = new System.Drawing.Point(4, 31);
-            this.Alumnos.Name = "Alumnos";
-            this.Alumnos.Padding = new System.Windows.Forms.Padding(3);
-            this.Alumnos.Size = new System.Drawing.Size(854, 360);
-            this.Alumnos.TabIndex = 0;
-            this.Alumnos.Text = "Prestamos";
-            this.Alumnos.UseVisualStyleBackColor = true;
-            this.Alumnos.Click += new System.EventHandler(this.Alumnos_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(114, 111);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 27);
-            this.comboBox1.TabIndex = 53;
-            // 
-            // Ejemplar
-            // 
-            this.Ejemplar.AutoSize = true;
-            this.Ejemplar.Location = new System.Drawing.Point(14, 114);
-            this.Ejemplar.Name = "Ejemplar";
-            this.Ejemplar.Size = new System.Drawing.Size(68, 19);
-            this.Ejemplar.TabIndex = 52;
-            this.Ejemplar.Text = "Ejemplar";
-            // 
-            // comboBoxBibliotecarios
-            // 
-            this.comboBoxBibliotecarios.FormattingEnabled = true;
-            this.comboBoxBibliotecarios.Location = new System.Drawing.Point(114, 153);
-            this.comboBoxBibliotecarios.Name = "comboBoxBibliotecarios";
-            this.comboBoxBibliotecarios.Size = new System.Drawing.Size(100, 27);
-            this.comboBoxBibliotecarios.TabIndex = 51;
-            this.comboBoxBibliotecarios.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // TablaPrestamos
-            // 
-            this.TablaPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TablaPrestamos.Location = new System.Drawing.Point(244, 6);
-            this.TablaPrestamos.Name = "TablaPrestamos";
-            this.TablaPrestamos.Size = new System.Drawing.Size(559, 320);
-            this.TablaPrestamos.TabIndex = 48;
-            // 
-            // comboBoxLibro
-            // 
-            this.comboBoxLibro.FormattingEnabled = true;
-            this.comboBoxLibro.Location = new System.Drawing.Point(114, 70);
-            this.comboBoxLibro.Name = "comboBoxLibro";
-            this.comboBoxLibro.Size = new System.Drawing.Size(100, 27);
-            this.comboBoxLibro.TabIndex = 47;
-            this.comboBoxLibro.SelectedIndexChanged += new System.EventHandler(this.comboBoxLibro_SelectedIndexChanged);
-            // 
-            // comboBoxAlumno
-            // 
-            this.comboBoxAlumno.FormattingEnabled = true;
-            this.comboBoxAlumno.Location = new System.Drawing.Point(114, 33);
-            this.comboBoxAlumno.Name = "comboBoxAlumno";
-            this.comboBoxAlumno.Size = new System.Drawing.Size(100, 27);
-            this.comboBoxAlumno.TabIndex = 46;
-            this.comboBoxAlumno.SelectedIndexChanged += new System.EventHandler(this.comboBoxAlumno_SelectedIndexChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(14, 156);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 19);
-            this.label16.TabIndex = 45;
-            this.label16.Text = "Bibliotecario";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(14, 73);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(43, 19);
-            this.label17.TabIndex = 44;
-            this.label17.Text = "Libro";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(14, 36);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(61, 19);
-            this.label18.TabIndex = 43;
-            this.label18.Text = "Alumno";
+            this.comboBoxEjemplar.Location = new System.Drawing.Point(114, 111);
+            this.comboBoxEjemplar.Name = "comboBoxEjemplar";
+            this.comboBoxEjemplar.Size = new System.Drawing.Size(100, 27);
+            this.comboBoxEjemplar.TabIndex = 53;
             // 
             // BiblioMax
             // 
@@ -600,12 +600,12 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAlumno)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).EndInit();
             this.Alumnos.ResumeLayout(false);
             this.Alumnos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaPrestamos)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -637,7 +637,6 @@
         private System.Windows.Forms.DataGridView TablaPrestamos;
         private System.Windows.Forms.ComboBox localidad_txt;
         private System.Windows.Forms.ComboBox comboBoxBibliotecarios;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label Ejemplar;
         private MaterialSkin.Controls.MaterialFlatButton registrar_boton1;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
@@ -654,6 +653,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField dni_txt;
         private MaterialSkin.Controls.MaterialSingleLineTextField mail_txt;
         public System.Windows.Forms.ComboBox comboBoxLibro;
+        public System.Windows.Forms.ComboBox comboBoxEjemplar;
     }
 }
 

@@ -57,12 +57,22 @@ namespace Tp_integrador_01
 
 
 
-        public string   DatosPrestamo()
-        {
-            string libroAPrestar = (string)comboBoxLibro.SelectedItem;
-            return libroAPrestar;
-        }
+       
         
+        public void cargarComboBox()
+        {
+
+            // Llamamos al controlador para obtener los datos del libro
+            string nombre_libro = (string)comboBoxLibro.SelectedItem;
+            DataTable copias = C_Prestamos.datosComboBoxLibro(nombre_libro);
+
+            // Asignamos los datos al ComboBox
+            comboBoxEjemplar.DataSource = copias;
+            comboBoxEjemplar.DisplayMember = "id_copialibros"; // Mostrar el id
+            comboBoxEjemplar.ValueMember = "id_copialibros";   // Valor que se almacenará
+        }
+
+
 
 
 
@@ -236,6 +246,14 @@ namespace Tp_integrador_01
 
         private void comboBoxLibro_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cargarComboBox();
+        }
+
+        private void comboBoxLibro_TextChanged(object sender, EventArgs e)
+        {
+
+
+
 
         }
     }

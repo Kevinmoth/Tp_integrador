@@ -128,50 +128,79 @@ namespace PJ_conexionIntegrador.Controlador
 
 
 
-        // Metodo que obtiene la id del libro seleccionado por el 
-        // usuario y carga los ejemplares que NO hayan sido prestados en el combobox
-        public DataTable comboBoxLibro(string NombreLibro)
+       
+
+/* Metodo que obtiene la id del libro seleccionado 
+   por el usuario y carga los ejemplares que NO hayan 
+   sido prestados en el combobox */
+public static DataTable datosComboBoxLibro(string NombreLibro)
+    {
+        MySqlDataReader resultado;
+        var Tabla = new DataTable();
+        MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
+
+        try
         {
-            MySqlDataReader Resultado;
-            var Tabla = new DataTable();
-            MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
+            conn.Open();
 
-            try
+            // Obtenemos la id del libro usando el nombre a su nombre
+            string query1 = "SELECT id_libro FROM libros WHERE titulo = '" + NombreLibro + "'";
+            MySqlCommand cm1 = new MySqlCommand(query1, conn);
+
+            var idLibro = cm1.ExecuteScalar();// ExecuteScalar lo usamos para guardar solo 1 valor, el primero 
+
+           
+
+            // Consultamos  y filtramos las copias del libro que no están prestadas
+            string query2 = "SELECT id_copialibros FROM copia_libros WHERE id_libro = '" + idLibro + "' AND id_copialibros NOT IN (SELECT id_copialibros FROM prestamos)";
+            MySqlCommand cm2 = new MySqlCommand(query2, conn);
+
+            // Ejecutamos la consulta para obtener las copias disponibles
+            resultado = cm2.ExecuteReader();
+
+            // Cargamos los resultados en la tabla
+            Tabla.Load(resultado);
+
+            // Verificamos si no hay ejemplares disponibles
+            if (Tabla.Rows.Count == 0)
             {
-                conn.Open();
-
-                // obtenemos el ID del libro con el nombre del combobox de libro
-                string query1 = "SELECT id_libro FROM libros WHERE titulo = '" + NombreLibro + "'";
-                MySqlCommand cmd1 = new MySqlCommand(query1, conn);
-                object idLibro = cmd1.ExecuteScalar(); //agarramos el primer resultado de la consulta
-
-
-                // Usamos el ID del libro para buscar los ejemplares
-                string query2 = "SELECT id_copialibro FROM copia_libros WHERE id_libro = '" + idLibro + "' AND id_copialibro NOT IN (SELECT id_copialibro FROM prestamos)";
-
-                MySqlCommand cmd2 = new MySqlCommand(query2, conn);
-                Resultado = cmd2.ExecuteReader();
-
-                // Llenamos DataTable con los resultados
-                Tabla.Load(Resultado);
+                // Mostramos un mensaje en pantalla si no hay ejemplares disponibles
+                MessageBox.Show("No hay ejemplares disponibles de el libro seleccionado en este momento.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+
+            // Debug: Verificar los datos obtenidos
+            Console.WriteLine("Datos obtenidos para el ComboBox:");
+            foreach (DataRow row in Tabla.Rows)
             {
-                throw new Exception("Error al obtener los ejemplares: " + ex.Message);
+                Console.WriteLine(row["id_copialibros"]);
             }
-            finally
+        }
+        catch (Exception ex)
+        {
+            // Proporcionamos un mensaje de error específico
+            MessageBox.Show("Error al obtener los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        finally
+        {
+            // Cerramos la conexión si está abierta
+            if (conn.State == ConnectionState.Open)
             {
                 conn.Close();
             }
-
-            return Tabla; 
         }
 
+        return Tabla;
+    }
 
 
 
-        // metodo para cargar los ejemplares en el combobox
-        public DataTable CargaComboLibrosEjemplares(string libro)
+
+
+
+
+
+    // metodo para cargar los ejemplares en el combobox
+    public DataTable CargaComboLibrosEjemplares(string libro)
         {
             MySqlDataReader Resultado;
             var Tabla = new DataTable();
