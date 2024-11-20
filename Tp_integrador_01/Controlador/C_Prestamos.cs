@@ -11,6 +11,7 @@ namespace PJ_conexionIntegrador.Controlador
     class C_Prestamos
     {
 
+        //--------------Metodo para mostrar el listado de prestamos----------------
         public static DataTable ListadoPrestamos()
         {
             MySqlDataReader dataReader;
@@ -37,12 +38,18 @@ namespace PJ_conexionIntegrador.Controlador
 
             return tabla;
         }
+
+
+
+
+
+
         //--------------Metodo para crear un objeto prestamo y calcular la fecha de devolucion----------------
-        public static void generarPrestamo(string alumno,string libro,string bibliotecario,int id_copialibro)
+        public static void generarPrestamo(string alumno, string libro, string bibliotecario, int id_copialibro)
         {
             string Alumno = alumno;
             //querry para obtener el id del socio teniendo su nombre
-            string querry1= "SELECT id_socio FROM socios WHERE apellido = '" + Alumno + "'";
+            string querry1 = "SELECT id_socio FROM socios WHERE apellido = '" + Alumno + "'";
             //querry para obtener el id del bibliotecario teniendo su nombre
             string querry2 = "SELECT id_bibliotecario FROM bibliotecarios WHERE apellido = '" + bibliotecario + "'";
             //querry para obtener el id del libro teniendo su nombre
@@ -57,42 +64,21 @@ namespace PJ_conexionIntegrador.Controlador
 
             var comando = new MySqlCommand(querry1, sqlCon);
             dataReader = comando.ExecuteReader();
-            //se usa un while por
-            while (dataReader.Read())
-            {
-                prestamo.Id_socio = Convert.ToInt32(dataReader["id_socio"]);
-            }
-            var comando2 = new MySqlCommand(querry2, sqlCon);
-            dataReader = comando2.ExecuteReader();
-            while (dataReader.Read())
-            {
-                prestamo.Id_bibliotecario = Convert.ToInt32(dataReader["id_bibliotecario"]);
-            }
-            var comando3 = new MySqlCommand(querry3, sqlCon);
-            dataReader = comando3.ExecuteReader();
-            while (dataReader.Read())
-            {
-                prestamo.Id_libro = Convert.ToInt32(dataReader["id_libro"]);
-            }
+            
             prestamo.Id_copialibros = id_copialibro;
             prestamo.Fecha_prestamo = DateTime.Now;
-            prestamo.Fecha_devolucion = prestamo.Fecha_prestamo.AddDays(3);
+            prestamo.Fecha_devolucion = prestamo.Fecha_prestamo.AddDays(7);
 
+            M_Prestamo Prestamo = new M_Prestamo(prestamo.Id_prestamo, prestamo.Id_socio, prestamo.Id_bibliotecario, prestamo.Id_libro, prestamo.Id_copialibros, prestamo.Fecha_prestamo, prestamo.Fecha_devolucion, prestamo.Fecha_real_devolucion);
+            //InsertarPrestamo(prestamo);
+            sqlCon.Close();
+        
 
-
-
-            int id_socio = 0;
-            int id_libro;
-            int id_copialibros;
-            int id_bibliotecario;
-            private DateTime fecha_prestamo;
-            DateTime fecha_real_devolucion;
-            DateTime fecha_devolucion;
-
-
+    
     }
 
 
+        //--------------Metodo para insertar un prestamo en la base de datos----------------
 
     public static string InsertarPrestamo(M_Prestamo Prestamo)
         {
@@ -146,7 +132,7 @@ namespace PJ_conexionIntegrador.Controlador
 
 
 
-
+        //--------------Metodo para cargar los libros en el combobox----------------
         public DataTable CargaComboLibros()
         {
             MySqlDataReader Resultado;
@@ -201,33 +187,20 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
             string query1 = "SELECT id_libro FROM libros WHERE titulo = '" + NombreLibro + "'";
             MySqlCommand cm1 = new MySqlCommand(query1, conn);
 
-            var idLibro = cm1.ExecuteScalar();// ExecuteScalar lo usamos para guardar solo 1 valor, el primero 
+            var idLibro = cm1.ExecuteScalar();// ExecuteScalar lo usamos para guardar solo 1 valor
 
-           
-
-            // Consultamos  y filtramos las copias del libro que no están prestadas
+            // Consultamos  y filtramos las copias disponibles
             string query2 = "SELECT id_copialibros FROM copia_libros WHERE id_libro = '" + idLibro + "' AND id_copialibros NOT IN (SELECT id_copialibros FROM prestamos)";
             MySqlCommand cm2 = new MySqlCommand(query2, conn);
-
-            // Ejecutamos la consulta para obtener las copias disponibles
             resultado = cm2.ExecuteReader();
-
-            // Cargamos los resultados en la tabla
             Tabla.Load(resultado);
 
             // Verificamos si no hay ejemplares disponibles
             if (Tabla.Rows.Count == 0)
             {
-                // Mostramos un mensaje en pantalla si no hay ejemplares disponibles
                 MessageBox.Show("No hay ejemplares disponibles de el libro seleccionado en este momento.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            // Debug: Verificar los datos obtenidos
-            Console.WriteLine("Datos obtenidos para el ComboBox:");
-            foreach (DataRow row in Tabla.Rows)
-            {
-                Console.WriteLine(row["id_copialibros"]);
-            }
         }
         catch (Exception ex)
         {
@@ -236,7 +209,6 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
         }
         finally
         {
-            // Cerramos la conexión si está abierta
             if (conn.State == ConnectionState.Open)
             {
                 conn.Close();
@@ -287,79 +259,6 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
             }
 
         }
-
-
-        
-
-
-        public DataTable ConsultarPrestamoModificar(int idPrestamo)
-        {
-            MySqlDataReader Resultado;
-            var Tabla = new DataTable();
-            var SqlCon = new MySqlConnection();
-
-            try
-            {
-                SqlCon = M_Conexion.getInstancia().CrearConexion();
-                string sql_tarea;
-                sql_tarea = "SELECT prestamos.`id_prestamo`, prestamos.`fecha_prestamo`,prestamos.`fecha_devolucion`," +
-                        "prestamos.`fecha_real_devolucion`,(SOCIOS.`apellido`)as socios,LIBROS.`titulo`,(bibliotecarios.`apellido`)as bibliotecario," +
-                        "prestamos.`id_copialibros` " +
-                        "FROM prestamos " +
-                        "INNER JOIN socios " +
-                        "ON prestamos.`id_socio`= socios.`id_socio` " +
-                        "INNER JOIN bibliotecarios " +
-                        "ON prestamos.`id_bibliotecario`=bibliotecarios.`id_bibliotecario` " +
-                        "INNER JOIN libros " +
-                        "ON prestamos.`id_libro`= libros.`id_libro` where id_prestamo=" + idPrestamo;
-
-
-                var Comando = new MySqlCommand(sql_tarea, SqlCon);
-                Comando.CommandTimeout = 60;
-                SqlCon.Open();
-                Resultado = Comando.ExecuteReader();
-                Tabla.Load(Resultado);
-                return Tabla;
-
-            }
-            catch (Exception error)
-            {
-                //MessageBox.Show(error.Message);
-                throw error;
-            }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open)
-                {
-                    SqlCon.Close();
-                }
-
-            }
-
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
