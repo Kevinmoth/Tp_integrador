@@ -9,36 +9,51 @@ namespace Tp_integrador_01.Modelo
 
     public class M_Prestamo
     {
-        private string libro;
-        private string alumno;
-        private string bibliotecario;
-        private DateTime fechaPrestamo;
-        private DateTime fechaDevolucion;
-        private string estado;
-        private string copiaLibro;
+        int id_prestamo;
+        int id_socio;
+        int id_libro;
+        int id_copialibros;
+        int id_bibliotecario;
+        private DateTime fecha_prestamo;
+        DateTime fecha_real_devolucion;
+        DateTime fecha_devolucion;
 
-        //public M_Prestamo(string apellido)
-        
-            public M_Prestamo(string libro, string alumno, string bibliotecario, DateTime fechaPrestamo, DateTime fechaDevolucion, string estado, string CopiaLibro)
+
+
+        //cosntructor sin parametros:
+
+        public  M_Prestamo()
         {
-            this.libro = libro;
-            this.alumno = alumno;
-            this.bibliotecario = bibliotecario;
-            this.fechaPrestamo = fechaPrestamo;
-            this.fechaDevolucion = fechaDevolucion;
-            this.estado = estado;
-            this.copiaLibro = CopiaLibro;
+
         }
 
-        // Propiedadess
-        public string Libro { get { return libro; } set { libro = value; } }
-        public string Alumno { get { return alumno; } set { alumno = value; } }
-        public string Bibliotecario { get { return bibliotecario; } set { bibliotecario = value; } }
-        public DateTime FechaPrestamo { get { return fechaPrestamo; } set { fechaPrestamo = value; } }
-        public DateTime FechaDevolucion { get { return fechaDevolucion; } set { fechaDevolucion = value; } }
-        public string Estado { get { return estado; } set { estado = value; } }
+        //constructor con parametros:
 
-        public string CopiaLibro { get { return copiaLibro; } set { copiaLibro = value; } }
+        public M_Prestamo(int id_prestamo, int id_socio, int id_libro, int id_copialibros, int id_bibliotecario, DateTime fecha_prestamo, DateTime fecha_real_devolucion, DateTime fecha_devolucion)
+        {
+            this.id_prestamo = id_prestamo;
+            this.id_socio = id_socio;
+            this.id_libro = id_libro;
+            this.id_copialibros = id_copialibros;
+            this.id_bibliotecario = id_bibliotecario;
+            this.fecha_prestamo = fecha_prestamo;
+            this.fecha_real_devolucion = fecha_real_devolucion;
+            this.fecha_devolucion = fecha_devolucion;
+        }
+
+        // Propiedades
+
+
+        public int Id_prestamo{get { return id_prestamo; } set { id_prestamo = value; }}
+        public int Id_socio { get { return id_socio; } set { id_socio = value; }}
+        public int Id_libro {get { return id_libro; } set { id_libro = value; }}
+        public int Id_copialibros { get { return id_copialibros; } set { id_copialibros = value; }}
+        public int Id_bibliotecario { get { return id_bibliotecario; } set { id_bibliotecario = value; }}
+        public DateTime Fecha_prestamo { get { return fecha_prestamo; } set { fecha_prestamo = value; }}
+        public DateTime Fecha_real_devolucion { get { return fecha_real_devolucion; } set { fecha_real_devolucion = value; }}
+        public DateTime Fecha_devolucion { get { return fecha_devolucion; } set { fecha_devolucion = value; }}
+
+
     }
 
 

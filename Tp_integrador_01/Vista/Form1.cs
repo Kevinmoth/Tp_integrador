@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -110,14 +111,26 @@ namespace Tp_integrador_01
 
 
 
-        //------------------Metodo para obtener id de alumno de la tabla de Alumnos-------------------------
-        public int ObtenerIndexAlumnoDataGrid()
+        //------------------Metodo que retorena el dni del alumno seleccionado en el dataGrid---------------------------
+        public int obtenerDniSeleccionado()
         {
-            int index = dataGridAlumno.CurrentCell.RowIndex;
-            MessageBox.Show(index.ToString());
-            return index;
+            DataGridViewRow filaSeleccionada = dataGridAlumno.CurrentRow;
+            int dniSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["dni"].Value);
+            return dniSeleccionado;
         }
-        
+
+
+        //-----------metodo para capturar datos del prestamo y enviarlos al controlador---------------------
+        public void GuardarPrestamo()
+        {
+            string alumno = (string)comboBoxAlumno.SelectedItem;
+            String libro = (string)comboBoxLibro.SelectedItem;
+            String bibliotecario = (string)comboBoxBibliotecarios.SelectedItem;
+            int id_copialibro = Convert.ToInt32(comboBoxEjemplar.SelectedValue);
+
+
+        C_Prestamos.generarPrestamo(alumno, libro, bibliotecario, id_copialibro);
+        }
 
 
         private void label12_Click(object sender, EventArgs e)
@@ -278,7 +291,21 @@ namespace Tp_integrador_01
 
         private void Eliminar_Alumno_Click(object sender, EventArgs e)
         {
-            ObtenerIndexAlumnoDataGrid();
+
+            int dni = obtenerDniSeleccionado();
+            C_Alumnos.EliminarAlumno(dni);
+            CargarDatosEnTabla();
+
+        }
+
+        private void materialFlatButton1_Click_1(object sender, EventArgs e)
+        {
+            GuardarPrestamo();
+        }
+
+        private void materialFlatButton2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

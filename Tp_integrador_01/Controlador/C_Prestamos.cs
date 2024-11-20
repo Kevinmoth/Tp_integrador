@@ -37,18 +37,72 @@ namespace PJ_conexionIntegrador.Controlador
 
             return tabla;
         }
-
-
-
-        public string InsertarPrestamo(M_Prestamo oPrestamo)
+        //--------------Metodo para crear un objeto prestamo y calcular la fecha de devolucion----------------
+        public static void generarPrestamo(string alumno,string libro,string bibliotecario,int id_copialibro)
         {
+            string Alumno = alumno;
+            //querry para obtener el id del socio teniendo su nombre
+            string querry1= "SELECT id_socio FROM socios WHERE apellido = '" + Alumno + "'";
+            //querry para obtener el id del bibliotecario teniendo su nombre
+            string querry2 = "SELECT id_bibliotecario FROM bibliotecarios WHERE apellido = '" + bibliotecario + "'";
+            //querry para obtener el id del libro teniendo su nombre
+            string querry3 = "SELECT id_libro FROM libros WHERE titulo = '" + libro + "'";
 
+            MySqlDataReader dataReader;
+            var sqlCon = new MySqlConnection();
+
+            M_Prestamo prestamo = new M_Prestamo();
+            sqlCon = M_Conexion.getInstancia().CrearConexion();
+            sqlCon.Open();
+
+            var comando = new MySqlCommand(querry1, sqlCon);
+            dataReader = comando.ExecuteReader();
+            //se usa un while por
+            while (dataReader.Read())
+            {
+                prestamo.Id_socio = Convert.ToInt32(dataReader["id_socio"]);
+            }
+            var comando2 = new MySqlCommand(querry2, sqlCon);
+            dataReader = comando2.ExecuteReader();
+            while (dataReader.Read())
+            {
+                prestamo.Id_bibliotecario = Convert.ToInt32(dataReader["id_bibliotecario"]);
+            }
+            var comando3 = new MySqlCommand(querry3, sqlCon);
+            dataReader = comando3.ExecuteReader();
+            while (dataReader.Read())
+            {
+                prestamo.Id_libro = Convert.ToInt32(dataReader["id_libro"]);
+            }
+            prestamo.Id_copialibros = id_copialibro;
+            prestamo.Fecha_prestamo = DateTime.Now;
+            prestamo.Fecha_devolucion = prestamo.Fecha_prestamo.AddDays(3);
+
+
+
+
+            int id_socio = 0;
+            int id_libro;
+            int id_copialibros;
+            int id_bibliotecario;
+            private DateTime fecha_prestamo;
+            DateTime fecha_real_devolucion;
+            DateTime fecha_devolucion;
+
+
+    }
+
+
+
+    public static string InsertarPrestamo(M_Prestamo Prestamo)
+        {
             string Rpta = "";
             string sqlTarea = "";
             var SqlCon = new MySqlConnection();
 
             try
             {
+             
                 SqlCon = M_Conexion.getInstancia().CrearConexion();
 
                 sqlTarea = "INSERT INTO estudiante (id_socio, " +
@@ -58,13 +112,13 @@ namespace PJ_conexionIntegrador.Controlador
                                                     "fecha_prestamo, " +
                                                     "fecha_devolucion, " +
                                                     "fecha_real_devolucion)" +
-                                           "VALUES(" + oPrestamo.Alumno + ",'" +
-                                                       oPrestamo.Bibliotecario + "','" +
-                                                       oPrestamo.Libro + "','" +
-                                                       oPrestamo.CopiaLibro + "','" +
-                                                       oPrestamo.FechaPrestamo + "'," +
-                                                       oPrestamo.FechaDevolucion + "')";
-
+                                           "VALUES(" + Prestamo.Id_prestamo + ",'" +
+                                                       Prestamo.Id_socio+ "','" +
+                                                       Prestamo.Id_libro + "','" +
+                                                       Prestamo.Id_copialibros + "','" +
+                                                       Prestamo.Fecha_prestamo + "'," +
+                                                       Prestamo.Fecha_devolucion + "','" +
+                                                       Prestamo.Fecha_real_devolucion + "')";
                 MessageBox.Show(sqlTarea);
                 var Comando = new MySqlCommand(sqlTarea, SqlCon);
                 SqlCon.Open();

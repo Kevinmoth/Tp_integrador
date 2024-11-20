@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Tp_integrador_01.Modelo;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
+
 namespace Tp_integrador_01.Controlador
 {
 
@@ -97,38 +98,34 @@ namespace Tp_integrador_01.Controlador
             }
         }
 
-        //funcion que obtiene el index del alumno usando el apellido del alumno ingresado
+
+
+        //query para agrergar una columna llamada "titulo" en la tabla  "prestamo: 
+        // la querri es : 
+        //ALTER TABLE prestamos ADD COLUMN titulo VARCHAR(255);
 
 
 
-        //------------------------metodo para eliminar alumno usando index-----------------
-        public void EliminarAlumno(int dni)
+        //--------------------metodo para eliminar alumno de la BD-----------------
+        public static void EliminarAlumno(int dni)
         {
             var SqlCon = new MySqlConnection();
-
             try
             {
-
                 SqlCon = M_Conexion.getInstancia().CrearConexion();
-                string sql_tarea = "delete from estudiante where dni=" + dni;
+                string sql_tarea = "DELETE FROM socios WHERE dni = " + dni;
+
                 var Comando = new MySqlCommand(sql_tarea, SqlCon);
-                Comando.CommandTimeout = 60;
+
                 SqlCon.Open();
                 Comando.ExecuteNonQuery();
+
+                //mensaje de debug 
+                MessageBox.Show("Se elimino correctamente el socio con dni: " + dni);
             }
-            catch (MySqlException error)
+            catch (Exception error)
             {
-                if (error.Number == 1451) // Código específico para errores de claves foráneas
-                {
-                    MessageBox.Show("No se puede eliminar el alumno porque está relacionado con otros registros");
-                }
-                else
-                {
-                    MessageBox.Show("Ocurrió un error: " + error.Message);
-                }
-            }
-            catch (Exception e)
-            {
+                MessageBox.Show(error.Message);
 
             }
             finally
@@ -141,16 +138,6 @@ namespace Tp_integrador_01.Controlador
             }
 
         }
-
-
-        //---------------------metodo para eliminar un alumno de la BD usando el index-----------------
-        public void EliminarAlumno(int index)
-        {
-            //
-        }
-
-
-
 
     }
 }

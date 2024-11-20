@@ -73,6 +73,8 @@
             this.libro_txt = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Eliminar_Alumno = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             tabControl01 = new System.Windows.Forms.TabControl();
             tabControl01.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -101,7 +103,7 @@
             tabControl01.Padding = new System.Drawing.Point(40, 3);
             tabControl01.SelectedIndex = 0;
             tabControl01.ShowToolTips = true;
-            tabControl01.Size = new System.Drawing.Size(862, 395);
+            tabControl01.Size = new System.Drawing.Size(902, 394);
             tabControl01.TabIndex = 2;
             // 
             // tabPage1
@@ -129,7 +131,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(854, 360);
+            this.tabPage1.Size = new System.Drawing.Size(894, 359);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Alumnos";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
@@ -364,11 +366,13 @@
             this.dataGridAlumno.Location = new System.Drawing.Point(223, 20);
             this.dataGridAlumno.Name = "dataGridAlumno";
             this.dataGridAlumno.ReadOnly = true;
-            this.dataGridAlumno.Size = new System.Drawing.Size(612, 289);
+            this.dataGridAlumno.Size = new System.Drawing.Size(653, 289);
             this.dataGridAlumno.TabIndex = 99;
             // 
             // Alumnos
             // 
+            this.Alumnos.Controls.Add(this.materialFlatButton2);
+            this.Alumnos.Controls.Add(this.materialFlatButton1);
             this.Alumnos.Controls.Add(this.comboBoxEjemplar);
             this.Alumnos.Controls.Add(this.Ejemplar);
             this.Alumnos.Controls.Add(this.comboBoxBibliotecarios);
@@ -381,7 +385,7 @@
             this.Alumnos.Location = new System.Drawing.Point(4, 31);
             this.Alumnos.Name = "Alumnos";
             this.Alumnos.Padding = new System.Windows.Forms.Padding(3);
-            this.Alumnos.Size = new System.Drawing.Size(854, 360);
+            this.Alumnos.Size = new System.Drawing.Size(894, 359);
             this.Alumnos.TabIndex = 0;
             this.Alumnos.Text = "Prestamos";
             this.Alumnos.UseVisualStyleBackColor = true;
@@ -389,7 +393,7 @@
             // 
             // comboBoxEjemplar
             // 
-            this.comboBoxEjemplar.Location = new System.Drawing.Point(114, 111);
+            this.comboBoxEjemplar.Location = new System.Drawing.Point(121, 131);
             this.comboBoxEjemplar.Name = "comboBoxEjemplar";
             this.comboBoxEjemplar.Size = new System.Drawing.Size(100, 27);
             this.comboBoxEjemplar.TabIndex = 53;
@@ -397,7 +401,7 @@
             // Ejemplar
             // 
             this.Ejemplar.AutoSize = true;
-            this.Ejemplar.Location = new System.Drawing.Point(14, 114);
+            this.Ejemplar.Location = new System.Drawing.Point(21, 134);
             this.Ejemplar.Name = "Ejemplar";
             this.Ejemplar.Size = new System.Drawing.Size(68, 19);
             this.Ejemplar.TabIndex = 52;
@@ -406,7 +410,7 @@
             // comboBoxBibliotecarios
             // 
             this.comboBoxBibliotecarios.FormattingEnabled = true;
-            this.comboBoxBibliotecarios.Location = new System.Drawing.Point(114, 153);
+            this.comboBoxBibliotecarios.Location = new System.Drawing.Point(121, 173);
             this.comboBoxBibliotecarios.Name = "comboBoxBibliotecarios";
             this.comboBoxBibliotecarios.Size = new System.Drawing.Size(100, 27);
             this.comboBoxBibliotecarios.TabIndex = 51;
@@ -417,13 +421,13 @@
             this.TablaPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaPrestamos.Location = new System.Drawing.Point(244, 6);
             this.TablaPrestamos.Name = "TablaPrestamos";
-            this.TablaPrestamos.Size = new System.Drawing.Size(559, 320);
+            this.TablaPrestamos.Size = new System.Drawing.Size(627, 284);
             this.TablaPrestamos.TabIndex = 48;
             // 
             // comboBoxLibro
             // 
             this.comboBoxLibro.FormattingEnabled = true;
-            this.comboBoxLibro.Location = new System.Drawing.Point(114, 70);
+            this.comboBoxLibro.Location = new System.Drawing.Point(121, 90);
             this.comboBoxLibro.Name = "comboBoxLibro";
             this.comboBoxLibro.Size = new System.Drawing.Size(100, 27);
             this.comboBoxLibro.TabIndex = 47;
@@ -433,7 +437,7 @@
             // comboBoxAlumno
             // 
             this.comboBoxAlumno.FormattingEnabled = true;
-            this.comboBoxAlumno.Location = new System.Drawing.Point(114, 33);
+            this.comboBoxAlumno.Location = new System.Drawing.Point(121, 53);
             this.comboBoxAlumno.Name = "comboBoxAlumno";
             this.comboBoxAlumno.Size = new System.Drawing.Size(100, 27);
             this.comboBoxAlumno.TabIndex = 46;
@@ -442,7 +446,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(14, 156);
+            this.label16.Location = new System.Drawing.Point(21, 176);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(94, 19);
             this.label16.TabIndex = 45;
@@ -451,7 +455,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(14, 73);
+            this.label17.Location = new System.Drawing.Point(21, 93);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(43, 19);
             this.label17.TabIndex = 44;
@@ -460,7 +464,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(14, 36);
+            this.label18.Location = new System.Drawing.Point(21, 56);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(61, 19);
             this.label18.TabIndex = 43;
@@ -484,7 +488,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(854, 360);
+            this.tabPage2.Size = new System.Drawing.Size(894, 359);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Libros";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -612,11 +616,45 @@
             this.Eliminar_Alumno.UseVisualStyleBackColor = true;
             this.Eliminar_Alumno.Click += new System.EventHandler(this.Eliminar_Alumno_Click);
             // 
+            // materialFlatButton1
+            // 
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.Location = new System.Drawing.Point(174, 312);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(84, 36);
+            this.materialFlatButton1.TabIndex = 101;
+            this.materialFlatButton1.Text = "Prestamo";
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click_1);
+            // 
+            // materialFlatButton2
+            // 
+            this.materialFlatButton2.AutoSize = true;
+            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.materialFlatButton2.Depth = 0;
+            this.materialFlatButton2.Location = new System.Drawing.Point(588, 312);
+            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton2.Name = "materialFlatButton2";
+            this.materialFlatButton2.Primary = false;
+            this.materialFlatButton2.Size = new System.Drawing.Size(95, 36);
+            this.materialFlatButton2.TabIndex = 102;
+            this.materialFlatButton2.Text = "Devolucion";
+            this.materialFlatButton2.UseVisualStyleBackColor = true;
+            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
+            // 
             // BiblioMax
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 398);
+            this.ClientSize = new System.Drawing.Size(904, 397);
             this.Controls.Add(tabControl01);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BiblioMax";
@@ -681,6 +719,8 @@
         public System.Windows.Forms.ComboBox comboBoxLibro;
         public System.Windows.Forms.ComboBox comboBoxEjemplar;
         private MaterialSkin.Controls.MaterialFlatButton Eliminar_Alumno;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
     }
 }
 
