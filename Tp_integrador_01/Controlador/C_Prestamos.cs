@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using Tp_integrador_01.Controlador;
 using Tp_integrador_01.Modelo;
@@ -41,19 +42,20 @@ namespace PJ_conexionIntegrador.Controlador
 
 
 
-
-
-
         //--------------Metodo para crear un objeto prestamo y calcular la fecha de devolucion----------------
         public static void generarPrestamo(string alumno, string libro, string bibliotecario, int id_copialibro)
         {
-            string Alumno = alumno;
-            //querry para obtener el id del socio teniendo su nombre
-            string querry1 = "SELECT id_socio FROM socios WHERE apellido = '" + Alumno + "'";
-            //querry para obtener el id del bibliotecario teniendo su nombre
-            string querry2 = "SELECT id_bibliotecario FROM bibliotecarios WHERE apellido = '" + bibliotecario + "'";
-            //querry para obtener el id del libro teniendo su nombre
-            string querry3 = "SELECT id_libro FROM libros WHERE titulo = '" + libro + "'";
+
+            string Alumno = new string(alumno.Where(char.IsDigit).ToArray());
+            string Bibliotecario = new string(bibliotecario.Where(char.IsDigit).ToArray());
+            string Id_copialibros = id_copialibro.ToString();
+            //formateo las fechas de prestamo y devolucion para que se puedan agregar a la BD en el formato correcto que es YYYY-MM-DD
+            string fechaPrestamo = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string fechaDevolucion = DateTime.Now.AddDays(3).ToString("yyyy-MM-dd HH:mm:ss");
+            string Libro = new string(libro.Where(char.IsDigit).ToArray());
+            string querry = "INSERT INTO prestamos (id_socio, id_bibliotecario, id_libro, id_copialibros, fecha_prestamo, fecha_devolucion) " + 
+                            "VALUES('" + Alumno + "','" + Bibliotecario + "','" + Libro + "','" + Id_copialibros + "','" + fechaPrestamo + "','" + fechaDevolucion + "')";
+
 
             MySqlDataReader dataReader;
             var sqlCon = new MySqlConnection();
@@ -62,25 +64,19 @@ namespace PJ_conexionIntegrador.Controlador
             sqlCon = M_Conexion.getInstancia().CrearConexion();
             sqlCon.Open();
 
-            var comando = new MySqlCommand(querry1, sqlCon);
-            dataReader = comando.ExecuteReader();
             
-            prestamo.Id_copialibros = id_copialibro;
-            prestamo.Fecha_prestamo = DateTime.Now;
-            prestamo.Fecha_devolucion = prestamo.Fecha_prestamo.AddDays(7);
+            MySqlCommand comando = new MySqlCommand(querry, sqlCon);
+            dataReader = comando.ExecuteReader();
+            dataReader.Close();
 
-            M_Prestamo Prestamo = new M_Prestamo(prestamo.Id_prestamo, prestamo.Id_socio, prestamo.Id_bibliotecario, prestamo.Id_libro, prestamo.Id_copialibros, prestamo.Fecha_prestamo, prestamo.Fecha_devolucion, prestamo.Fecha_real_devolucion);
-            //InsertarPrestamo(prestamo);
             sqlCon.Close();
-        
 
-    
-    }
 
+        }
 
         //--------------Metodo para insertar un prestamo en la base de datos----------------
 
-    public static string InsertarPrestamo(M_Prestamo Prestamo)
+        public static string InsertarPrestamo(M_Prestamo Prestamo)
         {
             string Rpta = "";
             string sqlTarea = "";
@@ -125,13 +121,6 @@ namespace PJ_conexionIntegrador.Controlador
         }
 
 
-
-
-
-
-
-
-
         //--------------Metodo para cargar los libros en el combobox----------------
         public DataTable CargaComboLibros()
         {
@@ -143,7 +132,6 @@ namespace PJ_conexionIntegrador.Controlador
                 SqlCon = M_Conexion.getInstancia().CrearConexion();
                 string sql_tarea = "select id_libro,titulo from libros order by id_libro";
                 var Comando = new MySqlCommand(sql_tarea, SqlCon);
-                Comando.CommandTimeout = 60;
                 SqlCon.Open();
                 Resultado = Comando.ExecuteReader();
                 Tabla.Load(Resultado);
@@ -166,10 +154,6 @@ namespace PJ_conexionIntegrador.Controlador
 
         }
 
-
-
-       
-
 /* Metodo que obtiene la id del libro seleccionado 
    por el usuario y carga los ejemplares que NO hayan 
    sido prestados en el combobox */
@@ -183,8 +167,13 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
         {
             conn.Open();
 
-            // Obtenemos la id del libro usando el nombre a su nombre
-            string query1 = "SELECT id_libro FROM libros WHERE titulo = '" + NombreLibro + "'";
+                int indiceGuion = NombreLibro.IndexOf(" - "); 
+                string nombreDelLibro = indiceGuion != -1 ? NombreLibro.Substring(indiceGuion + 3) : NombreLibro;
+                
+                // 15 - base de datos
+
+                // Obtenemos la id del libro usando el nombre a su nombre
+                string query1 = "SELECT id_libro FROM libros WHERE titulo = '" + nombreDelLibro + "'";
             MySqlCommand cm1 = new MySqlCommand(query1, conn);
 
             var idLibro = cm1.ExecuteScalar();// ExecuteScalar lo usamos para guardar solo 1 valor
@@ -217,12 +206,6 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
 
         return Tabla;
     }
-
-
-
-
-
-
 
 
     // metodo para cargar los ejemplares en el combobox
@@ -262,14 +245,13 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
 
 
 
-
         public static List<M_Bibliotecarios> ObtenerBibliotecarios()
         {
             List<M_Bibliotecarios> listaLibros = new List<M_Bibliotecarios>();
 
             MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
 
-            string query = "SELECT apellido FROM bibliotecarios";
+            string query = "SELECT id_bibliotecario, apellido FROM bibliotecarios";
 
             try
             {
@@ -279,7 +261,7 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
 
                 while (reader.Read())
                 {
-                    M_Bibliotecarios Bibliotecarios = new M_Bibliotecarios(reader["apellido"].ToString());
+                    M_Bibliotecarios Bibliotecarios = new M_Bibliotecarios( int.Parse(reader["id_bibliotecario"].ToString()) ,reader["apellido"].ToString());
                     listaLibros.Add(Bibliotecarios);
                 }
                 reader.Close();
@@ -306,7 +288,7 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
 
             foreach (M_Bibliotecarios Bibliotecario in listaBibliotecarios)
             {
-                comboBoxLibro.Items.Add(Bibliotecario.Apellido);
+                comboBoxLibro.Items.Add(Bibliotecario.Id_bibliotecario + " - " + Bibliotecario.Apellido);
             }
         }
 

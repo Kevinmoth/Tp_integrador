@@ -10,6 +10,21 @@ using Tp_integrador_01.Modelo;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 
+
+/* // ?Ejemplo para isnertar un alumno con los datos basicos, luego tomar el id asignado e ingresar su telefono
+en otra tabla:
+
+-- Insertar un nuevo socio
+INSERT INTO SOCIOS (nombre, apellido) VALUES ('Juan', 'Pérez');
+
+-- Obtener el ID del socio insertado
+SET @id_socio = LAST_INSERT_ID();
+
+-- Insertar el teléfono asociado al socio
+INSERT INTO TELEFONOS (id_socio, numero_telefono) VALUES (@id_socio, '123456789');
+
+*/
+
 namespace Tp_integrador_01.Controlador
 {
 
@@ -31,9 +46,6 @@ namespace Tp_integrador_01.Controlador
                 MessageBox.Show("Se registro correctamente a " + nombre + " en el sistema.");
             }
 
-
-
-
         }
 
         //--------------------metodo para obtener alumnos de la BD (para mostrar en el datagrid)-----------------
@@ -45,7 +57,7 @@ namespace Tp_integrador_01.Controlador
             MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
 
             //solicitamos los datos de la BD (subconsulta para traer la localidad en base a la id_localidad)
-            string query = "SELECT socios.apellido, socios.nombre, socios.dni, socios.telefono, socios.direccion, socios.email, " +
+            string query = "SELECT socios.id_socio, socios.apellido, socios.nombre, socios.dni, socios.telefono, socios.direccion, socios.email, " +
                "(SELECT nombre_localidad FROM localidad WHERE localidad.id_localidad = socios.id_localidad) AS nombre_localidad " +
                "FROM socios";
 
@@ -59,6 +71,8 @@ namespace Tp_integrador_01.Controlador
                 {
                     // Creamos un objeto M_Alumnos por cada registro y los añadimos a la lista
                     M_Alumnos alumno = new M_Alumnos(
+
+                        Convert.ToInt32(reader["id_socio"]),
                         reader["apellido"].ToString(),
                         reader["nombre"].ToString(),
                         reader["dni"].ToString(),
@@ -94,15 +108,10 @@ namespace Tp_integrador_01.Controlador
 
             foreach (M_Alumnos alumno in listaAlumnos)
             {
-                comboBoxAlumnos.Items.Add(alumno.Apellido);
+                comboBoxAlumnos.Items.Add(alumno.Id_socio + " " + alumno.Apellido );
             }
         }
 
-
-
-        //query para agrergar una columna llamada "titulo" en la tabla  "prestamo: 
-        // la querri es : 
-        //ALTER TABLE prestamos ADD COLUMN titulo VARCHAR(255);
 
 
 

@@ -41,10 +41,12 @@ namespace Tp_integrador_01
         }
 
         /* Creamos un metodo GuardarAlumnos() que recolecte los datos del formulario
-        Y los envie como parametro a la funcion insertarAlumnos() del controlador. *///---------------------------
+        Y los envie como parametro a la funcion insertarAlumnos() del controlador. */
 
         public void GuardarAlumnos()
         {
+
+            
             string apellido = apellido_txt.Text;
             string nombre = nombre_txt.Text;
             string dni = dni_txt.Text;
@@ -59,7 +61,7 @@ namespace Tp_integrador_01
 
 
        
-        //--------------------------- Metodo para cargar el comboBox de idLibros ---------------------------
+        //--------------------------- Metodo para cargar el comboBox de Libros ---------------------------
         public void cargarComboBox()
         {
 
@@ -238,6 +240,7 @@ namespace Tp_integrador_01
             comboBoxBibliotecario();
             MostrarPrestamos();
 
+
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -301,6 +304,8 @@ namespace Tp_integrador_01
         private void materialFlatButton1_Click_1(object sender, EventArgs e)
         {
             GuardarPrestamo();
+            MostrarPrestamos();
+
         }
 
         private void materialFlatButton2_Click(object sender, EventArgs e)

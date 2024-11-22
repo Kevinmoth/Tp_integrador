@@ -41,6 +41,9 @@ namespace Tp_integrador_01.Modelo
             this.fecha_devolucion = fecha_devolucion;
         }
 
+
+
+
         // Propiedades
 
 

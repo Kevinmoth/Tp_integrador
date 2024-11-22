@@ -31,6 +31,7 @@
             System.Windows.Forms.TabControl tabControl01;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BiblioMax));
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Eliminar_Alumno = new MaterialSkin.Controls.MaterialFlatButton();
             this.mail_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.direccion_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.telefono_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -48,6 +49,8 @@
             this.localidad_txt = new System.Windows.Forms.ComboBox();
             this.dataGridAlumno = new System.Windows.Forms.DataGridView();
             this.Alumnos = new System.Windows.Forms.TabPage();
+            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.comboBoxEjemplar = new System.Windows.Forms.ComboBox();
             this.Ejemplar = new System.Windows.Forms.Label();
             this.comboBoxBibliotecarios = new System.Windows.Forms.ComboBox();
@@ -72,9 +75,6 @@
             this.isnb_txt = new System.Windows.Forms.TextBox();
             this.libro_txt = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.Eliminar_Alumno = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             tabControl01 = new System.Windows.Forms.TabControl();
             tabControl01.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -135,6 +135,23 @@
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Alumnos";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // Eliminar_Alumno
+            // 
+            this.Eliminar_Alumno.AutoSize = true;
+            this.Eliminar_Alumno.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Eliminar_Alumno.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Eliminar_Alumno.Depth = 0;
+            this.Eliminar_Alumno.Location = new System.Drawing.Point(485, 318);
+            this.Eliminar_Alumno.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.Eliminar_Alumno.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Eliminar_Alumno.Name = "Eliminar_Alumno";
+            this.Eliminar_Alumno.Primary = false;
+            this.Eliminar_Alumno.Size = new System.Drawing.Size(74, 36);
+            this.Eliminar_Alumno.TabIndex = 100;
+            this.Eliminar_Alumno.Text = "Eliminar ";
+            this.Eliminar_Alumno.UseVisualStyleBackColor = true;
+            this.Eliminar_Alumno.Click += new System.EventHandler(this.Eliminar_Alumno_Click);
             // 
             // mail_txt
             // 
@@ -391,11 +408,45 @@
             this.Alumnos.UseVisualStyleBackColor = true;
             this.Alumnos.Click += new System.EventHandler(this.Alumnos_Click);
             // 
+            // materialFlatButton2
+            // 
+            this.materialFlatButton2.AutoSize = true;
+            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.materialFlatButton2.Depth = 0;
+            this.materialFlatButton2.Location = new System.Drawing.Point(535, 312);
+            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton2.Name = "materialFlatButton2";
+            this.materialFlatButton2.Primary = false;
+            this.materialFlatButton2.Size = new System.Drawing.Size(95, 36);
+            this.materialFlatButton2.TabIndex = 102;
+            this.materialFlatButton2.Text = "Devolucion";
+            this.materialFlatButton2.UseVisualStyleBackColor = true;
+            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
+            // 
+            // materialFlatButton1
+            // 
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.Location = new System.Drawing.Point(107, 271);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(84, 36);
+            this.materialFlatButton1.TabIndex = 101;
+            this.materialFlatButton1.Text = "Prestamo";
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click_1);
+            // 
             // comboBoxEjemplar
             // 
             this.comboBoxEjemplar.Location = new System.Drawing.Point(121, 131);
             this.comboBoxEjemplar.Name = "comboBoxEjemplar";
-            this.comboBoxEjemplar.Size = new System.Drawing.Size(100, 27);
+            this.comboBoxEjemplar.Size = new System.Drawing.Size(159, 27);
             this.comboBoxEjemplar.TabIndex = 53;
             // 
             // Ejemplar
@@ -412,16 +463,16 @@
             this.comboBoxBibliotecarios.FormattingEnabled = true;
             this.comboBoxBibliotecarios.Location = new System.Drawing.Point(121, 173);
             this.comboBoxBibliotecarios.Name = "comboBoxBibliotecarios";
-            this.comboBoxBibliotecarios.Size = new System.Drawing.Size(100, 27);
+            this.comboBoxBibliotecarios.Size = new System.Drawing.Size(159, 27);
             this.comboBoxBibliotecarios.TabIndex = 51;
             this.comboBoxBibliotecarios.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // TablaPrestamos
             // 
             this.TablaPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TablaPrestamos.Location = new System.Drawing.Point(244, 6);
+            this.TablaPrestamos.Location = new System.Drawing.Point(308, 6);
             this.TablaPrestamos.Name = "TablaPrestamos";
-            this.TablaPrestamos.Size = new System.Drawing.Size(627, 284);
+            this.TablaPrestamos.Size = new System.Drawing.Size(563, 281);
             this.TablaPrestamos.TabIndex = 48;
             // 
             // comboBoxLibro
@@ -429,7 +480,7 @@
             this.comboBoxLibro.FormattingEnabled = true;
             this.comboBoxLibro.Location = new System.Drawing.Point(121, 90);
             this.comboBoxLibro.Name = "comboBoxLibro";
-            this.comboBoxLibro.Size = new System.Drawing.Size(100, 27);
+            this.comboBoxLibro.Size = new System.Drawing.Size(159, 27);
             this.comboBoxLibro.TabIndex = 47;
             this.comboBoxLibro.SelectedIndexChanged += new System.EventHandler(this.comboBoxLibro_SelectedIndexChanged);
             this.comboBoxLibro.TextChanged += new System.EventHandler(this.comboBoxLibro_TextChanged);
@@ -439,7 +490,7 @@
             this.comboBoxAlumno.FormattingEnabled = true;
             this.comboBoxAlumno.Location = new System.Drawing.Point(121, 53);
             this.comboBoxAlumno.Name = "comboBoxAlumno";
-            this.comboBoxAlumno.Size = new System.Drawing.Size(100, 27);
+            this.comboBoxAlumno.Size = new System.Drawing.Size(159, 27);
             this.comboBoxAlumno.TabIndex = 46;
             this.comboBoxAlumno.SelectedIndexChanged += new System.EventHandler(this.comboBoxAlumno_SelectedIndexChanged);
             // 
@@ -598,57 +649,6 @@
             this.libro_txt.Size = new System.Drawing.Size(100, 26);
             this.libro_txt.TabIndex = 26;
             this.libro_txt.TextChanged += new System.EventHandler(this.libro_txt_TextChanged);
-            // 
-            // Eliminar_Alumno
-            // 
-            this.Eliminar_Alumno.AutoSize = true;
-            this.Eliminar_Alumno.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Eliminar_Alumno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Eliminar_Alumno.Depth = 0;
-            this.Eliminar_Alumno.Location = new System.Drawing.Point(485, 318);
-            this.Eliminar_Alumno.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.Eliminar_Alumno.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Eliminar_Alumno.Name = "Eliminar_Alumno";
-            this.Eliminar_Alumno.Primary = false;
-            this.Eliminar_Alumno.Size = new System.Drawing.Size(74, 36);
-            this.Eliminar_Alumno.TabIndex = 100;
-            this.Eliminar_Alumno.Text = "Eliminar ";
-            this.Eliminar_Alumno.UseVisualStyleBackColor = true;
-            this.Eliminar_Alumno.Click += new System.EventHandler(this.Eliminar_Alumno_Click);
-            // 
-            // materialFlatButton1
-            // 
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(174, 312);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(84, 36);
-            this.materialFlatButton1.TabIndex = 101;
-            this.materialFlatButton1.Text = "Prestamo";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click_1);
-            // 
-            // materialFlatButton2
-            // 
-            this.materialFlatButton2.AutoSize = true;
-            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Location = new System.Drawing.Point(588, 312);
-            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton2.Name = "materialFlatButton2";
-            this.materialFlatButton2.Primary = false;
-            this.materialFlatButton2.Size = new System.Drawing.Size(95, 36);
-            this.materialFlatButton2.TabIndex = 102;
-            this.materialFlatButton2.Text = "Devolucion";
-            this.materialFlatButton2.UseVisualStyleBackColor = true;
-            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
             // 
             // BiblioMax
             // 

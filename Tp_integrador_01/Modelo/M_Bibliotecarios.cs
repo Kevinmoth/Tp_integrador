@@ -10,6 +10,7 @@ namespace Tp_integrador_01.Modelo
     {
         /*private string idBibliotecario;
         private string nombre;*/
+        private int id_bibliotecario;
         private string apellido;
         /*private string direccion;
         private string email;
@@ -29,9 +30,17 @@ namespace Tp_integrador_01.Modelo
             this.antiguedad = antiguedad;*/
         }
 
+        public M_Bibliotecarios(int id_bibliotecario ,string apellido)
+        {
+            this.id_bibliotecario = id_bibliotecario;
+            this.apellido = apellido;
+        }
+
+
         // Propiedades
-        /*public string IdBibliotecario { get { return idBibliotecario; } set { idBibliotecario = value; } }
-        public string Nombre { get { return nombre; } set { nombre = value; } }*/
+            /*public string IdBibliotecario { get { return idBibliotecario; } set { idBibliotecario = value; } }
+            public string Nombre { get { return nombre; } set { nombre = value; } }*/
+        public int Id_bibliotecario { get { return id_bibliotecario; } set { id_bibliotecario = value; } }
         public string Apellido { get { return apellido; } set { apellido = value; } }
         /*public string Direccion { get { return direccion; } set { direccion = value; } }
         public string Email { get { return email; } set { email = value; } }

@@ -11,14 +11,14 @@ namespace Tp_integrador_01.Controlador
 {
     internal class C_Libro
     {
-
+        //Metodo para obtener los libros de la BD y cargarlos en el combobox
         public static List<M_Libros> ObtenerLibros()
         {
             List<M_Libros> listaLibros = new List<M_Libros>();
 
             MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
 
-            string query = "SELECT titulo FROM libros";
+            string query = "SELECT id_libro, titulo FROM libros";
 
             try
             {
@@ -28,7 +28,9 @@ namespace Tp_integrador_01.Controlador
 
                 while (reader.Read())
                 {
-                    M_Libros libros = new M_Libros(reader["titulo"].ToString());
+                    
+                    
+                    M_Libros libros = new M_Libros(int.Parse(reader["id_libro"].ToString()), reader["titulo"].ToString());
                     listaLibros.Add(libros);
                 }
                 reader.Close();
@@ -55,7 +57,7 @@ namespace Tp_integrador_01.Controlador
 
             foreach (M_Libros libros in listaLibros)
             {
-                comboBoxLibro.Items.Add(libros.Titulo);
+                comboBoxLibro.Items.Add(libros.Id_libro + " - " + libros.Titulo);
             }
         }
 

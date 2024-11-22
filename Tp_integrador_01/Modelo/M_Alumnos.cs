@@ -18,6 +18,7 @@ namespace Tp_integrador_01.Modelo
     {
 
         //Atrubutos del alumno:
+        private int id_socio;
         private string apellido;
         private string nombre;
         private string dni;
@@ -26,8 +27,24 @@ namespace Tp_integrador_01.Modelo
         private string email;
         private string localidad;
         // constructor de alumnos
+        public M_Alumnos(int id_socio, string apellido, string nombre,
+            string dni, string telefono, string direccion,
+            string email, string localidad)
+        {
+            this.id_socio = id_socio;
+            this.apellido = apellido;
+            this.nombre = nombre;
+            this.dni = dni;
+            this.telefono = telefono;
+            this.direccion = direccion;
+            this.email = email;
+            this.localidad = localidad;
+        }
+
+        // constructor con todos los parametros menos id_socio   :
+
         public M_Alumnos(string apellido, string nombre,
-            string dni, string telefono, string direccion, 
+            string dni, string telefono, string direccion,
             string email, string localidad)
         {
             this.apellido = apellido;
@@ -54,6 +71,12 @@ namespace Tp_integrador_01.Modelo
         alumno.Nombre = "Carlos"; // Usa el setter internamente
         Console.WriteLine(alumno.Nombre); // Usa el getter internamente */
 
+
+        public int Id_socio
+        {
+            get { return id_socio; }
+            set { id_socio = value; }
+        }
         public string Apellido
         {
             get { return apellido; }
