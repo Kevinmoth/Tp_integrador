@@ -312,5 +312,15 @@ namespace Tp_integrador_01
         {
 
         }
+
+        private void materialLabel8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

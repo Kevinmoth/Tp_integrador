@@ -75,6 +75,12 @@
             this.isnb_txt = new System.Windows.Forms.TextBox();
             this.libro_txt = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             tabControl01 = new System.Windows.Forms.TabControl();
             tabControl01.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -83,6 +89,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.TablaPrestamos)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl01
@@ -103,35 +113,21 @@
             tabControl01.Padding = new System.Drawing.Point(40, 3);
             tabControl01.SelectedIndex = 0;
             tabControl01.ShowToolTips = true;
-            tabControl01.Size = new System.Drawing.Size(902, 394);
+            tabControl01.Size = new System.Drawing.Size(950, 433);
             tabControl01.TabIndex = 2;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.Eliminar_Alumno);
-            this.tabPage1.Controls.Add(this.mail_txt);
-            this.tabPage1.Controls.Add(this.direccion_txt);
-            this.tabPage1.Controls.Add(this.telefono_txt);
-            this.tabPage1.Controls.Add(this.dni_txt);
-            this.tabPage1.Controls.Add(this.nombre_txt);
-            this.tabPage1.Controls.Add(this.apellido_txt);
-            this.tabPage1.Controls.Add(this.materialLabel7);
-            this.tabPage1.Controls.Add(this.materialLabel6);
-            this.tabPage1.Controls.Add(this.materialLabel5);
-            this.tabPage1.Controls.Add(this.materialLabel4);
-            this.tabPage1.Controls.Add(this.materialLabel3);
-            this.tabPage1.Controls.Add(this.materialLabel2);
-            this.tabPage1.Controls.Add(this.materialLabel1);
-            this.tabPage1.Controls.Add(this.registrar_boton1);
-            this.tabPage1.Controls.Add(this.localidad_txt);
             this.tabPage1.Controls.Add(this.dataGridAlumno);
+            this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(894, 359);
+            this.tabPage1.Size = new System.Drawing.Size(942, 398);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Alumnos";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
@@ -140,9 +136,10 @@
             // 
             this.Eliminar_Alumno.AutoSize = true;
             this.Eliminar_Alumno.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Eliminar_Alumno.BackColor = System.Drawing.Color.Silver;
             this.Eliminar_Alumno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Eliminar_Alumno.Depth = 0;
-            this.Eliminar_Alumno.Location = new System.Drawing.Point(485, 318);
+            this.Eliminar_Alumno.Location = new System.Drawing.Point(300, 333);
             this.Eliminar_Alumno.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Eliminar_Alumno.MouseState = MaterialSkin.MouseState.HOVER;
             this.Eliminar_Alumno.Name = "Eliminar_Alumno";
@@ -150,14 +147,14 @@
             this.Eliminar_Alumno.Size = new System.Drawing.Size(74, 36);
             this.Eliminar_Alumno.TabIndex = 100;
             this.Eliminar_Alumno.Text = "Eliminar ";
-            this.Eliminar_Alumno.UseVisualStyleBackColor = true;
+            this.Eliminar_Alumno.UseVisualStyleBackColor = false;
             this.Eliminar_Alumno.Click += new System.EventHandler(this.Eliminar_Alumno_Click);
             // 
             // mail_txt
             // 
             this.mail_txt.Depth = 0;
             this.mail_txt.Hint = "";
-            this.mail_txt.Location = new System.Drawing.Point(90, 230);
+            this.mail_txt.Location = new System.Drawing.Point(88, 253);
             this.mail_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.mail_txt.Name = "mail_txt";
             this.mail_txt.PasswordChar = '\0';
@@ -172,7 +169,7 @@
             // 
             this.direccion_txt.Depth = 0;
             this.direccion_txt.Hint = "";
-            this.direccion_txt.Location = new System.Drawing.Point(92, 187);
+            this.direccion_txt.Location = new System.Drawing.Point(90, 210);
             this.direccion_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.direccion_txt.Name = "direccion_txt";
             this.direccion_txt.PasswordChar = '\0';
@@ -188,7 +185,7 @@
             // 
             this.telefono_txt.Depth = 0;
             this.telefono_txt.Hint = "";
-            this.telefono_txt.Location = new System.Drawing.Point(90, 145);
+            this.telefono_txt.Location = new System.Drawing.Point(88, 168);
             this.telefono_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.telefono_txt.Name = "telefono_txt";
             this.telefono_txt.PasswordChar = '\0';
@@ -203,7 +200,7 @@
             // 
             this.dni_txt.Depth = 0;
             this.dni_txt.Hint = "";
-            this.dni_txt.Location = new System.Drawing.Point(90, 107);
+            this.dni_txt.Location = new System.Drawing.Point(88, 130);
             this.dni_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.dni_txt.Name = "dni_txt";
             this.dni_txt.PasswordChar = '\0';
@@ -218,7 +215,7 @@
             // 
             this.nombre_txt.Depth = 0;
             this.nombre_txt.Hint = "";
-            this.nombre_txt.Location = new System.Drawing.Point(90, 68);
+            this.nombre_txt.Location = new System.Drawing.Point(88, 91);
             this.nombre_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.nombre_txt.Name = "nombre_txt";
             this.nombre_txt.PasswordChar = '\0';
@@ -233,7 +230,7 @@
             // 
             this.apellido_txt.Depth = 0;
             this.apellido_txt.Hint = "";
-            this.apellido_txt.Location = new System.Drawing.Point(90, 31);
+            this.apellido_txt.Location = new System.Drawing.Point(88, 54);
             this.apellido_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.apellido_txt.Name = "apellido_txt";
             this.apellido_txt.PasswordChar = '\0';
@@ -251,7 +248,7 @@
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(17, 277);
+            this.materialLabel7.Location = new System.Drawing.Point(15, 300);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(74, 19);
@@ -264,7 +261,7 @@
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(17, 230);
+            this.materialLabel6.Location = new System.Drawing.Point(15, 253);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(38, 19);
@@ -277,7 +274,7 @@
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(17, 191);
+            this.materialLabel5.Location = new System.Drawing.Point(15, 214);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(73, 19);
@@ -290,7 +287,7 @@
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(17, 149);
+            this.materialLabel4.Location = new System.Drawing.Point(15, 172);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(69, 19);
@@ -303,7 +300,7 @@
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(17, 111);
+            this.materialLabel3.Location = new System.Drawing.Point(15, 134);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(34, 19);
@@ -316,7 +313,7 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(17, 72);
+            this.materialLabel2.Location = new System.Drawing.Point(15, 95);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(63, 19);
@@ -329,7 +326,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(17, 31);
+            this.materialLabel1.Location = new System.Drawing.Point(15, 54);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(64, 19);
@@ -340,9 +337,10 @@
             // 
             this.registrar_boton1.AutoSize = true;
             this.registrar_boton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.registrar_boton1.BackColor = System.Drawing.Color.Silver;
             this.registrar_boton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.registrar_boton1.Depth = 0;
-            this.registrar_boton1.Location = new System.Drawing.Point(70, 313);
+            this.registrar_boton1.Location = new System.Drawing.Point(68, 336);
             this.registrar_boton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.registrar_boton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.registrar_boton1.Name = "registrar_boton1";
@@ -350,7 +348,7 @@
             this.registrar_boton1.Size = new System.Drawing.Size(84, 36);
             this.registrar_boton1.TabIndex = 7;
             this.registrar_boton1.Text = "Registrar";
-            this.registrar_boton1.UseVisualStyleBackColor = true;
+            this.registrar_boton1.UseVisualStyleBackColor = false;
             this.registrar_boton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
             // 
             // localidad_txt
@@ -364,7 +362,7 @@
             "Posadas",
             "Cerro Azul",
             "albapose"});
-            this.localidad_txt.Location = new System.Drawing.Point(95, 275);
+            this.localidad_txt.Location = new System.Drawing.Point(93, 298);
             this.localidad_txt.Name = "localidad_txt";
             this.localidad_txt.Size = new System.Drawing.Size(110, 27);
             this.localidad_txt.TabIndex = 6;
@@ -380,29 +378,21 @@
             this.dataGridAlumno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridAlumno.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dataGridAlumno.GridColor = System.Drawing.Color.White;
-            this.dataGridAlumno.Location = new System.Drawing.Point(223, 20);
+            this.dataGridAlumno.Location = new System.Drawing.Point(242, 20);
             this.dataGridAlumno.Name = "dataGridAlumno";
             this.dataGridAlumno.ReadOnly = true;
-            this.dataGridAlumno.Size = new System.Drawing.Size(653, 289);
+            this.dataGridAlumno.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridAlumno.Size = new System.Drawing.Size(680, 313);
             this.dataGridAlumno.TabIndex = 99;
             // 
             // Alumnos
             // 
-            this.Alumnos.Controls.Add(this.materialFlatButton2);
-            this.Alumnos.Controls.Add(this.materialFlatButton1);
-            this.Alumnos.Controls.Add(this.comboBoxEjemplar);
-            this.Alumnos.Controls.Add(this.Ejemplar);
-            this.Alumnos.Controls.Add(this.comboBoxBibliotecarios);
-            this.Alumnos.Controls.Add(this.TablaPrestamos);
-            this.Alumnos.Controls.Add(this.comboBoxLibro);
-            this.Alumnos.Controls.Add(this.comboBoxAlumno);
-            this.Alumnos.Controls.Add(this.label16);
-            this.Alumnos.Controls.Add(this.label17);
-            this.Alumnos.Controls.Add(this.label18);
+            this.Alumnos.Controls.Add(this.panel3);
+            this.Alumnos.Controls.Add(this.panel4);
             this.Alumnos.Location = new System.Drawing.Point(4, 31);
             this.Alumnos.Name = "Alumnos";
             this.Alumnos.Padding = new System.Windows.Forms.Padding(3);
-            this.Alumnos.Size = new System.Drawing.Size(894, 359);
+            this.Alumnos.Size = new System.Drawing.Size(942, 398);
             this.Alumnos.TabIndex = 0;
             this.Alumnos.Text = "Prestamos";
             this.Alumnos.UseVisualStyleBackColor = true;
@@ -414,7 +404,7 @@
             this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Location = new System.Drawing.Point(535, 312);
+            this.materialFlatButton2.Location = new System.Drawing.Point(286, 329);
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton2.Name = "materialFlatButton2";
@@ -431,7 +421,7 @@
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(107, 271);
+            this.materialFlatButton1.Location = new System.Drawing.Point(100, 329);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -444,7 +434,7 @@
             // 
             // comboBoxEjemplar
             // 
-            this.comboBoxEjemplar.Location = new System.Drawing.Point(121, 131);
+            this.comboBoxEjemplar.Location = new System.Drawing.Point(113, 169);
             this.comboBoxEjemplar.Name = "comboBoxEjemplar";
             this.comboBoxEjemplar.Size = new System.Drawing.Size(159, 27);
             this.comboBoxEjemplar.TabIndex = 53;
@@ -452,7 +442,7 @@
             // Ejemplar
             // 
             this.Ejemplar.AutoSize = true;
-            this.Ejemplar.Location = new System.Drawing.Point(21, 134);
+            this.Ejemplar.Location = new System.Drawing.Point(13, 172);
             this.Ejemplar.Name = "Ejemplar";
             this.Ejemplar.Size = new System.Drawing.Size(68, 19);
             this.Ejemplar.TabIndex = 52;
@@ -461,7 +451,7 @@
             // comboBoxBibliotecarios
             // 
             this.comboBoxBibliotecarios.FormattingEnabled = true;
-            this.comboBoxBibliotecarios.Location = new System.Drawing.Point(121, 173);
+            this.comboBoxBibliotecarios.Location = new System.Drawing.Point(113, 211);
             this.comboBoxBibliotecarios.Name = "comboBoxBibliotecarios";
             this.comboBoxBibliotecarios.Size = new System.Drawing.Size(159, 27);
             this.comboBoxBibliotecarios.TabIndex = 51;
@@ -470,15 +460,15 @@
             // TablaPrestamos
             // 
             this.TablaPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TablaPrestamos.Location = new System.Drawing.Point(308, 6);
+            this.TablaPrestamos.Location = new System.Drawing.Point(13, 15);
             this.TablaPrestamos.Name = "TablaPrestamos";
-            this.TablaPrestamos.Size = new System.Drawing.Size(563, 281);
+            this.TablaPrestamos.Size = new System.Drawing.Size(612, 296);
             this.TablaPrestamos.TabIndex = 48;
             // 
             // comboBoxLibro
             // 
             this.comboBoxLibro.FormattingEnabled = true;
-            this.comboBoxLibro.Location = new System.Drawing.Point(121, 90);
+            this.comboBoxLibro.Location = new System.Drawing.Point(113, 128);
             this.comboBoxLibro.Name = "comboBoxLibro";
             this.comboBoxLibro.Size = new System.Drawing.Size(159, 27);
             this.comboBoxLibro.TabIndex = 47;
@@ -488,7 +478,7 @@
             // comboBoxAlumno
             // 
             this.comboBoxAlumno.FormattingEnabled = true;
-            this.comboBoxAlumno.Location = new System.Drawing.Point(121, 53);
+            this.comboBoxAlumno.Location = new System.Drawing.Point(113, 91);
             this.comboBoxAlumno.Name = "comboBoxAlumno";
             this.comboBoxAlumno.Size = new System.Drawing.Size(159, 27);
             this.comboBoxAlumno.TabIndex = 46;
@@ -497,7 +487,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(21, 176);
+            this.label16.Location = new System.Drawing.Point(13, 214);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(94, 19);
             this.label16.TabIndex = 45;
@@ -506,7 +496,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(21, 93);
+            this.label17.Location = new System.Drawing.Point(13, 131);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(43, 19);
             this.label17.TabIndex = 44;
@@ -515,7 +505,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(21, 56);
+            this.label18.Location = new System.Drawing.Point(13, 94);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(61, 19);
             this.label18.TabIndex = 43;
@@ -650,11 +640,100 @@
             this.libro_txt.TabIndex = 26;
             this.libro_txt.TextChanged += new System.EventHandler(this.libro_txt_TextChanged);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.materialLabel8);
+            this.panel1.Controls.Add(this.mail_txt);
+            this.panel1.Controls.Add(this.direccion_txt);
+            this.panel1.Controls.Add(this.localidad_txt);
+            this.panel1.Controls.Add(this.telefono_txt);
+            this.panel1.Controls.Add(this.registrar_boton1);
+            this.panel1.Controls.Add(this.dni_txt);
+            this.panel1.Controls.Add(this.materialLabel1);
+            this.panel1.Controls.Add(this.nombre_txt);
+            this.panel1.Controls.Add(this.materialLabel2);
+            this.panel1.Controls.Add(this.apellido_txt);
+            this.panel1.Controls.Add(this.materialLabel3);
+            this.panel1.Controls.Add(this.materialLabel7);
+            this.panel1.Controls.Add(this.materialLabel4);
+            this.panel1.Controls.Add(this.materialLabel6);
+            this.panel1.Controls.Add(this.materialLabel5);
+            this.panel1.Location = new System.Drawing.Point(5, 8);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(219, 382);
+            this.panel1.TabIndex = 101;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.Eliminar_Alumno);
+            this.panel2.Location = new System.Drawing.Point(230, 8);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(705, 382);
+            this.panel2.TabIndex = 102;
+            // 
+            // materialLabel8
+            // 
+            this.materialLabel8.AutoSize = true;
+            this.materialLabel8.Depth = 0;
+            this.materialLabel8.Font = new System.Drawing.Font("Roboto Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel8.Location = new System.Drawing.Point(64, 11);
+            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel8.Name = "materialLabel8";
+            this.materialLabel8.Size = new System.Drawing.Size(101, 23);
+            this.materialLabel8.TabIndex = 28;
+            this.materialLabel8.Text = "REGISTRO";
+            this.materialLabel8.Click += new System.EventHandler(this.materialLabel8_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.materialLabel9);
+            this.panel3.Controls.Add(this.materialFlatButton1);
+            this.panel3.Controls.Add(this.comboBoxEjemplar);
+            this.panel3.Controls.Add(this.label18);
+            this.panel3.Controls.Add(this.Ejemplar);
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.Controls.Add(this.comboBoxBibliotecarios);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.comboBoxLibro);
+            this.panel3.Controls.Add(this.comboBoxAlumno);
+            this.panel3.Location = new System.Drawing.Point(8, 7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(281, 385);
+            this.panel3.TabIndex = 103;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.materialFlatButton2);
+            this.panel4.Controls.Add(this.TablaPrestamos);
+            this.panel4.Location = new System.Drawing.Point(296, 7);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(639, 383);
+            this.panel4.TabIndex = 104;
+            // 
+            // materialLabel9
+            // 
+            this.materialLabel9.AutoSize = true;
+            this.materialLabel9.Depth = 0;
+            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel9.Location = new System.Drawing.Point(53, 25);
+            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel9.Name = "materialLabel9";
+            this.materialLabel9.Size = new System.Drawing.Size(194, 26);
+            this.materialLabel9.TabIndex = 102;
+            this.materialLabel9.Text = "NUEVO PRESTAMO";
+            // 
             // BiblioMax
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 397);
+            this.ClientSize = new System.Drawing.Size(952, 436);
             this.Controls.Add(tabControl01);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BiblioMax";
@@ -662,14 +741,20 @@
             this.Load += new System.EventHandler(this.BiblioMax_Load);
             tabControl01.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAlumno)).EndInit();
             this.Alumnos.ResumeLayout(false);
-            this.Alumnos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaPrestamos)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -721,6 +806,12 @@
         private MaterialSkin.Controls.MaterialFlatButton Eliminar_Alumno;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel8;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel9;
     }
 }
 
