@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 using Tp_integrador_01.Controlador;
 using Tp_integrador_01.Modelo;
@@ -131,8 +132,44 @@ namespace Tp_integrador_01
             int id_copialibro = Convert.ToInt32(comboBoxEjemplar.SelectedValue);
 
 
-        C_Prestamos.generarPrestamo(alumno, libro, bibliotecario, id_copialibro);
+            C_Prestamos.generarPrestamo(alumno, libro, bibliotecario, id_copialibro);
         }
+
+
+        //------------------metodo para capturar datos de la devolucion y enviarlos al controlador---------------------
+        public void agregarDevolucion()
+        {
+
+            // Capturamos la id del prestamo seleccionado en la tabla
+            int id_prestamo = Convert.ToInt32(TablaPrestamos.CurrentRow.Cells["id_prestamo"].Value);
+            //obtiene la fechad e devolucion del prestamo seleccionado en la tabla
+            DateTime fecha_devolucion = DateTime.Parse(TablaPrestamos.CurrentRow.Cells["fecha_devolucion"].Value.ToString());
+            //obtiene la fecha actual como datetime
+            DateTime fecha_devolucion_real = DateTime.Now;
+            
+
+            C_Prestamos.agregarDevolucion(fecha_devolucion, fecha_devolucion_real ,id_prestamo);
+
+        }
+
+
+        //------------------metodo para cargar la tabla de suspensiones---------------------
+        public void MostrarSuspensiones()
+        {
+
+            DataTable dt = C_Prestamos.ListadoSuspensiones();
+            TablaSuspensiones.DataSource = dt;
+
+        }
+
+        //------------------metodo para capturar el id de una suspencion 
+        public void obtenerDatosSuspension()
+        {
+            int id_prestamo = Convert.ToInt32(TablaSuspensiones.CurrentRow.Cells["id_suspencion"].Value);
+            C_Prestamos.quitarSuspension(id_prestamo);
+
+        }
+
 
 
         private void label12_Click(object sender, EventArgs e)
@@ -239,6 +276,7 @@ namespace Tp_integrador_01
             comboBoxLibros();
             comboBoxBibliotecario();
             MostrarPrestamos();
+            MostrarSuspensiones();
 
 
         }
@@ -311,6 +349,9 @@ namespace Tp_integrador_01
         private void materialFlatButton2_Click(object sender, EventArgs e)
         {
 
+            // funcion para agregar una devolucion
+            agregarDevolucion();
+
         }
 
         private void materialLabel8_Click(object sender, EventArgs e)
@@ -320,6 +361,16 @@ namespace Tp_integrador_01
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void materialFlatButton3_Click(object sender, EventArgs e)
+        {
+            //llamamos a la funcion apra eliminar una suspencion
+            obtenerDatosSuspension();
+            MostrarSuspensiones();
+
+
 
         }
     }

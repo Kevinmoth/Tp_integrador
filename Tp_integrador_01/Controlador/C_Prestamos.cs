@@ -45,15 +45,23 @@ namespace PJ_conexionIntegrador.Controlador
         //--------------Metodo para crear un objeto prestamo y calcular la fecha de devolucion----------------
         public static void generarPrestamo(string alumno, string libro, string bibliotecario, int id_copialibro)
         {
-
+            //separamos la id del alimno del nombre
             string Alumno = new string(alumno.Where(char.IsDigit).ToArray());
+            //separamos la id del bibliotecario del nombre
             string Bibliotecario = new string(bibliotecario.Where(char.IsDigit).ToArray());
             string Id_copialibros = id_copialibro.ToString();
             //formateo las fechas de prestamo y devolucion para que se puedan agregar a la BD en el formato correcto que es YYYY-MM-DD
             string fechaPrestamo = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string fechaDevolucion = DateTime.Now.AddDays(3).ToString("yyyy-MM-dd HH:mm:ss");
+            //separamos la id del libro
             string Libro = new string(libro.Where(char.IsDigit).ToArray());
-            string querry = "INSERT INTO prestamos (id_socio, id_bibliotecario, id_libro, id_copialibros, fecha_prestamo, fecha_devolucion) " + 
+
+            
+
+
+
+            //query para insertar un prestamo
+            string querry = "INSERT INTO prestamos (id_socio, id_bibliotecario, id_libro, id_copialibros, fecha_prestamo, fecha_devolucion) " +
                             "VALUES('" + Alumno + "','" + Bibliotecario + "','" + Libro + "','" + Id_copialibros + "','" + fechaPrestamo + "','" + fechaDevolucion + "')";
 
 
@@ -64,7 +72,7 @@ namespace PJ_conexionIntegrador.Controlador
             sqlCon = M_Conexion.getInstancia().CrearConexion();
             sqlCon.Open();
 
-            
+
             MySqlCommand comando = new MySqlCommand(querry, sqlCon);
             dataReader = comando.ExecuteReader();
             dataReader.Close();
@@ -84,7 +92,7 @@ namespace PJ_conexionIntegrador.Controlador
 
             try
             {
-             
+
                 SqlCon = M_Conexion.getInstancia().CrearConexion();
 
                 sqlTarea = "INSERT INTO estudiante (id_socio, " +
@@ -95,7 +103,7 @@ namespace PJ_conexionIntegrador.Controlador
                                                     "fecha_devolucion, " +
                                                     "fecha_real_devolucion)" +
                                            "VALUES(" + Prestamo.Id_prestamo + ",'" +
-                                                       Prestamo.Id_socio+ "','" +
+                                                       Prestamo.Id_socio + "','" +
                                                        Prestamo.Id_libro + "','" +
                                                        Prestamo.Id_copialibros + "','" +
                                                        Prestamo.Fecha_prestamo + "'," +
@@ -154,62 +162,62 @@ namespace PJ_conexionIntegrador.Controlador
 
         }
 
-/* Metodo que obtiene la id del libro seleccionado 
-   por el usuario y carga los ejemplares que NO hayan 
-   sido prestados en el combobox */
-public static DataTable datosComboBoxLibro(string NombreLibro)
-    {
-        MySqlDataReader resultado;
-        var Tabla = new DataTable();
-        MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
-
-        try
+        /* Metodo que obtiene la id del libro seleccionado 
+           por el usuario y carga los ejemplares que NO hayan 
+           sido prestados en el combobox */
+        public static DataTable datosComboBoxLibro(string NombreLibro)
         {
-            conn.Open();
+            MySqlDataReader resultado;
+            var Tabla = new DataTable();
+            MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
 
-                int indiceGuion = NombreLibro.IndexOf(" - "); 
+            try
+            {
+                conn.Open();
+
+                int indiceGuion = NombreLibro.IndexOf(" - ");
                 string nombreDelLibro = indiceGuion != -1 ? NombreLibro.Substring(indiceGuion + 3) : NombreLibro;
-                
+
                 // 15 - base de datos
 
                 // Obtenemos la id del libro usando el nombre a su nombre
                 string query1 = "SELECT id_libro FROM libros WHERE titulo = '" + nombreDelLibro + "'";
-            MySqlCommand cm1 = new MySqlCommand(query1, conn);
+                MySqlCommand cm1 = new MySqlCommand(query1, conn);
 
-            var idLibro = cm1.ExecuteScalar();// ExecuteScalar lo usamos para guardar solo 1 valor
+                var idLibro = cm1.ExecuteScalar();// ExecuteScalar lo usamos para guardar solo 1 valor
 
-            // Consultamos  y filtramos las copias disponibles
-            string query2 = "SELECT id_copialibros FROM copia_libros WHERE id_libro = '" + idLibro + "' AND id_copialibros NOT IN (SELECT id_copialibros FROM prestamos)";
-            MySqlCommand cm2 = new MySqlCommand(query2, conn);
-            resultado = cm2.ExecuteReader();
-            Tabla.Load(resultado);
+                // Consultamos  y filtramos las copias disponibles
+                string query2 = "SELECT id_copialibros FROM copia_libros WHERE id_libro = '" + idLibro + "' AND id_copialibros NOT IN (SELECT id_copialibros FROM prestamos)";
+                MySqlCommand cm2 = new MySqlCommand(query2, conn);
+                resultado = cm2.ExecuteReader();
+                Tabla.Load(resultado);
 
-            // Verificamos si no hay ejemplares disponibles
-            if (Tabla.Rows.Count == 0)
+                // Verificamos si no hay ejemplares disponibles
+                if (Tabla.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay ejemplares disponibles de el libro seleccionado en este momento.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("No hay ejemplares disponibles de el libro seleccionado en este momento.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Proporcionamos un mensaje de error específico
+                MessageBox.Show("Error al obtener los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
 
-        }
-        catch (Exception ex)
-        {
-            // Proporcionamos un mensaje de error específico
-            MessageBox.Show("Error al obtener los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-        finally
-        {
-            if (conn.State == ConnectionState.Open)
-            {
-                conn.Close();
-            }
+            return Tabla;
         }
 
-        return Tabla;
-    }
 
-
-    // metodo para cargar los ejemplares en el combobox
-    public DataTable CargaComboLibrosEjemplares(string libro)
+        // metodo para cargar los ejemplares en el combobox
+        public DataTable CargaComboLibrosEjemplares(string libro)
         {
             MySqlDataReader Resultado;
             var Tabla = new DataTable();
@@ -244,7 +252,7 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
         }
 
 
-
+        //metodo para obtener los bibliotecarios (en desuso)
         public static List<M_Bibliotecarios> ObtenerBibliotecarios()
         {
             List<M_Bibliotecarios> listaLibros = new List<M_Bibliotecarios>();
@@ -261,7 +269,7 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
 
                 while (reader.Read())
                 {
-                    M_Bibliotecarios Bibliotecarios = new M_Bibliotecarios( int.Parse(reader["id_bibliotecario"].ToString()) ,reader["apellido"].ToString());
+                    M_Bibliotecarios Bibliotecarios = new M_Bibliotecarios(int.Parse(reader["id_bibliotecario"].ToString()), reader["apellido"].ToString());
                     listaLibros.Add(Bibliotecarios);
                 }
                 reader.Close();
@@ -269,7 +277,7 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
 
             catch (Exception ex)
             {
-                
+
                 Console.WriteLine("Error al obtener los datos: " + ex.Message);
             }
             finally
@@ -281,7 +289,7 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
         }
 
 
-
+        //metodo para cargar los bibliotecarios en el combobox
         public static void CargarBibliotecarios(ComboBox comboBoxLibro)
         {
             List<M_Bibliotecarios> listaBibliotecarios = ObtenerBibliotecarios();
@@ -289,7 +297,118 @@ public static DataTable datosComboBoxLibro(string NombreLibro)
             foreach (M_Bibliotecarios Bibliotecario in listaBibliotecarios)
             {
                 comboBoxLibro.Items.Add(Bibliotecario.Id_bibliotecario + " - " + Bibliotecario.Apellido);
+
+
             }
+
+        }
+
+
+
+
+
+
+
+        //metodo para agregar una devolucion
+
+
+        public static void agregarDevolucion(DateTime fecha_devolucion, DateTime fecha_devolucion_real, int id_prestamo)
+        {
+            string sql_tarea;
+            var SqlCon = new MySqlConnection();
+            SqlCon = M_Conexion.getInstancia().CrearConexion();
+            /*Si el alumno devuelve el liblo antes de la fecha de devolucion 
+             * ( fecha de devolucion >= fecha de devolucion real) solo se actualiza la 
+             * fecha de devolucion real, sin embargo , si por el contrario, la fecha de devolucion 
+             * real es mayor a la fecha de devolucion ,se inserta en la tabla suspencion, la fecha_suspencion (que es la fecha de devolucion real)
+            */
+
+            if (fecha_devolucion >= fecha_devolucion_real)
+            {
+                 sql_tarea = "UPDATE prestamos SET fecha_real_devolucion = '" + fecha_devolucion.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE id_prestamo = " + id_prestamo + ";";
+            }
+            else
+            {
+                sql_tarea = "INSERT INTO suspencion (fecha_suspencion, id_prestamo) VALUES ('" + fecha_devolucion_real.ToString("yyyy-MM-dd HH:mm:ss") + "'," + id_prestamo + ");";
+                MessageBox.Show("El alumno fue suspendido. F");
+            }
+
+            try {
+                SqlCon.Open();
+                MySqlCommand comando = new MySqlCommand(sql_tarea, SqlCon);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    SqlCon.Close();
+                }
+            }
+
+
+
+        }
+
+
+
+        /*
+        
+        
+        */
+        public static DataTable ListadoSuspensiones() {
+
+            MySqlDataReader Resultado;
+            var Tabla = new DataTable();
+            var SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = M_Conexion.getInstancia().CrearConexion();
+                /*
+                Querry que muestra el apellido, nombre, titulo, fecha_prestamo, fecha_devolucion, fecha_real_devolucion y la id de la suspension
+                */
+                string query = "SELECT socios.apellido, socios.nombre, libros.titulo, prestamos.fecha_prestamo, prestamos.fecha_devolucion, prestamos.fecha_real_devolucion, suspencion.id_suspencion " + "FROM suspencion " + "INNER JOIN prestamos ON suspencion.id_prestamo = prestamos.id_prestamo " + "INNER JOIN socios ON prestamos.id_socio = socios.id_socio " + "INNER JOIN libros ON prestamos.id_libro = libros.id_libro";
+                SqlCon.Open();
+                MySqlCommand commando = new MySqlCommand(query, SqlCon);
+                Resultado = commando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+
+            }
+
+
+catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                throw error;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    SqlCon.Close();
+                }
+
+
+
+    }
+
+        }
+
+
+
+        //Metodo para quitar suspencion
+        public static void quitarSuspension(int id_suspencion) {
+            var SqlCon = new MySqlConnection();
+            SqlCon = M_Conexion.getInstancia().CrearConexion();
+            string sql_tarea = "DELETE FROM suspencion WHERE id_suspencion = " + id_suspencion + ";";
+            var Comando = new MySqlCommand(sql_tarea, SqlCon);
+            SqlCon.Open();
+            Comando.ExecuteNonQuery();
         }
 
     }
