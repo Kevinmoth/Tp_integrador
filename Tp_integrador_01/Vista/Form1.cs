@@ -352,6 +352,8 @@ namespace Tp_integrador_01
             // funcion para agregar una devolucion
             agregarDevolucion();
 
+            MostrarSuspensiones();
+
         }
 
         private void materialLabel8_Click(object sender, EventArgs e)

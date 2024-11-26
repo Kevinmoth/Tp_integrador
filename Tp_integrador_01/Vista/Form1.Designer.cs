@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TabControl tabControl01;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BiblioMax));
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -66,27 +67,30 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.TablaPrestamos = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tablaLibros = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.ejemplares_txt = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.generoLibro_txt = new System.Windows.Forms.TextBox();
-            this.editorial_txt = new System.Windows.Forms.TextBox();
-            this.autor_txt = new System.Windows.Forms.TextBox();
-            this.isnb_txt = new System.Windows.Forms.TextBox();
-            this.libro_txt = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
             this.TablaSuspensiones = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tablaLibros = new System.Windows.Forms.DataGridView();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.editorial_txt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.libro_txt = new System.Windows.Forms.TextBox();
+            this.ejemplares_txt = new System.Windows.Forms.TextBox();
+            this.isnb_txt = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.autor_txt = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.generoLibro_txt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.materialFlatButton4 = new MaterialSkin.Controls.MaterialFlatButton();
             tabControl01 = new System.Windows.Forms.TabControl();
             tabControl01.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -97,12 +101,12 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaPrestamos)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).BeginInit();
-            this.panel5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaSuspensiones)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl01
@@ -116,15 +120,16 @@
             tabControl01.Controls.Add(this.tabPage3);
             tabControl01.Controls.Add(this.tabPage2);
             tabControl01.Cursor = System.Windows.Forms.Cursors.Hand;
-            tabControl01.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tabControl01.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tabControl01.HotTrack = true;
-            tabControl01.ItemSize = new System.Drawing.Size(57, 27);
+            tabControl01.ImageList = this.imageList1;
+            tabControl01.ItemSize = new System.Drawing.Size(57, 37);
             tabControl01.Location = new System.Drawing.Point(1, 3);
             tabControl01.Name = "tabControl01";
             tabControl01.Padding = new System.Drawing.Point(40, 3);
             tabControl01.SelectedIndex = 0;
             tabControl01.ShowToolTips = true;
-            tabControl01.Size = new System.Drawing.Size(950, 433);
+            tabControl01.Size = new System.Drawing.Size(953, 452);
             tabControl01.TabIndex = 2;
             // 
             // tabPage1
@@ -135,10 +140,11 @@
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tabPage1.Location = new System.Drawing.Point(4, 31);
+            this.tabPage1.ImageIndex = 3;
+            this.tabPage1.Location = new System.Drawing.Point(4, 41);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(942, 398);
+            this.tabPage1.Size = new System.Drawing.Size(945, 407);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Alumnos";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
@@ -165,7 +171,7 @@
             this.panel2.Controls.Add(this.Eliminar_Alumno);
             this.panel2.Location = new System.Drawing.Point(230, 8);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(705, 382);
+            this.panel2.Size = new System.Drawing.Size(706, 372);
             this.panel2.TabIndex = 102;
             // 
             // Eliminar_Alumno
@@ -268,7 +274,7 @@
             "albapose"});
             this.localidad_txt.Location = new System.Drawing.Point(93, 298);
             this.localidad_txt.Name = "localidad_txt";
-            this.localidad_txt.Size = new System.Drawing.Size(110, 27);
+            this.localidad_txt.Size = new System.Drawing.Size(110, 28);
             this.localidad_txt.TabIndex = 6;
             this.localidad_txt.Tag = "";
             this.localidad_txt.SelectedIndexChanged += new System.EventHandler(this.localidad_txt_SelectedIndexChanged);
@@ -447,10 +453,11 @@
             // 
             this.Alumnos.Controls.Add(this.panel3);
             this.Alumnos.Controls.Add(this.panel4);
-            this.Alumnos.Location = new System.Drawing.Point(4, 31);
+            this.Alumnos.ImageIndex = 2;
+            this.Alumnos.Location = new System.Drawing.Point(4, 41);
             this.Alumnos.Name = "Alumnos";
             this.Alumnos.Padding = new System.Windows.Forms.Padding(3);
-            this.Alumnos.Size = new System.Drawing.Size(942, 398);
+            this.Alumnos.Size = new System.Drawing.Size(945, 407);
             this.Alumnos.TabIndex = 0;
             this.Alumnos.Text = "Prestamos";
             this.Alumnos.UseVisualStyleBackColor = true;
@@ -471,7 +478,7 @@
             this.panel3.Controls.Add(this.comboBoxAlumno);
             this.panel3.Location = new System.Drawing.Point(8, 7);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(281, 385);
+            this.panel3.Size = new System.Drawing.Size(282, 394);
             this.panel3.TabIndex = 103;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -509,7 +516,7 @@
             // 
             this.comboBoxEjemplar.Location = new System.Drawing.Point(113, 169);
             this.comboBoxEjemplar.Name = "comboBoxEjemplar";
-            this.comboBoxEjemplar.Size = new System.Drawing.Size(159, 27);
+            this.comboBoxEjemplar.Size = new System.Drawing.Size(159, 28);
             this.comboBoxEjemplar.TabIndex = 53;
             // 
             // label18
@@ -517,7 +524,7 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(13, 94);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(61, 19);
+            this.label18.Size = new System.Drawing.Size(64, 20);
             this.label18.TabIndex = 43;
             this.label18.Text = "Alumno";
             // 
@@ -526,7 +533,7 @@
             this.Ejemplar.AutoSize = true;
             this.Ejemplar.Location = new System.Drawing.Point(13, 172);
             this.Ejemplar.Name = "Ejemplar";
-            this.Ejemplar.Size = new System.Drawing.Size(68, 19);
+            this.Ejemplar.Size = new System.Drawing.Size(71, 20);
             this.Ejemplar.TabIndex = 52;
             this.Ejemplar.Text = "Ejemplar";
             // 
@@ -535,7 +542,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(13, 131);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(43, 19);
+            this.label17.Size = new System.Drawing.Size(45, 20);
             this.label17.TabIndex = 44;
             this.label17.Text = "Libro";
             // 
@@ -544,7 +551,7 @@
             this.comboBoxBibliotecarios.FormattingEnabled = true;
             this.comboBoxBibliotecarios.Location = new System.Drawing.Point(113, 211);
             this.comboBoxBibliotecarios.Name = "comboBoxBibliotecarios";
-            this.comboBoxBibliotecarios.Size = new System.Drawing.Size(159, 27);
+            this.comboBoxBibliotecarios.Size = new System.Drawing.Size(159, 28);
             this.comboBoxBibliotecarios.TabIndex = 51;
             this.comboBoxBibliotecarios.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -553,7 +560,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(13, 214);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 19);
+            this.label16.Size = new System.Drawing.Size(97, 20);
             this.label16.TabIndex = 45;
             this.label16.Text = "Bibliotecario";
             // 
@@ -562,7 +569,7 @@
             this.comboBoxLibro.FormattingEnabled = true;
             this.comboBoxLibro.Location = new System.Drawing.Point(113, 128);
             this.comboBoxLibro.Name = "comboBoxLibro";
-            this.comboBoxLibro.Size = new System.Drawing.Size(159, 27);
+            this.comboBoxLibro.Size = new System.Drawing.Size(159, 28);
             this.comboBoxLibro.TabIndex = 47;
             this.comboBoxLibro.SelectedIndexChanged += new System.EventHandler(this.comboBoxLibro_SelectedIndexChanged);
             this.comboBoxLibro.TextChanged += new System.EventHandler(this.comboBoxLibro_TextChanged);
@@ -572,7 +579,7 @@
             this.comboBoxAlumno.FormattingEnabled = true;
             this.comboBoxAlumno.Location = new System.Drawing.Point(113, 91);
             this.comboBoxAlumno.Name = "comboBoxAlumno";
-            this.comboBoxAlumno.Size = new System.Drawing.Size(159, 27);
+            this.comboBoxAlumno.Size = new System.Drawing.Size(159, 28);
             this.comboBoxAlumno.TabIndex = 46;
             this.comboBoxAlumno.SelectedIndexChanged += new System.EventHandler(this.comboBoxAlumno_SelectedIndexChanged);
             // 
@@ -583,7 +590,7 @@
             this.panel4.Controls.Add(this.TablaPrestamos);
             this.panel4.Location = new System.Drawing.Point(296, 7);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(639, 383);
+            this.panel4.Size = new System.Drawing.Size(639, 394);
             this.panel4.TabIndex = 104;
             // 
             // materialFlatButton2
@@ -592,7 +599,7 @@
             this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Location = new System.Drawing.Point(286, 329);
+            this.materialFlatButton2.Location = new System.Drawing.Point(274, 339);
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton2.Name = "materialFlatButton2";
@@ -611,15 +618,62 @@
             this.TablaPrestamos.Size = new System.Drawing.Size(612, 296);
             this.TablaPrestamos.TabIndex = 48;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.panel7);
+            this.tabPage3.ImageIndex = 1;
+            this.tabPage3.Location = new System.Drawing.Point(4, 41);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(945, 407);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Suspenciones";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.materialFlatButton3);
+            this.panel7.Controls.Add(this.TablaSuspensiones);
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(935, 387);
+            this.panel7.TabIndex = 105;
+            // 
+            // materialFlatButton3
+            // 
+            this.materialFlatButton3.AutoSize = true;
+            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.materialFlatButton3.Depth = 0;
+            this.materialFlatButton3.Location = new System.Drawing.Point(434, 343);
+            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton3.Name = "materialFlatButton3";
+            this.materialFlatButton3.Primary = false;
+            this.materialFlatButton3.Size = new System.Drawing.Size(155, 36);
+            this.materialFlatButton3.TabIndex = 102;
+            this.materialFlatButton3.Text = "Quirtar suspension ";
+            this.materialFlatButton3.UseVisualStyleBackColor = true;
+            this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
+            // 
+            // TablaSuspensiones
+            // 
+            this.TablaSuspensiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TablaSuspensiones.Location = new System.Drawing.Point(120, 12);
+            this.TablaSuspensiones.Name = "TablaSuspensiones";
+            this.TablaSuspensiones.Size = new System.Drawing.Size(754, 310);
+            this.TablaSuspensiones.TabIndex = 48;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tablaLibros);
             this.tabPage2.Controls.Add(this.panel6);
             this.tabPage2.Controls.Add(this.panel5);
-            this.tabPage2.Location = new System.Drawing.Point(4, 31);
+            this.tabPage2.ImageIndex = 4;
+            this.tabPage2.Location = new System.Drawing.Point(4, 41);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(942, 398);
+            this.tabPage2.Size = new System.Drawing.Size(945, 407);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Libros";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -633,107 +687,20 @@
             this.tablaLibros.TabIndex = 38;
             this.tablaLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // label7
+            // panel6
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 253);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 19);
-            this.label7.TabIndex = 37;
-            this.label7.Text = "Ejemplares";
-            // 
-            // ejemplares_txt
-            // 
-            this.ejemplares_txt.Location = new System.Drawing.Point(137, 250);
-            this.ejemplares_txt.Name = "ejemplares_txt";
-            this.ejemplares_txt.Size = new System.Drawing.Size(100, 26);
-            this.ejemplares_txt.TabIndex = 36;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(35, 212);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 19);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "Genero";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 170);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 19);
-            this.label9.TabIndex = 34;
-            this.label9.Text = "Editorial";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(38, 132);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 19);
-            this.label10.TabIndex = 33;
-            this.label10.Text = "Autor";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(38, 93);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 19);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "ISNB";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(38, 56);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 19);
-            this.label12.TabIndex = 31;
-            this.label12.Text = "Titulo";
-            // 
-            // generoLibro_txt
-            // 
-            this.generoLibro_txt.Location = new System.Drawing.Point(137, 209);
-            this.generoLibro_txt.Name = "generoLibro_txt";
-            this.generoLibro_txt.Size = new System.Drawing.Size(100, 26);
-            this.generoLibro_txt.TabIndex = 30;
-            // 
-            // editorial_txt
-            // 
-            this.editorial_txt.Location = new System.Drawing.Point(137, 167);
-            this.editorial_txt.Name = "editorial_txt";
-            this.editorial_txt.Size = new System.Drawing.Size(100, 26);
-            this.editorial_txt.TabIndex = 29;
-            // 
-            // autor_txt
-            // 
-            this.autor_txt.Location = new System.Drawing.Point(137, 129);
-            this.autor_txt.Name = "autor_txt";
-            this.autor_txt.Size = new System.Drawing.Size(100, 26);
-            this.autor_txt.TabIndex = 28;
-            // 
-            // isnb_txt
-            // 
-            this.isnb_txt.Location = new System.Drawing.Point(137, 90);
-            this.isnb_txt.Name = "isnb_txt";
-            this.isnb_txt.Size = new System.Drawing.Size(100, 26);
-            this.isnb_txt.TabIndex = 27;
-            // 
-            // libro_txt
-            // 
-            this.libro_txt.Location = new System.Drawing.Point(137, 53);
-            this.libro_txt.Name = "libro_txt";
-            this.libro_txt.Size = new System.Drawing.Size(100, 26);
-            this.libro_txt.TabIndex = 26;
-            this.libro_txt.TextChanged += new System.EventHandler(this.libro_txt_TextChanged);
+            this.panel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Location = new System.Drawing.Point(285, 6);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(650, 384);
+            this.panel6.TabIndex = 40;
             // 
             // panel5
             // 
             this.panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.materialFlatButton4);
             this.panel5.Controls.Add(this.editorial_txt);
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.libro_txt);
@@ -751,65 +718,142 @@
             this.panel5.Size = new System.Drawing.Size(272, 383);
             this.panel5.TabIndex = 39;
             // 
-            // panel6
+            // editorial_txt
             // 
-            this.panel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Location = new System.Drawing.Point(285, 6);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(650, 384);
-            this.panel6.TabIndex = 40;
+            this.editorial_txt.Location = new System.Drawing.Point(137, 167);
+            this.editorial_txt.Name = "editorial_txt";
+            this.editorial_txt.Size = new System.Drawing.Size(100, 27);
+            this.editorial_txt.TabIndex = 29;
             // 
-            // tabPage3
+            // label7
             // 
-            this.tabPage3.Controls.Add(this.panel7);
-            this.tabPage3.Location = new System.Drawing.Point(4, 31);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(942, 398);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "Suspenciones";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(35, 253);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(87, 20);
+            this.label7.TabIndex = 37;
+            this.label7.Text = "Ejemplares";
             // 
-            // panel7
+            // libro_txt
             // 
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.materialFlatButton3);
-            this.panel7.Controls.Add(this.TablaSuspensiones);
-            this.panel7.Location = new System.Drawing.Point(3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(892, 387);
-            this.panel7.TabIndex = 105;
+            this.libro_txt.Location = new System.Drawing.Point(137, 53);
+            this.libro_txt.Name = "libro_txt";
+            this.libro_txt.Size = new System.Drawing.Size(100, 27);
+            this.libro_txt.TabIndex = 26;
+            this.libro_txt.TextChanged += new System.EventHandler(this.libro_txt_TextChanged);
             // 
-            // materialFlatButton3
+            // ejemplares_txt
             // 
-            this.materialFlatButton3.AutoSize = true;
-            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialFlatButton3.Depth = 0;
-            this.materialFlatButton3.Location = new System.Drawing.Point(334, 343);
-            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton3.Name = "materialFlatButton3";
-            this.materialFlatButton3.Primary = false;
-            this.materialFlatButton3.Size = new System.Drawing.Size(155, 36);
-            this.materialFlatButton3.TabIndex = 102;
-            this.materialFlatButton3.Text = "Quirtar suspension ";
-            this.materialFlatButton3.UseVisualStyleBackColor = true;
-            this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click);
+            this.ejemplares_txt.Location = new System.Drawing.Point(137, 250);
+            this.ejemplares_txt.Name = "ejemplares_txt";
+            this.ejemplares_txt.Size = new System.Drawing.Size(100, 27);
+            this.ejemplares_txt.TabIndex = 36;
             // 
-            // TablaSuspensiones
+            // isnb_txt
             // 
-            this.TablaSuspensiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TablaSuspensiones.Location = new System.Drawing.Point(120, 12);
-            this.TablaSuspensiones.Name = "TablaSuspensiones";
-            this.TablaSuspensiones.Size = new System.Drawing.Size(607, 310);
-            this.TablaSuspensiones.TabIndex = 48;
+            this.isnb_txt.Location = new System.Drawing.Point(137, 90);
+            this.isnb_txt.Name = "isnb_txt";
+            this.isnb_txt.Size = new System.Drawing.Size(100, 27);
+            this.isnb_txt.TabIndex = 27;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(35, 212);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 20);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "Genero";
+            // 
+            // autor_txt
+            // 
+            this.autor_txt.Location = new System.Drawing.Point(137, 129);
+            this.autor_txt.Name = "autor_txt";
+            this.autor_txt.Size = new System.Drawing.Size(100, 27);
+            this.autor_txt.TabIndex = 28;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(37, 170);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(67, 20);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Editorial";
+            // 
+            // generoLibro_txt
+            // 
+            this.generoLibro_txt.Location = new System.Drawing.Point(137, 209);
+            this.generoLibro_txt.Name = "generoLibro_txt";
+            this.generoLibro_txt.Size = new System.Drawing.Size(100, 27);
+            this.generoLibro_txt.TabIndex = 30;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(38, 132);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 20);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "Autor";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(38, 56);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(50, 20);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "Titulo";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(38, 93);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 20);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "ISNB";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "chicken-leg_821023.png");
+            this.imageList1.Images.SetKeyName(1, "ask_2859734.png");
+            this.imageList1.Images.SetKeyName(2, "growth_938418.png");
+            this.imageList1.Images.SetKeyName(3, "salesman_939426.png");
+            this.imageList1.Images.SetKeyName(4, "books_1050267.png");
+            this.imageList1.Images.SetKeyName(5, "ebook_4670966.png");
+            this.imageList1.Images.SetKeyName(6, "chicken-leg_821023.png");
+            // 
+            // imageList2
+            // 
+            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // materialFlatButton4
+            // 
+            this.materialFlatButton4.AutoSize = true;
+            this.materialFlatButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.materialFlatButton4.Depth = 0;
+            this.materialFlatButton4.Location = new System.Drawing.Point(97, 323);
+            this.materialFlatButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton4.Name = "materialFlatButton4";
+            this.materialFlatButton4.Primary = false;
+            this.materialFlatButton4.Size = new System.Drawing.Size(74, 36);
+            this.materialFlatButton4.TabIndex = 102;
+            this.materialFlatButton4.Text = "Agregar";
+            this.materialFlatButton4.UseVisualStyleBackColor = true;
             // 
             // BiblioMax
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 436);
+            this.ClientSize = new System.Drawing.Size(955, 455);
             this.Controls.Add(tabControl01);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BiblioMax";
@@ -828,14 +872,14 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaPrestamos)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaSuspensiones)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tablaLibros)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -899,6 +943,9 @@
         private System.Windows.Forms.Panel panel7;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton3;
         private System.Windows.Forms.DataGridView TablaSuspensiones;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ImageList imageList2;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton4;
     }
 }
 

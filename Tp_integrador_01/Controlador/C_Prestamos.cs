@@ -45,41 +45,60 @@ namespace PJ_conexionIntegrador.Controlador
         //--------------Metodo para crear un objeto prestamo y calcular la fecha de devolucion----------------
         public static void generarPrestamo(string alumno, string libro, string bibliotecario, int id_copialibro)
         {
-            //separamos la id del alimno del nombre
+            // Extraer IDs (mediante Linq, separamos los dígitos del string)
             string Alumno = new string(alumno.Where(char.IsDigit).ToArray());
-            //separamos la id del bibliotecario del nombre
             string Bibliotecario = new string(bibliotecario.Where(char.IsDigit).ToArray());
+            string Libro = new string(libro.Where(char.IsDigit).ToArray());
             string Id_copialibros = id_copialibro.ToString();
-            //formateo las fechas de prestamo y devolucion para que se puedan agregar a la BD en el formato correcto que es YYYY-MM-DD
+
+            // Formateamos las fechas de prestamo y devolucion para la base de datos
             string fechaPrestamo = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string fechaDevolucion = DateTime.Now.AddDays(3).ToString("yyyy-MM-dd HH:mm:ss");
-            //separamos la id del libro
-            string Libro = new string(libro.Where(char.IsDigit).ToArray());
 
-            
+            // Query para verificar si el alumno esta sancionado
+            string sancionados = "SELECT prestamos.id_socio " +
+                                 "FROM prestamos " +
+                                 "INNER JOIN suspencion ON prestamos.id_prestamo = suspencion.id_prestamo " +
+                                 "WHERE prestamos.id_socio = " + Alumno + " " +
+                                 "AND suspencion.id_suspencion IS NOT NULL";
 
-
-
-            //query para insertar un prestamo
+            // Query para insertar un préstamo
             string querry = "INSERT INTO prestamos (id_socio, id_bibliotecario, id_libro, id_copialibros, fecha_prestamo, fecha_devolucion) " +
-                            "VALUES('" + Alumno + "','" + Bibliotecario + "','" + Libro + "','" + Id_copialibros + "','" + fechaPrestamo + "','" + fechaDevolucion + "')";
-
+                            "VALUES('" + Alumno + "', '" + Bibliotecario + "', '" + Libro + "', '" + Id_copialibros + "', '" + fechaPrestamo + "', '" + fechaDevolucion + "')";
 
             MySqlDataReader dataReader;
-            var sqlCon = new MySqlConnection();
-
-            M_Prestamo prestamo = new M_Prestamo();
-            sqlCon = M_Conexion.getInstancia().CrearConexion();
+            var sqlCon = M_Conexion.getInstancia().CrearConexion();
             sqlCon.Open();
 
-
-            MySqlCommand comando = new MySqlCommand(querry, sqlCon);
+            // Verificar sanciones
+            MySqlCommand comando = new MySqlCommand(sancionados, sqlCon);
             dataReader = comando.ExecuteReader();
+
+            
+            if (dataReader.HasRows)
+            {
+                MessageBox.Show("El alumno tiene un préstamo sancionado. No se puede agregar el préstamo.");
+                dataReader.Close();
+                sqlCon.Close();
+                return;  // Sale del meetodo, no se agrega el prestamo
+            }
+
             dataReader.Close();
 
+            // Insertar préstamo
+            comando = new MySqlCommand(querry, sqlCon);
+            try
+            {
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Préstamo registrado exitosamente.");
+            }
+            catch (Exception ex)
+            {
+               
+                MessageBox.Show("Error al agregar el prestamo: " + ex.Message);
+            }
+
             sqlCon.Close();
-
-
         }
 
         //--------------Metodo para insertar un prestamo en la base de datos----------------
@@ -187,7 +206,7 @@ namespace PJ_conexionIntegrador.Controlador
                 var idLibro = cm1.ExecuteScalar();// ExecuteScalar lo usamos para guardar solo 1 valor
 
                 // Consultamos  y filtramos las copias disponibles
-                string query2 = "SELECT id_copialibros FROM copia_libros WHERE id_libro = '" + idLibro + "' AND id_copialibros NOT IN (SELECT id_copialibros FROM prestamos)";
+                string query2 = "SELECT id_copialibros FROM copia_libros WHERE id_libro = '" + idLibro + "' AND id_copialibros NOT IN (SELECT id_copialibros FROM prestamos WHERE id_libro = '" + idLibro + "')";
                 MySqlCommand cm2 = new MySqlCommand(query2, conn);
                 resultado = cm2.ExecuteReader();
                 Tabla.Load(resultado);
@@ -304,17 +323,12 @@ namespace PJ_conexionIntegrador.Controlador
         }
 
 
-
-
-
-
-
         //metodo para agregar una devolucion
 
 
         public static void agregarDevolucion(DateTime fecha_devolucion, DateTime fecha_devolucion_real, int id_prestamo)
         {
-            string sql_tarea;
+            string sql_tarea = "";
             var SqlCon = new MySqlConnection();
             SqlCon = M_Conexion.getInstancia().CrearConexion();
             /*Si el alumno devuelve el liblo antes de la fecha de devolucion 
@@ -323,20 +337,27 @@ namespace PJ_conexionIntegrador.Controlador
              * real es mayor a la fecha de devolucion ,se inserta en la tabla suspencion, la fecha_suspencion (que es la fecha de devolucion real)
             */
 
-            if (fecha_devolucion >= fecha_devolucion_real)
+            if (fecha_devolucion <= fecha_devolucion_real)
             {
-                 sql_tarea = "UPDATE prestamos SET fecha_real_devolucion = '" + fecha_devolucion.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE id_prestamo = " + id_prestamo + ";";
-            }
-            else
-            {
-                sql_tarea = "INSERT INTO suspencion (fecha_suspencion, id_prestamo) VALUES ('" + fecha_devolucion_real.ToString("yyyy-MM-dd HH:mm:ss") + "'," + id_prestamo + ");";
-                MessageBox.Show("El alumno fue suspendido. F");
+                sql_tarea = "INSERT INTO suspencion (fecha_suspencion, id_prestamo) VALUES ('" + fecha_devolucion_real.ToString("yyyy-MM-dd HH:mm:ss") + "'," + id_prestamo + ") ;";
+                MessageBox.Show("El alumno fue suspendido");
+                
             }
 
+            string querryFecha = "UPDATE prestamos SET fecha_real_devolucion = '" + fecha_devolucion.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE id_prestamo = " + id_prestamo + ";";
+
+            //query para vovler a habilitar el libro devuelto (borra el dato de la columna copialibros de la tabla prestamos (id_copialibros) )
+            
             try {
                 SqlCon.Open();
+                
+                MySqlCommand FechaDevolucion = new MySqlCommand(querryFecha, SqlCon);
+                FechaDevolucion.ExecuteNonQuery();
                 MySqlCommand comando = new MySqlCommand(sql_tarea, SqlCon);
                 comando.ExecuteNonQuery();
+                
+
+                
             }
             catch (Exception ex)
             {
@@ -355,11 +376,6 @@ namespace PJ_conexionIntegrador.Controlador
         }
 
 
-
-        /*
-        
-        
-        */
         public static DataTable ListadoSuspensiones() {
 
             MySqlDataReader Resultado;
