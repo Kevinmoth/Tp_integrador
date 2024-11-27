@@ -75,6 +75,7 @@
             this.tablaLibros = new System.Windows.Forms.DataGridView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.materialFlatButton4 = new MaterialSkin.Controls.MaterialFlatButton();
             this.editorial_txt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.libro_txt = new System.Windows.Forms.TextBox();
@@ -90,7 +91,6 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.materialFlatButton4 = new MaterialSkin.Controls.MaterialFlatButton();
             tabControl01 = new System.Windows.Forms.TabControl();
             tabControl01.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -171,7 +171,7 @@
             this.panel2.Controls.Add(this.Eliminar_Alumno);
             this.panel2.Location = new System.Drawing.Point(230, 8);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(706, 372);
+            this.panel2.Size = new System.Drawing.Size(706, 391);
             this.panel2.TabIndex = 102;
             // 
             // Eliminar_Alumno
@@ -181,7 +181,7 @@
             this.Eliminar_Alumno.BackColor = System.Drawing.Color.Silver;
             this.Eliminar_Alumno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Eliminar_Alumno.Depth = 0;
-            this.Eliminar_Alumno.Location = new System.Drawing.Point(300, 333);
+            this.Eliminar_Alumno.Location = new System.Drawing.Point(322, 347);
             this.Eliminar_Alumno.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Eliminar_Alumno.MouseState = MaterialSkin.MouseState.HOVER;
             this.Eliminar_Alumno.Name = "Eliminar_Alumno";
@@ -213,7 +213,7 @@
             this.panel1.Controls.Add(this.materialLabel5);
             this.panel1.Location = new System.Drawing.Point(5, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(219, 382);
+            this.panel1.Size = new System.Drawing.Size(219, 391);
             this.panel1.TabIndex = 101;
             // 
             // materialLabel8
@@ -293,6 +293,7 @@
             this.telefono_txt.Size = new System.Drawing.Size(110, 23);
             this.telefono_txt.TabIndex = 3;
             this.telefono_txt.UseSystemPasswordChar = false;
+            this.telefono_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.telefono_txt_KeyPress);
             // 
             // registrar_boton1
             // 
@@ -326,6 +327,7 @@
             this.dni_txt.Size = new System.Drawing.Size(110, 23);
             this.dni_txt.TabIndex = 2;
             this.dni_txt.UseSystemPasswordChar = false;
+            this.dni_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dni_txt_KeyPress);
             // 
             // materialLabel1
             // 
@@ -354,6 +356,8 @@
             this.nombre_txt.Size = new System.Drawing.Size(110, 23);
             this.nombre_txt.TabIndex = 1;
             this.nombre_txt.UseSystemPasswordChar = false;
+            this.nombre_txt.Click += new System.EventHandler(this.nombre_txt_Click);
+            this.nombre_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nombre_txt_KeyPress);
             // 
             // materialLabel2
             // 
@@ -383,6 +387,7 @@
             this.apellido_txt.TabIndex = 0;
             this.apellido_txt.UseSystemPasswordChar = false;
             this.apellido_txt.Click += new System.EventHandler(this.apellido_txt_Click);
+            this.apellido_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.apellido_txt_KeyPress);
             // 
             // materialLabel3
             // 
@@ -718,6 +723,22 @@
             this.panel5.Size = new System.Drawing.Size(272, 383);
             this.panel5.TabIndex = 39;
             // 
+            // materialFlatButton4
+            // 
+            this.materialFlatButton4.AutoSize = true;
+            this.materialFlatButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.materialFlatButton4.Depth = 0;
+            this.materialFlatButton4.Location = new System.Drawing.Point(97, 323);
+            this.materialFlatButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton4.Name = "materialFlatButton4";
+            this.materialFlatButton4.Primary = false;
+            this.materialFlatButton4.Size = new System.Drawing.Size(74, 36);
+            this.materialFlatButton4.TabIndex = 102;
+            this.materialFlatButton4.Text = "Agregar";
+            this.materialFlatButton4.UseVisualStyleBackColor = true;
+            // 
             // editorial_txt
             // 
             this.editorial_txt.Location = new System.Drawing.Point(137, 167);
@@ -832,22 +853,6 @@
             this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // materialFlatButton4
-            // 
-            this.materialFlatButton4.AutoSize = true;
-            this.materialFlatButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.materialFlatButton4.Depth = 0;
-            this.materialFlatButton4.Location = new System.Drawing.Point(97, 323);
-            this.materialFlatButton4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton4.Name = "materialFlatButton4";
-            this.materialFlatButton4.Primary = false;
-            this.materialFlatButton4.Size = new System.Drawing.Size(74, 36);
-            this.materialFlatButton4.TabIndex = 102;
-            this.materialFlatButton4.Text = "Agregar";
-            this.materialFlatButton4.UseVisualStyleBackColor = true;
             // 
             // BiblioMax
             // 

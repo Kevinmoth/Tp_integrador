@@ -12,7 +12,9 @@ namespace PJ_conexionIntegrador.Controlador
     class C_Prestamos
     {
 
-        //--------------Metodo para mostrar el listado de prestamos----------------
+     //                                     METODOS CARGAR TABLAS
+
+        //----------------------Metodo para mostrar el listado de prestamos-----------------------
         public static DataTable ListadoPrestamos()
         {
             MySqlDataReader dataReader;
@@ -40,7 +42,47 @@ namespace PJ_conexionIntegrador.Controlador
             return tabla;
         }
 
+        //----------------------Metodo para cargar los libros en el combobox-------------------------
 
+        public static DataTable ListadoSuspensiones()
+        {
+
+            MySqlDataReader Resultado;
+            var Tabla = new DataTable();
+            var SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = M_Conexion.getInstancia().CrearConexion();
+                /*
+                Querry que muestra el apellido, nombre, titulo, fecha_prestamo, fecha_devolucion, fecha_real_devolucion y la id de la suspension
+                */
+                string query = "SELECT socios.apellido, socios.nombre, libros.titulo, prestamos.fecha_prestamo, prestamos.fecha_devolucion, prestamos.fecha_real_devolucion, suspencion.id_suspencion " + "FROM suspencion " + "INNER JOIN prestamos ON suspencion.id_prestamo = prestamos.id_prestamo " + "INNER JOIN socios ON prestamos.id_socio = socios.id_socio " + "INNER JOIN libros ON prestamos.id_libro = libros.id_libro";
+                SqlCon.Open();
+                MySqlCommand commando = new MySqlCommand(query, SqlCon);
+                Resultado = commando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+
+            }
+
+
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                throw error;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    SqlCon.Close();
+                }
+
+
+
+            }
+
+        }
 
         //--------------Metodo para crear un objeto prestamo y calcular la fecha de devolucion----------------
         public static void generarPrestamo(string alumno, string libro, string bibliotecario, int id_copialibro)
@@ -56,11 +98,13 @@ namespace PJ_conexionIntegrador.Controlador
             string fechaDevolucion = DateTime.Now.AddDays(3).ToString("yyyy-MM-dd HH:mm:ss");
 
             // Query para verificar si el alumno esta sancionado
-            string sancionados = "SELECT prestamos.id_socio " +
+            string sancion = "SELECT prestamos.id_socio " +
                                  "FROM prestamos " +
                                  "INNER JOIN suspencion ON prestamos.id_prestamo = suspencion.id_prestamo " +
                                  "WHERE prestamos.id_socio = " + Alumno + " " +
                                  "AND suspencion.id_suspencion IS NOT NULL";
+
+
 
             // Query para insertar un préstamo
             string querry = "INSERT INTO prestamos (id_socio, id_bibliotecario, id_libro, id_copialibros, fecha_prestamo, fecha_devolucion) " +
@@ -71,7 +115,7 @@ namespace PJ_conexionIntegrador.Controlador
             sqlCon.Open();
 
             // Verificar sanciones
-            MySqlCommand comando = new MySqlCommand(sancionados, sqlCon);
+            MySqlCommand comando = new MySqlCommand(sancion, sqlCon);
             dataReader = comando.ExecuteReader();
 
             
@@ -101,7 +145,7 @@ namespace PJ_conexionIntegrador.Controlador
             sqlCon.Close();
         }
 
-        //--------------Metodo para insertar un prestamo en la base de datos----------------
+        //---------------------Metodo para insertar un prestamo en la base de datos-------------------------
 
         public static string InsertarPrestamo(M_Prestamo Prestamo)
         {
@@ -148,7 +192,25 @@ namespace PJ_conexionIntegrador.Controlador
         }
 
 
-        //--------------Metodo para cargar los libros en el combobox----------------
+
+
+        //                                    METODOS PARA CARGAR DATOS EN LOS COMBOBOX
+
+        //metodo para cargar los bibliotecarios en el combobox
+        public static void CargarBibliotecarios(ComboBox comboBoxLibro)
+        {
+            List<M_Bibliotecarios> listaBibliotecarios = ObtenerBibliotecarios();
+
+            foreach (M_Bibliotecarios Bibliotecario in listaBibliotecarios)
+            {
+                comboBoxLibro.Items.Add(Bibliotecario.Id_bibliotecario + " - " + Bibliotecario.Apellido);
+
+
+            }
+
+        }
+
+        //----------------------Metodo para cargar los libros en el combobox-------------------------
         public DataTable CargaComboLibros()
         {
             MySqlDataReader Resultado;
@@ -193,11 +255,11 @@ namespace PJ_conexionIntegrador.Controlador
             try
             {
                 conn.Open();
-
+                // Obtenemos el nombre del libro sin el guion y el id
                 int indiceGuion = NombreLibro.IndexOf(" - ");
-                string nombreDelLibro = indiceGuion != -1 ? NombreLibro.Substring(indiceGuion + 3) : NombreLibro;
+                string nombreDelLibro = NombreLibro.Substring(indiceGuion + 3);
+                
 
-                // 15 - base de datos
 
                 // Obtenemos la id del libro usando el nombre a su nombre
                 string query1 = "SELECT id_libro FROM libros WHERE titulo = '" + nombreDelLibro + "'";
@@ -205,8 +267,8 @@ namespace PJ_conexionIntegrador.Controlador
 
                 var idLibro = cm1.ExecuteScalar();// ExecuteScalar lo usamos para guardar solo 1 valor
 
-                // Consultamos  y filtramos las copias disponibles
-                string query2 = "SELECT id_copialibros FROM copia_libros WHERE id_libro = '" + idLibro + "' AND id_copialibros NOT IN (SELECT id_copialibros FROM prestamos WHERE id_libro = '" + idLibro + "')";
+                // Consultamos y filtramos las copias disponibles
+                string query2 = "SELECT id_copialibros FROM copia_libros WHERE id_libro = '" + idLibro + "' AND en_prestamo = 0";
                 MySqlCommand cm2 = new MySqlCommand(query2, conn);
                 resultado = cm2.ExecuteReader();
                 Tabla.Load(resultado);
@@ -220,7 +282,6 @@ namespace PJ_conexionIntegrador.Controlador
             }
             catch (Exception ex)
             {
-                // Proporcionamos un mensaje de error específico
                 MessageBox.Show("Error al obtener los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
@@ -235,46 +296,13 @@ namespace PJ_conexionIntegrador.Controlador
         }
 
 
-        // metodo para cargar los ejemplares en el combobox
-        public DataTable CargaComboLibrosEjemplares(string libro)
-        {
-            MySqlDataReader Resultado;
-            var Tabla = new DataTable();
-            var SqlCon = new MySqlConnection();
-            try
-            {
-                SqlCon = M_Conexion.getInstancia().CrearConexion();
-                string sql_tarea = "SELECT id_copialibros,id_libro FROM copia_libros WHERE id_libro =" + libro + " AND id_copialibros NOT IN (SELECT id_copialibros FROM prestamos WHERE fecha_real_devolucion IS NULL AND id_libro=" + libro + ") ORDER BY id_copialibros;";
-
-                var Comando = new MySqlCommand(sql_tarea, SqlCon);
-                Comando.CommandTimeout = 60;
-                SqlCon.Open();
-                Resultado = Comando.ExecuteReader();
-                Tabla.Load(Resultado);
-                return Tabla;
-
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-                throw error;
-            }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open)
-                {
-                    SqlCon.Close();
-                }
-
-            }
-
-        }
+        
 
 
-        //metodo para obtener los bibliotecarios (en desuso)
+        //metodo para obtener los bibliotecarios
         public static List<M_Bibliotecarios> ObtenerBibliotecarios()
         {
-            List<M_Bibliotecarios> listaLibros = new List<M_Bibliotecarios>();
+            List<M_Bibliotecarios> listaBibliotecarios = new List<M_Bibliotecarios>();
 
             MySqlConnection conn = M_Conexion.getInstancia().CrearConexion();
 
@@ -289,7 +317,7 @@ namespace PJ_conexionIntegrador.Controlador
                 while (reader.Read())
                 {
                     M_Bibliotecarios Bibliotecarios = new M_Bibliotecarios(int.Parse(reader["id_bibliotecario"].ToString()), reader["apellido"].ToString());
-                    listaLibros.Add(Bibliotecarios);
+                    listaBibliotecarios.Add(Bibliotecarios);
                 }
                 reader.Close();
             }
@@ -304,23 +332,11 @@ namespace PJ_conexionIntegrador.Controlador
                 conn.Close();
             }
 
-            return listaLibros;
+            return listaBibliotecarios;
         }
 
 
-        //metodo para cargar los bibliotecarios en el combobox
-        public static void CargarBibliotecarios(ComboBox comboBoxLibro)
-        {
-            List<M_Bibliotecarios> listaBibliotecarios = ObtenerBibliotecarios();
-
-            foreach (M_Bibliotecarios Bibliotecario in listaBibliotecarios)
-            {
-                comboBoxLibro.Items.Add(Bibliotecario.Id_bibliotecario + " - " + Bibliotecario.Apellido);
-
-
-            }
-
-        }
+        
 
 
         //metodo para agregar una devolucion
@@ -346,16 +362,23 @@ namespace PJ_conexionIntegrador.Controlador
 
             string querryFecha = "UPDATE prestamos SET fecha_real_devolucion = '" + fecha_devolucion.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE id_prestamo = " + id_prestamo + ";";
 
-            //query para vovler a habilitar el libro devuelto (borra el dato de la columna copialibros de la tabla prestamos (id_copialibros) )
-            
-            try {
+            //query para habilitar el libro devuelto 
+            string devuelto = "UPDATE copia_libros SET en_prestamo = 0 WHERE id_copialibros = (SELECT id_copialibros FROM prestamos WHERE id_prestamo = " + id_prestamo + ");";
+
+
+            try
+            {
                 SqlCon.Open();
                 
                 MySqlCommand FechaDevolucion = new MySqlCommand(querryFecha, SqlCon);
                 FechaDevolucion.ExecuteNonQuery();
+                
+
                 MySqlCommand comando = new MySqlCommand(sql_tarea, SqlCon);
                 comando.ExecuteNonQuery();
                 
+                MySqlCommand devolucion = new MySqlCommand(devuelto, SqlCon);
+                devolucion.ExecuteNonQuery();
 
                 
             }
@@ -376,44 +399,7 @@ namespace PJ_conexionIntegrador.Controlador
         }
 
 
-        public static DataTable ListadoSuspensiones() {
-
-            MySqlDataReader Resultado;
-            var Tabla = new DataTable();
-            var SqlCon = new MySqlConnection();
-            try
-            {
-                SqlCon = M_Conexion.getInstancia().CrearConexion();
-                /*
-                Querry que muestra el apellido, nombre, titulo, fecha_prestamo, fecha_devolucion, fecha_real_devolucion y la id de la suspension
-                */
-                string query = "SELECT socios.apellido, socios.nombre, libros.titulo, prestamos.fecha_prestamo, prestamos.fecha_devolucion, prestamos.fecha_real_devolucion, suspencion.id_suspencion " + "FROM suspencion " + "INNER JOIN prestamos ON suspencion.id_prestamo = prestamos.id_prestamo " + "INNER JOIN socios ON prestamos.id_socio = socios.id_socio " + "INNER JOIN libros ON prestamos.id_libro = libros.id_libro";
-                SqlCon.Open();
-                MySqlCommand commando = new MySqlCommand(query, SqlCon);
-                Resultado = commando.ExecuteReader();
-                Tabla.Load(Resultado);
-                return Tabla;
-
-            }
-
-
-catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-                throw error;
-            }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open)
-                {
-                    SqlCon.Close();
-                }
-
-
-
-    }
-
-        }
+        
 
 
 

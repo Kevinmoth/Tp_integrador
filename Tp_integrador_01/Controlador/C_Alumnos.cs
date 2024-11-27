@@ -36,16 +36,18 @@ namespace Tp_integrador_01.Controlador
         public void insertarAlumnos(string apellido, string nombre, string dni, string telefono, string direccion, string email, string localidad)
         {
             M_Alumnos alumno = new M_Alumnos(apellido, nombre, dni, telefono, direccion, email, localidad);
-            if (localidad == "Seleccione su localidad..")
-            {
-                MessageBox.Show("Ingrese una localidad válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //comprueba que los campos sean del tipo correcto (apellido solo con sólo letras, nombre solo con sólo letras, dni solo con sólo números, telefono solo con sólo números, email solo con sólo letras y numeros, localidad solo con sólo letras y numeros)
+            if (localidad == "Seleccione su localidad.." || apellido == "" || nombre == "" || dni == "" || telefono == "" || email == "") 
+            {        
+                MessageBox.Show("Todos los campos deben estar completos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 almacenarBD.AlmacenarAlumno(alumno);
                 MessageBox.Show("Se registro correctamente a " + nombre + " en el sistema.");
             }
-
+            //comprueba que los campos sean del tipo correcto (apellido solo con sólo letras, nombre solo con sólo letras, dni solo con sólo números, telefono solo con sólo números, email solo con sólo letras y numeros, localidad solo con sólo letras y numeros)
+            
         }
 
         //--------------------metodo para obtener alumnos de la BD (para mostrar en el datagrid)-----------------

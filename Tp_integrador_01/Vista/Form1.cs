@@ -23,15 +23,20 @@ namespace Tp_integrador_01
         public BiblioMax()
         {
 
-            /*Para trabajar con el controlador, necesitamos instanciar
-            su clase, lo hacermos primero declarando un
-            objeto de tipo c_alumnos y luego instanciando: */
-            
-        InitializeComponent();
+            InitializeComponent();
             controladorAlumnos = new C_Alumnos();
             controladorLibros = new C_Libro();
             CargarDatosEnTabla();
         }
+
+
+
+
+        //                                   CARGA DE DATOS EN TABLA
+
+
+
+
         //----------------------------- Metodo para cargar la tabla de Alumnos ---------------------------
         private void CargarDatosEnTabla()
         {
@@ -40,43 +45,6 @@ namespace Tp_integrador_01
             // Vincular la lista al DataGridView
             dataGridAlumno.DataSource = listaAlumnos;
         }
-
-        /* Creamos un metodo GuardarAlumnos() que recolecte los datos del formulario
-        Y los envie como parametro a la funcion insertarAlumnos() del controlador. */
-
-        public void GuardarAlumnos()
-        {
-
-            
-            string apellido = apellido_txt.Text;
-            string nombre = nombre_txt.Text;
-            string dni = dni_txt.Text;
-            string telefono = telefono_txt.Text;
-            string direccion = direccion_txt.Text;
-            string email = mail_txt.Text;
-            string localidad = (string)localidad_txt.SelectedItem;
-
-            controladorAlumnos.insertarAlumnos(apellido, nombre, dni, telefono, direccion, email, localidad);
-        }
-
-
-
-       
-        //--------------------------- Metodo para cargar el comboBox de Libros ---------------------------
-        public void cargarComboBox()
-        {
-
-            // Llamamos al controlador para obtener los datos del libro
-            string nombre_libro = (string)comboBoxLibro.SelectedItem;
-            DataTable copias = C_Prestamos.datosComboBoxLibro(nombre_libro);
-
-            // Asignamos los datos al ComboBox
-            comboBoxEjemplar.DataSource = copias;
-            comboBoxEjemplar.DisplayMember = "id_copialibros"; // Mostrar el id
-            comboBoxEjemplar.ValueMember = "id_copialibros";   // Valor que se almacenará
-        }
-
-
 
 
         //--------------------------- Metodo para Mostrar Prestamos en el DataGridView ---------------------------
@@ -89,6 +57,106 @@ namespace Tp_integrador_01
             TablaPrestamos.DataSource = dt;
         }
 
+
+        //------------------metodo para cargar la tabla de suspensiones---------------------
+        public void MostrarSuspensiones()
+        {
+
+            DataTable dt = C_Prestamos.ListadoSuspensiones();
+            TablaSuspensiones.DataSource = dt;
+
+        }
+
+
+
+        //                             - OBTENCION DE DATOS DE FORMULARIO -
+
+
+
+        /* Creamos un metodo GuardarAlumnos() que recolecte los datos del formulario
+        Y los envie como parametro a la funcion insertarAlumnos() del controlador. */
+
+        public void GuardarAlumnos()
+        {
+            
+            string apellido = apellido_txt.Text;
+            string nombre = nombre_txt.Text;
+            string dni = dni_txt.Text;
+            string telefono = telefono_txt.Text;
+            string direccion = direccion_txt.Text;
+            string email = mail_txt.Text;
+            string localidad = (string)localidad_txt.SelectedItem;
+
+            controladorAlumnos.insertarAlumnos(apellido, nombre, dni, telefono, direccion, email, localidad);
+        }
+
+        //-----------metodo para capturar datos del prestamo y enviarlos al controlador---------------------
+        public void GuardarPrestamo()
+        {
+            string alumno = (string)comboBoxAlumno.SelectedItem;
+            String libro = (string)comboBoxLibro.SelectedItem;
+            String bibliotecario = (string)comboBoxBibliotecarios.SelectedItem;
+            int id_copialibro = Convert.ToInt32(comboBoxEjemplar.SelectedValue);
+
+
+            C_Prestamos.generarPrestamo(alumno, libro, bibliotecario, id_copialibro);
+        }
+
+
+        //------------------Metodo que retorena el dni del alumno seleccionado en el dataGrid---------------------------
+        public int obtenerDniSeleccionado()
+        {
+            DataGridViewRow filaSeleccionada = dataGridAlumno.CurrentRow;
+            int dniSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["dni"].Value);
+            return dniSeleccionado;
+        }
+
+
+        //------------------metodo para capturar datos de la devolucion y enviarlos al controlador---------------------
+        public void agregarDevolucion()
+        {
+
+            // Capturamos la id del prestamo seleccionado en la tabla
+            int id_prestamo = Convert.ToInt32(TablaPrestamos.CurrentRow.Cells["id_prestamo"].Value);
+            //obtiene la fechad e devolucion del prestamo seleccionado en la tabla
+            DateTime fecha_devolucion = DateTime.Parse(TablaPrestamos.CurrentRow.Cells["fecha_devolucion"].Value.ToString());
+            //obtiene la fecha actual como datetime
+            DateTime fecha_devolucion_real = DateTime.Now;
+
+
+            C_Prestamos.agregarDevolucion(fecha_devolucion, fecha_devolucion_real, id_prestamo);
+
+        }
+
+        //------------------metodo para capturar el id de una suspencion 
+        public void obtenerDatosSuspension()
+        {
+            int id_prestamo = Convert.ToInt32(TablaSuspensiones.CurrentRow.Cells["id_suspencion"].Value);
+            C_Prestamos.quitarSuspension(id_prestamo);
+
+        }
+
+
+
+
+        //                                    - CARGAR LOS COMBOBOX -
+
+
+
+
+        //--------------------------- Metodo para cargar el comboBox de Libros ---------------------------
+        public void cargarComboBox()
+        {
+
+            // Llamamos al controlador para obtener los datos del libro
+            string nombre_libro = (string)comboBoxLibro.SelectedItem;
+            DataTable copias = C_Prestamos.datosComboBoxLibro(nombre_libro);
+
+            // Asignamos los datos al ComboBox
+            comboBoxEjemplar.DataSource = copias;
+            comboBoxEjemplar.DisplayMember = "id_copialibros";
+            comboBoxEjemplar.ValueMember = "id_copialibros";   
+        }
 
 
         //.-------------------------- Metodo para cargar el comboBox de Alumnos ---------------------------
@@ -112,64 +180,12 @@ namespace Tp_integrador_01
             C_Prestamos.CargarBibliotecarios(comboBoxBibliotecarios);
         }
 
+        
 
+        
 
-        //------------------Metodo que retorena el dni del alumno seleccionado en el dataGrid---------------------------
-        public int obtenerDniSeleccionado()
-        {
-            DataGridViewRow filaSeleccionada = dataGridAlumno.CurrentRow;
-            int dniSeleccionado = Convert.ToInt32(filaSeleccionada.Cells["dni"].Value);
-            return dniSeleccionado;
-        }
-
-
-        //-----------metodo para capturar datos del prestamo y enviarlos al controlador---------------------
-        public void GuardarPrestamo()
-        {
-            string alumno = (string)comboBoxAlumno.SelectedItem;
-            String libro = (string)comboBoxLibro.SelectedItem;
-            String bibliotecario = (string)comboBoxBibliotecarios.SelectedItem;
-            int id_copialibro = Convert.ToInt32(comboBoxEjemplar.SelectedValue);
-
-
-            C_Prestamos.generarPrestamo(alumno, libro, bibliotecario, id_copialibro);
-        }
-
-
-        //------------------metodo para capturar datos de la devolucion y enviarlos al controlador---------------------
-        public void agregarDevolucion()
-        {
-
-            // Capturamos la id del prestamo seleccionado en la tabla
-            int id_prestamo = Convert.ToInt32(TablaPrestamos.CurrentRow.Cells["id_prestamo"].Value);
-            //obtiene la fechad e devolucion del prestamo seleccionado en la tabla
-            DateTime fecha_devolucion = DateTime.Parse(TablaPrestamos.CurrentRow.Cells["fecha_devolucion"].Value.ToString());
-            //obtiene la fecha actual como datetime
-            DateTime fecha_devolucion_real = DateTime.Now;
-            
-
-            C_Prestamos.agregarDevolucion(fecha_devolucion, fecha_devolucion_real ,id_prestamo);
-
-        }
-
-
-        //------------------metodo para cargar la tabla de suspensiones---------------------
-        public void MostrarSuspensiones()
-        {
-
-            DataTable dt = C_Prestamos.ListadoSuspensiones();
-            TablaSuspensiones.DataSource = dt;
-
-        }
-
-        //------------------metodo para capturar el id de una suspencion 
-        public void obtenerDatosSuspension()
-        {
-            int id_prestamo = Convert.ToInt32(TablaSuspensiones.CurrentRow.Cells["id_suspencion"].Value);
-            C_Prestamos.quitarSuspension(id_prestamo);
-
-        }
-
+        
+        //                                    - BOTONES -
 
 
         private void label12_Click(object sender, EventArgs e)
@@ -351,7 +367,7 @@ namespace Tp_integrador_01
 
             // funcion para agregar una devolucion
             agregarDevolucion();
-
+            MostrarPrestamos();
             MostrarSuspensiones();
 
         }
@@ -374,6 +390,43 @@ namespace Tp_integrador_01
 
 
 
+        }
+
+        private void apellido_txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8)  
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void nombre_txt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nombre_txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dni_txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void telefono_txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
